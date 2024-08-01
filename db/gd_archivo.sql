@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 01-08-2024 a las 15:46:44
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Aug 01, 2024 at 10:32 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `gd_archivo`
+-- Database: `gd_archivo`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_estadoper`
+-- Table structure for table `tbl_estadoper`
 --
 
 CREATE TABLE `tbl_estadoper` (
@@ -35,7 +35,7 @@ CREATE TABLE `tbl_estadoper` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_login`
+-- Table structure for table `tbl_login`
 --
 
 CREATE TABLE `tbl_login` (
@@ -44,20 +44,20 @@ CREATE TABLE `tbl_login` (
   `Nombre` varchar(30) NOT NULL,
   `Razonsoc` int(11) NOT NULL,
   `Usuario` varchar(20) NOT NULL,
-  `Password` varchar(50) NOT NULL
+  `Password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `tbl_login`
+-- Dumping data for table `tbl_login`
 --
 
 INSERT INTO `tbl_login` (`Idusr`, `Cedula`, `Nombre`, `Razonsoc`, `Usuario`, `Password`) VALUES
-(1, '1001671132', 'Jeyson cartagena ', 1, 'jcg', '1234');
+(30, '123', 'kenier', 1, 'kenier', '$2y$10$6gj6uNRS3jg0bryaWjHGRujm7n4BiO2OlZXU86e1m7GdBvaiC4iSq');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_personas`
+-- Table structure for table `tbl_personas`
 --
 
 CREATE TABLE `tbl_personas` (
@@ -72,7 +72,7 @@ CREATE TABLE `tbl_personas` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_razonsoc`
+-- Table structure for table `tbl_razonsoc`
 --
 
 CREATE TABLE `tbl_razonsoc` (
@@ -81,7 +81,7 @@ CREATE TABLE `tbl_razonsoc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `tbl_razonsoc`
+-- Dumping data for table `tbl_razonsoc`
 --
 
 INSERT INTO `tbl_razonsoc` (`Idrazon`, `Descripcion`) VALUES
@@ -90,7 +90,7 @@ INSERT INTO `tbl_razonsoc` (`Idrazon`, `Descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_rol`
+-- Table structure for table `tbl_rol`
 --
 
 CREATE TABLE `tbl_rol` (
@@ -99,71 +99,71 @@ CREATE TABLE `tbl_rol` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `tbl_estadoper`
+-- Indexes for table `tbl_estadoper`
 --
 ALTER TABLE `tbl_estadoper`
   ADD PRIMARY KEY (`Idestado`);
 
 --
--- Indices de la tabla `tbl_login`
+-- Indexes for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
   ADD PRIMARY KEY (`Idusr`),
   ADD KEY `Razonsoc` (`Razonsoc`);
 
 --
--- Indices de la tabla `tbl_razonsoc`
+-- Indexes for table `tbl_razonsoc`
 --
 ALTER TABLE `tbl_razonsoc`
   ADD PRIMARY KEY (`Idrazon`);
 
 --
--- Indices de la tabla `tbl_rol`
+-- Indexes for table `tbl_rol`
 --
 ALTER TABLE `tbl_rol`
   ADD PRIMARY KEY (`Idrol`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `tbl_estadoper`
+-- AUTO_INCREMENT for table `tbl_estadoper`
 --
 ALTER TABLE `tbl_estadoper`
   MODIFY `Idestado` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tbl_login`
+-- AUTO_INCREMENT for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
-  MODIFY `Idusr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Idusr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT de la tabla `tbl_razonsoc`
+-- AUTO_INCREMENT for table `tbl_razonsoc`
 --
 ALTER TABLE `tbl_razonsoc`
   MODIFY `Idrazon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `tbl_rol`
+-- AUTO_INCREMENT for table `tbl_rol`
 --
 ALTER TABLE `tbl_rol`
   MODIFY `Idrol` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `tbl_login`
+-- Constraints for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
-  ADD CONSTRAINT `tbl_login_ibfk_2` FOREIGN KEY (`Razonsoc`) REFERENCES `tbl_razonsoc` (`idrazon`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `tbl_login_ibfk_2` FOREIGN KEY (`Razonsoc`) REFERENCES `tbl_razonsoc` (`Idrazon`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
