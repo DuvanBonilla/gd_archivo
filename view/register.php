@@ -21,7 +21,7 @@
           <div class="signup-content">
             <div class="signup-form">
               <h2 class="form-title">Registro de usuarios</h2>
-              <form method="POST" class="register-form" id="register-form">
+              <form method="POST" action="../controller/ctr_register.php" class="register-form" id="register-form">
                 <div class="form-group">
                   <label for="name"
                   ></label>
@@ -34,7 +34,7 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label for="email"><i class="zmdi zmdi-email"></i></label>
+                  <label for="nombre"><i class="zmdi zmdi-email"></i></label>
                   <input
                     type="text"
                     name="nombre"
@@ -46,7 +46,7 @@
                   <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                   <input
                     type="text"
-                    name="razon-social"
+                    name="razon_social"
                     id="razonSocial"
                     placeholder="Ingrese razon social"
                   />
