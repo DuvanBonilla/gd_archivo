@@ -7,8 +7,13 @@
     <title>Menu Dashboard</title>
     <!-- BOX ICONS -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- font awesome -->
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
     <!-- CUSTOM CSS -->
-    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="css/index/estilos.css">
 </head>
 <body>
 
@@ -68,14 +73,20 @@
                 <div class="enlace"><span>Finca 3</span></div>
             </div>
             <div class="enlace">
-                <a href="../controller/cerrar_sesion.php">
+                <a href="register.php">
+                <i class="bx bx-user-plus"></i> <!-- Icono de registrar usuario -->
+                <span>Registrar usuario</span>
+                </a>
+            </div>
+            <div class="enlace">
+                <a href="">
                 <i class="bx bx-log-out"></i>
-                <span>Cerrar Seción</span>
+                <span>Cerrar sesion</span>
                 </a>
             </div>
         </div>
     </div>
-    <script src="../controller/app.js" defer></script>
-    <script src="../js/controller/desplegablecar.js" defer></script>
+    <script src="../controller/js/app.js" defer></script>
+    <script src="../controller/js/desplegablecar.js" defer></script>
 </body>
 </html>

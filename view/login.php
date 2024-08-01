@@ -7,7 +7,7 @@
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="css/login/login.css" />
     <title>Sign in & Sign up Form</title>
   </head>
   <body>
@@ -37,7 +37,7 @@
              Sistema de gestión documental de archivo Cargoban Operador Logístico y Portuario!
             </p>
           </div>
-          <img src="../images/lor.png" class="image" alt="" />
+          <img src="images/lor.png" class="image" alt="" />
         </div>
       </div>
     </div>
