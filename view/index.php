@@ -75,7 +75,7 @@
             </div>
         </div>
     </div>
-    <script src="../js/app.js" defer></script>
-    <script src="../js/desplegablecar.js" defer></script>
+    <script src="../controller/app.js" defer></script>
+    <script src="../js/controller/desplegablecar.js" defer></script>
 </body>
 </html>
