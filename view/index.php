@@ -95,6 +95,6 @@ if(!isset($_SESSION["usuario"])){
         </div>
     </div>
     <script src="../controller/js/app.js" defer></script>
-    <script src="../controller/js/desplegablecar.js" defer></script>
+    <script src="../controller/js/lista-fincas.js" defer></script>
 </body>
 </html>

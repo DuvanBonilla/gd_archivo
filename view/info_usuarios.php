@@ -1,67 +1,63 @@
-<?php
-session_start();
-if(!isset($_SESSION["usuario"])){
-  header('location: ../view/login.php');
-    exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8" />
-    <link rel="icon" href="images/logo-redondo.ico" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Consultar novedades</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/empleados/info_empleados.css">
+    <!-- --- font awesome --- -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../css/info_usuarios.css" />
 
+    <!-- <link rel="stylesheet" href="css/empleados/modal/register_empleados.css"> -->
+    <title>Paginacion</title>
 </head>
-
 <body>
-    <a class="exit-link" href="../view/main.php">
-        <i class="fa fa-right-from-bracket fa-beat" style="color: #ff0000"></i>
-    </a>
-    <main class="table" id="customers_table">
-        <section class="table__header">
-            <h1>Empleados</h1>
-            <div class="input-group">
-                <input id="search" type="search" placeholder="Buscar novedad" />
-                <img src="../images/search.png" alt="" />
-            </div>
-            <div class="export__file">
-                <label for="export-file" class="export__file-btn" title="Export File"></label>
-                <input type="checkbox" id="export-file" />
-                <div class="export__file-options">
-                    <label>Exportar &nbsp; &#10140;</label>
-                    <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt="" /></label>
-                </div>
-            </div>
-        </section>
+<a href="index.php"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
+    <div class="container" style="margin-top: 4%;padding: 5px">
+        <table id="tablax" class="table table-striped table-bordered" style="width:100%">
+            <h1>BASE DE DATOS DEL PERSONAL</h1>
+            <thead>
+                <tr>
+                    <th>CEDULA</th>
+                    <th>NOMBRE</th>
+                    <th>UBICACIÓN</th>
+                    <th>ESTADO</th>
+                    <th>EDITAR</th>
+                    <th>CARPETAS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Leonardo</td>
+                    <td>Ape1</td>
+                    <td>Ape2</td>
+                    <td>12345689</td>
+                    <td>12345689</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Leonardo</td>
+                    <td>Ape1</td>
+                    <td>Ape2</td>
+                    <td>12345689</td>
+                    <td>12345689</td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Registrar">
+            Nuevo Registro <i class="bi bi-person-plus"></i>
+        </button>
+        <?php include 'modal_usuarios.php'; ?>
+    </div>
 
-        <section class="table__body">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Cedula<span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Nombre<span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Ubicación <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Estado <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Editar <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Carpetas <span class="icon-arrow">&UpArrow;</span></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- <?php require_once ''; ?> -->
-                </tbody>
-            </table>
-        </section>
-
-
-    </main>
-    <!-- ------------------- url para el ajax -------- -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="../controller/js/info_empleados.js"></script>
 </body>
 </html>

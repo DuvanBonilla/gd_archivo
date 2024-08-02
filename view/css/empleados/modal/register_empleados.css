@@ -1,0 +1,46 @@
+/* Estilos generales para el formulario */
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-title {
+  margin-top: 10px;
+}
+
+.form-label {
+  font-weight: bold;
+}
+.modal-body {
+  background-color: #ccc;
+}
+
+/* Estilos para los campos de entrada de texto */
+.form-control1 {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Estilos para el botón Registrar */
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para el botón Cancelar */
+.btn-danger {
+  background-color: #a8ce3b;
+  border-color: #a8ce3b;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: #a8ce3b;
+  border-color: #a8ce3b;
+}
