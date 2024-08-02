@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["Usuario"])){
+if(!isset($_SESSION["usuario"])){
   header('location: ../view/login.php');
     exit;
 }
@@ -103,7 +103,4 @@ if(!isset($_SESSION["Usuario"])){
           </div>
         </div>
       </section>
-
-
-
 </html>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class Usuario
 {
     private $usuario;
@@ -21,7 +21,7 @@ class Usuario
             $usuarioBD = $validar_login->fetch_assoc();
             $hashContraseñaBD = $usuarioBD['Password'];
             if (password_verify($this->contrasena, $hashContraseñaBD)) {
-                $_SESSION['Usuario'] = $this->usuario;
+                $_SESSION['usuario'] = $this->usuario;
                 echo '<script>window.location.href="../view/index.php";</script>';
                 exit;
             }else{

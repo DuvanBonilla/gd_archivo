@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["Usuario"])){
+if(!isset($_SESSION["usuario"])){
   header('location: ../view/login.php');
     exit;
 }
@@ -30,7 +30,7 @@ if(!isset($_SESSION["Usuario"])){
         <div class="top-menu">
             <div class="logo">
                 <img src="../images/crg.png" alt="">
-                <span>TuMejorWeb</span>
+                <span>CargoArchivos</span>
             </div>
             <div class="toggle">
                 <i class='bx bx-menu'></i>
@@ -87,7 +87,7 @@ if(!isset($_SESSION["Usuario"])){
                 </a>
             </div>
             <div class="enlace">
-                <a href="">
+                <a href="../controller/cerrar_sesion.php">
                 <i class="bx bx-log-out"></i>
                 <span>Cerrar sesion</span>
                 </a>

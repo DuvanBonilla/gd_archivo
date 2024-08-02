@@ -1,8 +1,11 @@
 <?php
-
+if(!isset($_SESSION["usuario"])){
+  header('location: ../view/login.php');
+    exit;
+}
+// -----------------------------------------------------------------------
 require_once ("../model/conexion.php");
 require_once ("../model/val_register.php");
-
 // -----------------------------------------------------------------------
 $conexion = new Conexion;
 $conMysql = $conexion->conMysql();
