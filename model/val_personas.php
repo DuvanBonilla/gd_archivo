@@ -30,11 +30,11 @@ class UsuarioYCarpetas {
 
             // Nombres personalizados para las carpetas
             $nombresCarpetas = [
-                "actualización de datos", "seguridad social", "certificados laborales", "incapacidades", "certificados de estudio",
-                "certificados médicos", "contrato", "descuentos", "doc identidad", "doc legales",
-                "dotación", "hoja de vida", "liquidaciones", "pago de nomina", "prestaciones sociales",
-                "procesos disciplinarios", "gestión humana", "seguro de vida", "prestamos", "solicitudes",
-                "terminación contrato", "visita domiciliaria", "test wartegg", "certificados", "otros"
+                "Actualización de datos", "Seguridad social", "Certificados laborales", "Incapacidades", "Certificados de estudio",
+                "Certificados médicos", "Contrato", "Descuentos", "Doc identidad", "Doc legales",
+                "Dotacion", "Hoja de vida", "Liquidaciones", "Pago de nomina", "Prestaciones sociales",
+                "Procesos disciplinarios", "Gestión humana", "Seguro de vida", "Prestamos", "Solicitudes",
+                "Terminación contrato", "Visita domiciliaria", "Test wartegg", "Certificados", "Otros"
             ];
             // Crear subcarpetas con nombres personalizados
             foreach ($nombresCarpetas as $nombre) {
