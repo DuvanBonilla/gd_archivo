@@ -69,7 +69,7 @@ class UsuarioYCarpetas {
                         confirmButtonText: 'OK',
                         timer: 6000
                     }).then(() => {
-                    location.assign('../view/info_usuarios.php');
+                    location.assign('../view/tabla_empleados.php');
                     });
                 });
                 </script>";
@@ -104,7 +104,7 @@ class UsuarioYCarpetas {
                             confirmButtonText: 'OK',
                             timer: 5000
                         }).then(() => {
-                    location.assign('../view/info_usuarios.php');
+                    location.assign('../view/tabla_empleados.php');
                         });
                     });
                     </script>";
@@ -121,7 +121,7 @@ class UsuarioYCarpetas {
                             confirmButtonText: 'OK',
                             timer: 5000
                         }).then(() => {
-                    location.assign('../view/info_usuarios.php');
+                    location.assign('../view/tabla_empleados.php');
                         });
                     });
                     </script>";
@@ -139,7 +139,7 @@ class UsuarioYCarpetas {
                         confirmButtonText: 'OK',
                         timer: 5000
                     }).then(() => {
-                    location.assign('../view/info_usuarios.php');
+                    location.assign('../view/tabla_empleados.php');
                     });
                 });
                 </script>";
@@ -157,7 +157,7 @@ class UsuarioYCarpetas {
                     confirmButtonText: 'OK',
                     timer: 500000
                 }).then(() => {
-                    location.assign('../view/info_usuarios.php');
+                    location.assign('../view/tabla_empleados.php');
                 });
             });
             </script>";

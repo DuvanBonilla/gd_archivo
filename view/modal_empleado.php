@@ -27,7 +27,7 @@ if(!isset($_SESSION["usuario"])){
                 </div>
                 <div class="modal-body">
 
-                    <form action="../controller/ctr_register_personas.php" method="POST">
+                    <form action="../controller/ctr_register_empleado.php" method="POST">
 
                         <div class="row">
                         <div class="col-md-6">
@@ -81,8 +81,6 @@ if(!isset($_SESSION["usuario"])){
             </div>
         </div>
     </div>
-
-    <!-- Agrega aquí tus bibliotecas de JavaScript si es necesario -->
 </body>
 
 </html>

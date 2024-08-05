@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION["usuario"])){
+  header('location: ../view/login.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,28 +38,26 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Leonardo</td>
-                    <td>Ape1</td>
-                    <td>Ape2</td>
-                    <td>12345689</td>
-                    <td>12345689</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Leonardo</td>
-                    <td>Ape1</td>
-                    <td>Ape2</td>
-                    <td>12345689</td>
-                    <td>12345689</td>
-                </tr>
+            <?php
+            $empleados = include("../model/consu_empleados.php");
+                for ($i = 0; $i < count($empleados); ++$i){
+                    $empleado = $empleados[$i];
+                    echo '<tr>';
+                    echo '<td>'.$empleado['Cedula'].'</td>';
+                    echo '<td>'.$empleado['Nombre'].'</td>';
+                    echo '<td>'.$empleado['Ubicacion'].'</td>';
+                    echo '<td>'.$empleado['Carpetas'].'</td>';
+                    echo '<td><button class="btn btn-primary">Editar</button></td>';
+                    echo '<td><button class="btn btn-secondary">Carpetas</button></td>';
+                    echo '</tr>';
+                }
+            ?>
             </tbody>
         </table>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Registrar">
             Nuevo Registro <i class="bi bi-person-plus"></i>
         </button>
-        <?php include 'modal_usuarios.php'; ?>
+        <?php include 'modal_empleado.php'; ?>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

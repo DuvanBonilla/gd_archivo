@@ -45,7 +45,7 @@ if(!isset($_SESSION["usuario"])){
         <div class="menu">
 
         <div class="enlace">
-            <a href="info_usuarios.php">
+            <a href="tabla_empleados.php">
             <i class="bx bx-user"></i>
             <span>Usuarios</span>
             </a>
