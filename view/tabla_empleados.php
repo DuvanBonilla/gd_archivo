@@ -20,13 +20,13 @@ if(!isset($_SESSION["usuario"])){
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
 
     <!-- <link rel="stylesheet" href="css/empleados/modal/register_empleados.css"> -->
-    <title>Paginacion</title>
+    <title>Empleados</title>
 </head>
 <body>
 <a href="index.php"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
     <div class="container" style="margin-top: 4%;padding: 5px">
         <table id="tablax" class="table table-striped table-bordered" style="width:100%">
-            <h1>BASE DE DATOS DEL PERSONAL</h1>
+            <h1>BASE DE DATOS DE EMPLEADOS</h1>
             <thead>
                 <tr>
                     <th>Cedula</th>
@@ -35,7 +35,6 @@ if(!isset($_SESSION["usuario"])){
                     <th>Fecha ingreso</th>
                     <th>Editar</th>
                     <th>Carpetas</th>
-
                 </tr>
             </thead>
             <tbody>
@@ -43,12 +42,21 @@ if(!isset($_SESSION["usuario"])){
             $empleados = include("../model/consu_empleados.php");
                 for ($i = 0; $i < count($empleados); ++$i){
                     $empleado = $empleados[$i];
+                    $Cedula = $empleado['Cedula'];
+                    $Nombre = $empleado['Nombre'];
+                    $Ubicacion = $empleado['Ubicacion'];
+                    $Estado = $empleado['Carpetas'];
                     echo '<tr>';
                     echo '<td>'.$empleado['Cedula'].'</td>';
                     echo '<td>'.$empleado['Nombre'].'</td>';
                     echo '<td>'.$empleado['Ubicacion'].'</td>';
                     echo '<td>'.$empleado['Fechaingreso'].'</td>';
-                    echo '<td><button class="btn btn-primary">Editar</button></td>';
+                    
+                    echo '<td>  
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editar'.$Cedula.'">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                </td>';                    
                     echo '<td>
                     <button onclick="window.location.href=\'ver_carpetas.php?cedula=' . urlencode($empleado['Cedula']) . '&nombre=' . urlencode($empleado['Nombre']) . '\'" 
                             style="margin-left: 30%; background-color: #1c2355" 
@@ -57,6 +65,7 @@ if(!isset($_SESSION["usuario"])){
                     </button>
                   </td>';                   
                    echo '</tr>';
+                   include 'edit_empleado.php';
                 }
             ?>
             </tbody>

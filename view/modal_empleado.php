@@ -20,7 +20,7 @@ if(!isset($_SESSION["usuario"])){
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h3 class="modal-title" id="exampleModalLabel">Registrar Persona</h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Registrar Empleado</h3>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">
                         <i class="bi bi-x" aria-hidden="true"></i></button>
                 </div>
