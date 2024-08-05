@@ -6,7 +6,6 @@ function obtenerCarpetaPorId($id, $nombreCarpeta) {
 
     // Verificar si la carpeta del usuario existe
     if (file_exists($carpetaUsuario) && is_dir($carpetaUsuario)) {
-        echo "Carpeta encontrada: $carpetaUsuario<br>";
 
         // Obtener la lista de subcarpetas y archivos dentro de la carpeta del usuario
         $subcarpetas = scandir($carpetaUsuario);

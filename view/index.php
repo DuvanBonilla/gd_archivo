@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION["usuario"])){
-  header('location: ../view/login.php');
+if (!isset($_SESSION['usuario'])) {
+    header('location: ../view/login.php');
     exit;
 }
 ?>
@@ -29,17 +29,9 @@ if(!isset($_SESSION["usuario"])){
         <!-- TOP MENU -->
         <div class="top-menu">
             <div class="logo">
-                <img src="../images/crg.png" alt="">
-                <span>CargoArchivos</span>
+                <img src="images/logo.ico.ico" alt="" class="logo-img">
+                <span>argoArchivos</span>
             </div>
-            <div class="toggle">
-                <i class='bx bx-menu'></i>
-            </div>
-        </div>
-        <!-- INPUT SEARCH -->
-        <div class="input-search">
-            <i class='bx bx-search'></i>
-            <input type="text" class="input" placeholder="Buscar">
         </div>
         <!-- MENU -->
         <div class="menu">
@@ -94,7 +86,6 @@ if(!isset($_SESSION["usuario"])){
             </div>
         </div>
     </div>
-    <script src="../controller/js/app.js" defer></script>
     <script src="../controller/js/lista-fincas.js" defer></script>
 </body>
 </html>
