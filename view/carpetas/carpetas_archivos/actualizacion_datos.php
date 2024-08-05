@@ -5,6 +5,7 @@ if(!isset($_SESSION["usuario"])){
     exit;
 }
 $cedula = $_GET["cedula"];
+$nombre = $_GET["nombre"];
 $carpeta = $_GET["carpeta"];
 
 ?>
@@ -18,7 +19,7 @@ $carpeta = $_GET["carpeta"];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../css/empleados/info_empleados.css">
+    <link rel="stylesheet" href="../../css/empleados/info_empleados.css">
     <!-- --- font awesome --- -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
 
@@ -26,11 +27,14 @@ $carpeta = $_GET["carpeta"];
     <title>Tabla archivos</title>
 </head>
 <body>
-<a href="../ver_carpetas.php"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
+<a href="../../ver_carpetas.php?cedula=<?php echo urlencode($cedula); ?>&nombre=<?php echo urlencode($nombre); ?>&carpeta=<?php echo urlencode($carpeta); ?>"> 
+    <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> 
+</a>
     <div class="container" style="margin-top: 4%;padding: 5px">
         <table id="tablax" class="table table-striped table-bordered" style="width:100%">
-        <h1>archivos de <br>
-        <strong><?php echo htmlspecialchars($cedula); ?> : <?php echo htmlspecialchars($carpeta); ?></strong></h1>            <thead>
+        <h1>Archivos de 
+        <strong><?php echo htmlspecialchars($nombre); ?> :<br> <?php echo htmlspecialchars($carpeta); ?></strong></h1>           
+         <thead>
                 <tr>
                     <th>Cedula</th>
                     <th>Nombre</th>
@@ -43,7 +47,7 @@ $carpeta = $_GET["carpeta"];
             </thead>
             <tbody>
             <?php
-            $empleados = include("../../model/consu_empleados.php");
+            $empleados = include("../../../model/consu_empleados.php");
                 for ($i = 0; $i < count($empleados); ++$i){
                     $empleado = $empleados[$i];
                     echo '<tr>';
@@ -73,6 +77,6 @@ $carpeta = $_GET["carpeta"];
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="../controller/js/info_empleados.js"></script>
+    <script src="../../controller/js/info_empleados.js"></script>
 </body>
 </html>

@@ -52,7 +52,7 @@ if(!isset($_SESSION["usuario"])){
                     echo '<td>
                     <button onclick="window.location.href=\'ver_carpetas.php?cedula=' . urlencode($empleado['Cedula']) . '&nombre=' . urlencode($empleado['Nombre']) . '\'" 
                             style="margin-left: 30%; background-color: #1c2355" 
-                            class="btn btn-secondary">
+                            class="btn btn-secondary btn-hover">
                         <i class="fa-solid fa-folder-open"></i>
                     </button>
                   </td>';                   
