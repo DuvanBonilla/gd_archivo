@@ -2,6 +2,7 @@
 
 require_once '../model/conexion.php';
 require_once '../model/val_login.php';
+
 // -----------------------------------------------------------------------
 $usuario = $_POST['usuario'];
 $contrasena = $_POST['contrasena'];

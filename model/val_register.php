@@ -1,6 +1,6 @@
 <?php
 
-class val_register{
+class val_register_personas{
     public function UserExist ($cedula, $conexion){
             // preparacion de consulta
             $stmt = $conexion->prepare("SELECT Cedula FROM tbl_login WHERE Cedula = ? ");

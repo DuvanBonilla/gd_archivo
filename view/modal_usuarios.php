@@ -10,6 +10,7 @@ if(!isset($_SESSION["usuario"])){
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.ico.ico" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/empleados/modal/register_empleados.css">
     <title>Registros</title>
@@ -26,13 +27,13 @@ if(!isset($_SESSION["usuario"])){
                 </div>
                 <div class="modal-body">
 
-                    <form action="#" method="POST">
+                    <form action="../controller/ctr_register_personas.php" method="POST">
 
                         <div class="row">
                         <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="Cedula" class="form-label">Cedula</label>
-                                    <input type="text" id="Cedula" name="Cedula" placeholder="# Identificación"
+                                    <input type="text" id="Cedula" name="Cedula" placeholder="Identificación"
                                         class="form-control1" required>
                                 </div>
                             </div>
@@ -48,8 +49,9 @@ if(!isset($_SESSION["usuario"])){
                                 <div class="mb-3">
                                     <label for="Empresa" class="form-label">Empresa</label>
                                     <select name="Empresa" class="form-control1" id="Empresa" required>
-                                        <option value="" disabled selected>Empresa</option>
-                                        <!-- <?php include_once '../controller/consu_zona.php'; ?> -->
+                                        <option value="1">cargob</option>
+                                        <option value="2">oceanix</option>
+
                                     </select>
                                 </div>
                             </div>
@@ -67,7 +69,6 @@ if(!isset($_SESSION["usuario"])){
                             <input type="date" name="Fechaingreso" id="Fechaingreso"  placeholder="Fecha de ingreso"
                              class="form-control1" required>
                         </div>
-
 
                         <br>
 
