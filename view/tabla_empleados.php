@@ -29,12 +29,13 @@ if(!isset($_SESSION["usuario"])){
             <h1>BASE DE DATOS DEL PERSONAL</h1>
             <thead>
                 <tr>
-                    <th>CEDULA</th>
-                    <th>NOMBRE</th>
-                    <th>UBICACIÓN</th>
-                    <th>ESTADO</th>
-                    <th>EDITAR</th>
-                    <th>CARPETAS</th>
+                    <th>Cedula</th>
+                    <th>Nombre</th>
+                    <th>Ubicacion</th>
+                    <th>Fecha ingreso</th>
+                    <th>Editar</th>
+                    <th>Carpetas</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -46,7 +47,7 @@ if(!isset($_SESSION["usuario"])){
                     echo '<td>'.$empleado['Cedula'].'</td>';
                     echo '<td>'.$empleado['Nombre'].'</td>';
                     echo '<td>'.$empleado['Ubicacion'].'</td>';
-                    echo '<td>'.$empleado['Carpetas'].'</td>';
+                    echo '<td>'.$empleado['Fechaingreso'].'</td>';
                     echo '<td><button class="btn btn-primary">Editar</button></td>';
                     echo '<td><button class="btn btn-secondary">Carpetas</button></td>';
                     echo '</tr>';
