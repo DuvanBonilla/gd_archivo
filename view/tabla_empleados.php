@@ -49,8 +49,13 @@ if(!isset($_SESSION["usuario"])){
                     echo '<td>'.$empleado['Ubicacion'].'</td>';
                     echo '<td>'.$empleado['Fechaingreso'].'</td>';
                     echo '<td><button class="btn btn-primary">Editar</button></td>';
-                    echo '<td><button class="btn btn-secondary">Carpetas</button></td>';
-                    echo '</tr>';
+                    echo '<td>
+                    <button onclick="window.location.href=\'ver_carpetas.php?cedula=' . urlencode($empleado['Cedula']) . '&nombre=' . urlencode($empleado['Nombre']) . '\'" 
+                            style="margin-left: 30%; background-color: #1c2355" 
+                            class="btn btn-secondary">
+                        <i class="fa-solid fa-folder-open"></i>
+                    </button>
+                  </td>';                    echo '</tr>';
                 }
             ?>
             </tbody>
