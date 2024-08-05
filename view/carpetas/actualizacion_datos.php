@@ -4,6 +4,9 @@ if(!isset($_SESSION["usuario"])){
   header('location: ../view/login.php');
     exit;
 }
+$cedula = $_GET["cedula"];
+$carpeta = $_GET["carpeta"];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,19 +18,19 @@ if(!isset($_SESSION["usuario"])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="css/empleados/info_empleados.css">
+    <link rel="stylesheet" href="../css/empleados/info_empleados.css">
     <!-- --- font awesome --- -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
 
     <!-- <link rel="stylesheet" href="css/empleados/modal/register_empleados.css"> -->
-    <title>Paginacion</title>
+    <title>Tabla archivos</title>
 </head>
 <body>
-<a href="index.php"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
+<a href="../ver_carpetas.php"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
     <div class="container" style="margin-top: 4%;padding: 5px">
         <table id="tablax" class="table table-striped table-bordered" style="width:100%">
-            <h1>BASE DE DATOS DEL PERSONAL</h1>
-            <thead>
+        <h1>archivos de <br>
+        <strong><?php echo htmlspecialchars($cedula); ?> : <?php echo htmlspecialchars($carpeta); ?></strong></h1>            <thead>
                 <tr>
                     <th>Cedula</th>
                     <th>Nombre</th>
@@ -40,7 +43,7 @@ if(!isset($_SESSION["usuario"])){
             </thead>
             <tbody>
             <?php
-            $empleados = include("../model/consu_empleados.php");
+            $empleados = include("../../model/consu_empleados.php");
                 for ($i = 0; $i < count($empleados); ++$i){
                     $empleado = $empleados[$i];
                     echo '<tr>';
@@ -64,7 +67,6 @@ if(!isset($_SESSION["usuario"])){
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Registrar">
             Nuevo Registro <i class="bi bi-person-plus"></i>
         </button>
-        <?php include 'modal_empleado.php'; ?>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

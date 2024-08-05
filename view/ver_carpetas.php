@@ -4,7 +4,7 @@ $nombre = $_GET["nombre"];
 
 // Lista de carpetas con sus respectivos enlaces
 $carpetas = [
-    "Actualización de datos" => "actualizacion_datos.php",
+    "Actualización de datos" => "carpetas/actualizacion_datos.php",
     "Seguridad social" => "seguridad_social.php",
     "Certificados laborales" => "certificados_laborales.php",
     "Incapacidades" => "incapacidades.php",
