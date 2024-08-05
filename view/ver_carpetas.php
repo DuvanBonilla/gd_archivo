@@ -2,6 +2,34 @@
 $cedula = $_GET["cedula"];
 $nombre = $_GET["nombre"];
 
+// Lista de carpetas con sus respectivos enlaces
+$carpetas = [
+    "Actualización de datos" => "actualizacion_datos.php",
+    "Seguridad social" => "seguridad_social.php",
+    "Certificados laborales" => "certificados_laborales.php",
+    "Incapacidades" => "incapacidades.php",
+    "Certificados de estudio" => "certificados_estudio.php",
+    "Certificados médicos" => "certificados_medicos.php",
+    "Contrato" => "contrato.php",
+    "Descuentos" => "descuentos.php",
+    "Doc identidad" => "doc_identidad.php",
+    "Doc legales" => "doc_legales.php",
+    "Dotación" => "dotacion.php",
+    "Hoja de vida" => "hoja_vida.php",
+    "Liquidaciones" => "liquidaciones.php",
+    "Pago de nómina" => "pago_nomina.php",
+    "Prestaciones sociales" => "prestaciones_sociales.php",
+    "Procesos disciplinarios" => "procesos_disciplinarios.php",
+    "Gestión humana" => "gestion_humana.php",
+    "Seguro de vida" => "seguro_vida.php",
+    "Préstamos" => "prestamos.php",
+    "Solicitudes" => "solicitudes.php",
+    "Terminación contrato" => "terminacion_contrato.php",
+    "Visita domiciliaria" => "visita_domiciliaria.php",
+    "Test Wartegg" => "test_wartegg.php",
+    "Certificados" => "certificados.php",
+    "Otros" => "otros.php"
+];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -20,108 +48,23 @@ $nombre = $_GET["nombre"];
     <a href="index.php" class="icon-back-menu">
         <i class="fa-solid fa-right-from-bracket"></i> 
     </a> 
+    
     <h1>Carpetas del empleado <br>
-    <strong> <?php echo htmlspecialchars($nombre); ?> : <?php echo htmlspecialchars($cedula); ?> </h1> </strong> <div class="grid-container">
-        <div class="grid-item">
-            <p>Actualización de datos</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Seguridad social</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Certificados laborales</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Incapacidades</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Certificados de estudio</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Certificados médicos</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Contrato</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Descuentos</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Doc identidad</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Doc legales</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Dotación</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Hoja de vida</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Liquidaciones</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Pago de nómina</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Prestaciones sociales</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Procesos disciplinarios</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Gestión humana</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Seguro de vida</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Préstamos</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Solicitudes</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Terminación contrato</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Visita domiciliaria</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Test Wartegg</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Certificados</p>
-            <i class="fas fa-folder"></i>
-        </div>
-        <div class="grid-item">
-            <p>Otros</p>
-            <i class="fas fa-folder"></i>
-        </div>
+    <strong><?php echo htmlspecialchars($nombre); ?> : <?php echo htmlspecialchars($cedula); ?></strong></h1>
+    
+    <div class="grid-container">
+        <?php
+        // Recorre la lista de carpetas y crea un enlace para cada una
+        foreach ($carpetas as $carpeta => $url) {
+            $carpetaUrl = urlencode($carpeta); // Codifica el nombre de la carpeta para la URL
+            echo '<div class="grid-item">
+                    <a href="' . htmlspecialchars($url) . '?cedula=' . urlencode($cedula) . '&nombre=' . urlencode($nombre) . '&carpeta=' . $carpetaUrl . '" class="grid-item-link">
+                        <p>' . htmlspecialchars($carpeta) . '</p>
+                        <i class="fas fa-folder"></i>
+                    </a>
+                  </div>';
+        }
+        ?>
     </div>
 </body>
 </html>
