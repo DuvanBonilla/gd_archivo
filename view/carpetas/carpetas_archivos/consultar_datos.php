@@ -1,9 +1,10 @@
 <?php
 session_start();
-if(!isset($_SESSION["usuario"])){
-  header('location: ../view/login.php');
+if (!isset($_SESSION["usuario"])) {
+    header('location: ../../../../login.php');
     exit;
 }
+
 $cedula = $_GET["cedula"];
 $nombre = $_GET["nombre"];
 $carpeta = $_GET["carpeta"];
@@ -23,7 +24,6 @@ $carpeta = $_GET["carpeta"];
     <!-- --- font awesome --- -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
 
-    <!-- <link rel="stylesheet" href="css/empleados/modal/register_empleados.css"> -->
     <title>Tabla archivos</title>
 </head>
 <body>
@@ -36,41 +36,30 @@ $carpeta = $_GET["carpeta"];
         <strong><?php echo htmlspecialchars($nombre); ?> :<br> <?php echo htmlspecialchars($carpeta); ?></strong></h1>           
          <thead>
                 <tr>
-                    <th>Cedula</th>
-                    <th>Nombre</th>
-                    <th>Ubicacion</th>
-                    <th>Fecha ingreso</th>
-                    <th>Editar</th>
-                    <th>Carpetas</th>
-
+                    <th>Archivo</th>
+                    <th>Descargar</th>
+                    <th>Subir</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
             <?php
-            $empleados = include("../../../model/consu_empleados.php");
-                for ($i = 0; $i < count($empleados); ++$i){
-                    $empleado = $empleados[$i];
-                    echo '<tr>';
-                    echo '<td>'.$empleado['Cedula'].'</td>';
-                    echo '<td>'.$empleado['Nombre'].'</td>';
-                    echo '<td>'.$empleado['Ubicacion'].'</td>';
-                    echo '<td>'.$empleado['Fechaingreso'].'</td>';
-                    echo '<td><button class="btn btn-primary">Editar</button></td>';
-                    echo '<td>
-                    <button onclick="window.location.href=\'ver_carpetas.php?cedula=' . urlencode($empleado['Cedula']) . '&nombre=' . urlencode($empleado['Nombre']) . '\'" 
-                            style="margin-left: 30%; background-color: #1c2355" 
-                            class="btn btn-secondary">
-                        <i class="fa-solid fa-folder-open"></i>
-                    </button>
-                  </td>';                   
-                   echo '</tr>';
+            
+                require_once("../../../model/val_mostrar_carpetas.php");
+                $archivos = obtenerCarpetaPorId($cedula,$carpeta);
+                if ($archivos) {
+                    foreach ($archivos as $archivo) {
+                        echo '<tr>';
+                        echo '<td>' . htmlspecialchars($archivo['nombre']) . '</td>';
+                        echo "<td><a href='../../../model/descargar_archivos.php?archivo=" . $archivo['ruta'] . "' class='popup-button update-delete-button' style='margin-left: 40%;' download><i class='fas fa-file-download'></i></a></td>";
+                        echo '</tr>';
+                    }
+                } else {
+                    echo '<tr><td colspan="2">No se encontraron archivos.</td></tr>';
                 }
             ?>
             </tbody>
         </table>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Registrar">
-            Nuevo Registro <i class="bi bi-person-plus"></i>
-        </button>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
