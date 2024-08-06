@@ -1,0 +1,11 @@
+.modal-header{
+    background-color: #1997bd;
+    color: white;
+}
+.form-group{
+    font-size: 0.5 rem;
+    
+}
+.modal-body{
+    border-radius: 1%;
+}

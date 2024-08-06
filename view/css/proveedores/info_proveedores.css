@@ -1,0 +1,37 @@
+th,
+td {
+  padding: 0.4rem !important;
+}
+body > div {
+  box-shadow: 10px 10px 8px #888888;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+th {
+  background-color: #1c2256;
+  color: white;
+}
+h1 {
+  text-align: center;
+  margin: 10px;
+}
+i {
+  font-size: 1.5em;
+}
+
+body {
+  background-image: url(../../images/background-usuarios.jpg);
+}
+
+.container {
+  background-color: white;
+}
+
+.icon-back {
+  font-size: 40px;
+  margin: 30px 0px 0px 50px;
+}
+
+.icon-back:hover {
+  cursor: pointer;
+}
