@@ -54,6 +54,7 @@ if (!isset($_SESSION['usuario'])) {
             </div>
 
             <div class="enlace">
+                <a href="tabla_proveedores.php">
                 <i class="bx bx-file-blank"></i>
                 <span>Facturas</span>
             </div>

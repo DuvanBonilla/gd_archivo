@@ -45,7 +45,6 @@ if(!isset($_SESSION["usuario"])){
                     $Cedula = $empleado['Cedula'];
                     $Nombre = $empleado['Nombre'];
                     $Ubicacion = $empleado['Ubicacion'];
-                    $Estado = $empleado['Carpetas'];
                     echo '<tr>';
                     echo '<td>'.$empleado['Cedula'].'</td>';
                     echo '<td>'.$empleado['Nombre'].'</td>';
