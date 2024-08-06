@@ -37,21 +37,29 @@ $carpeta = $_GET["carpeta"];
          <thead>
                 <tr>
                     <th>Archivo</th>
+                    <th>Ver</th>
                     <th>Descargar</th>
-                    <th>Subir</th>
                     <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
             <?php
-            
                 require_once("../../../model/val_mostrar_carpetas.php");
                 $archivos = obtenerCarpetaPorId($cedula,$carpeta);
                 if ($archivos) {
                     foreach ($archivos as $archivo) {
                         echo '<tr>';
                         echo '<td>' . htmlspecialchars($archivo['nombre']) . '</td>';
-                        echo "<td><a href='../../../model/descargar_archivos.php?archivo=" . $archivo['ruta'] . "' class='popup-button update-delete-button' style='margin-left: 40%;' download><i class='fas fa-file-download'></i></a></td>";
+                        echo "<td><a href='../../../model/ver_archivos.php?archivo=".urlencode($archivo['ruta'])."' target='_blank' class='btn btn-light'style='margin-left: 40%;color:#1997bd' ><i class='fas fa-eye'></i></a></td>";
+                        echo "<td><a href='../../../model/descargar_archivos.php?archivo=".$archivo['ruta']."' target='_blank' class='btn btn-light'style='margin-left: 40%; color:#a8ce3b'><i class='fas fa-file-download'></i></a></td>";
+                                        echo "<td>
+                         <a href='../../../controller/ctr_eliminar_archivos.php?archivo=" . $archivo['ruta'] . "' 
+                           class='popup-button update-delete-button' 
+                           style='margin-left: 40%;' 
+                           onclick=\"return confirm('¿Estás seguro de que deseas eliminar este archivo?');\">
+                            <i class='fas fa-trash-alt'></i>
+                            </a>
+                         </td>";
                         echo '</tr>';
                     }
                 } else {
