@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(!isset($_SESSION["usuario"])){
   header('location: ../view/login.php');
     exit;
