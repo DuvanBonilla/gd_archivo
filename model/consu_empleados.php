@@ -13,7 +13,7 @@ class Empleados
 
     public function obtenerEmpleados()
     {
-        $consulta = 'SELECT Cedula, Nombre, Empresa, Ubicacion, Fechaingreso, Carpetas FROM tbl_personas';
+        $consulta = 'SELECT Cedula, Nombre, Empresa, Ubicacion, Fechaingreso,Estado,Carpetas FROM tbl_personas';
         $resultado = mysqli_query($this->conexion, $consulta);
 
         if (!$resultado) {

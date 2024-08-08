@@ -33,14 +33,3 @@
   background-color: #0056b3;
 }
 
-/* Estilos para el botón Cancelar */
-.btn-danger {
-  background-color: #a8ce3b;
-  border-color: #a8ce3b;
-  color: #fff;
-}
-
-.btn-danger:hover {
-  background-color: #a8ce3b;
-  border-color: #a8ce3b;
-}

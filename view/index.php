@@ -39,15 +39,10 @@ if (!isset($_SESSION['usuario'])) {
         <div class="enlace">
             <a href="tabla_empleados.php">
             <i class="bx bx-user"></i>
-            <span>Usuarios</span>
+            <span>Empleados</span>
             </a>
         </div>
     
-            <div class="enlace">
-                <i class="bx bxs-contact"></i>
-                <span>Base de Datos</span>
-            </div>
-
             <div class="enlace">
                 <i class="bx bx-clipboard"></i>
                 <span>Gestion Humana</span>
@@ -78,6 +73,11 @@ if (!isset($_SESSION['usuario'])) {
                 <i class="bx bx-user-plus"></i> <!-- Icono de registrar usuario -->
                 <span>Registrar usuario</span>
                 </a>
+            </div>
+            <div class="enlace">
+            <a href="subida_masiva.php">
+            <i class='bx bxs-rocket'></i>
+                <span>Subida masiva</span>
             </div>
             <div class="enlace">
                 <a href="../controller/cerrar_sesion.php">
