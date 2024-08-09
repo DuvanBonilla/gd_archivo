@@ -83,12 +83,13 @@ class UsuarioYCarpetas {
         $directorio = "../archivos";
         // mas la cedula, directorio final
         $carpeta = $directorio . "/" . $cedula;
-
+        // estado inicial del empleado, activo
+        $Estado = "1";
         if (!empty($cedula) && !empty($nombre) && !empty($empresa) && !empty($ubicacion) && !empty($FechaIngreso)) {
             // Preparación de la consulta
-            $stmt = $conexion->prepare("INSERT INTO tbl_personas(Cedula, Nombre, Empresa, Ubicacion, Fechaingreso, Carpetas) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt = $conexion->prepare("INSERT INTO tbl_personas(Cedula, Nombre, Empresa, Ubicacion, Fechaingreso, Estado, Carpetas) VALUES (?, ?, ?, ?, ?, ?, ?)");
             // Asignación de valores
-            $stmt->bind_param("ssisss", $cedula, $nombre, $empresa, $ubicacion, $FechaIngreso, $carpeta);
+            $stmt->bind_param("ssissis", $cedula, $nombre, $empresa, $ubicacion, $FechaIngreso, $Estado, $carpeta);
 
             if ($stmt->execute()) {
                 if ($this->CrearCarpeta($cedula)) {
