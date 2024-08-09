@@ -25,7 +25,6 @@ if (!isset($_SESSION['usuario'])) {
 <body>
 <a href="index.php"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
 <div id="modalContainer"></div>
-<div id="alertContainer" >
 </div>
     <div class="container" style="margin-top: 4%;padding: 5px">
         <table id="tablax" class="table table-striped table-bordered" style="width:100%">
@@ -38,6 +37,7 @@ if (!isset($_SESSION['usuario'])) {
                     <th>Fecha ingreso</th>
                     <th>Estado</th>
                     <th>Editar</th>
+                    <th>Detalle</th>
                     <th>Carpetas</th>
                 </tr>
             </thead>
@@ -50,6 +50,7 @@ for ($i = 0; $i < count($empleados); ++$i) {
     $Nombre = $empleado['Nombre'];
     $Ubicacion = $empleado['Ubicacion'];
     $Estado = $empleado['Estado'];
+    $Empresa = $empleado['Empresa'];
     echo '<tr>';
     echo '<td>'.$empleado['Cedula'].'</td>';
     echo '<td>'.$empleado['Nombre'].'</td>';
@@ -73,6 +74,11 @@ for ($i = 0; $i < count($empleados); ++$i) {
                         <i class="bi bi-pencil-square"></i>
                     </button>
                 </td>';
+    echo '<td>
+                <a href="detalle_empleado.php?cedula='.$Cedula.'" class="btn btn-secondary">
+                    <i class="bi bi-journal-bookmark"></i>
+                </a>
+            </td>';
     echo '<td>
                     <button onclick="window.location.href=\'ver_carpetas.php?cedula='.urlencode($empleado['Cedula']).'&nombre='.urlencode($empleado['Nombre']).'\'" 
                             style="margin-left: 30%; background-color: #1c2355" 

@@ -24,18 +24,18 @@ if ($estadoNuevo == 2 && !isset($_POST['actualizar'])) {
     $ubicacion = $_POST['Ubicacion'];
 
     // Obtener la información actual antes de actualizar
-    $sqlCurrentData = 'SELECT Fechaingreso, Ubicacion FROM tbl_personas WHERE Cedula = ?';
+    $sqlCurrentData = 'SELECT Empresa, Fechaingreso, Ubicacion FROM tbl_personas WHERE Cedula = ?';
     $stmtCurrentData = $conexion->prepare($sqlCurrentData);
     $stmtCurrentData->bind_param('s', $cedula);
     $stmtCurrentData->execute();
-    $stmtCurrentData->bind_result($currentFechaIngreso, $currentUbicacion);
+    $stmtCurrentData->bind_result($currentEmpresa, $currentFechaIngreso, $currentUbicacion);
     $stmtCurrentData->fetch();
     $stmtCurrentData->close();
 
     // Guardar la información anterior en tbl_det_empleados
-    $sqlBackup = 'INSERT INTO tbl_det_empleados (Cedula, Fecharetiro, Ubicacion) VALUES (?, ?, ?)';
+    $sqlBackup = 'INSERT INTO tbl_det_empleados (Cedula, Empresa, Fecharetiro, Ubicacion) VALUES (?, ?, ?,?)';
     $stmtBackup = $conexion->prepare($sqlBackup);
-    $stmtBackup->bind_param('sss', $cedula, $currentFechaIngreso, $currentUbicacion);
+    $stmtBackup->bind_param('siss', $cedula, $currentEmpresa, $currentFechaIngreso, $currentUbicacion);
     $stmtBackup->execute();
     $stmtBackup->close();
 
