@@ -1,5 +1,4 @@
 <?php
-
 include 'conexion.php';
 
 class Empleados
@@ -11,9 +10,10 @@ class Empleados
         $this->conexion = $conexion;
     }
 
-    public function obtenerEmpleados()
+    public function obtenerEmpleados($Razonsoc)
     {
-        $consulta = 'SELECT Cedula, Nombre, Empresa, Ubicacion, Fechaingreso,Estado,Carpetas FROM tbl_personas';
+        $consulta = "SELECT Cedula, Nombre, Empresa, Ubicacion, Fechaingreso, Estado, Carpetas FROM tbl_personas WHERE Empresa = '$Razonsoc'";
+        
         $resultado = mysqli_query($this->conexion, $consulta);
 
         if (!$resultado) {
@@ -33,8 +33,9 @@ class Empleados
 $conexion = (new Conexion())->conMysql();
 
 // Crear una instancia de la clase Empleados y obtener los datos
+$Razonsoc = $_SESSION["Razonsoc"];
 $empleadosClass = new Empleados($conexion);
-$empleados = $empleadosClass->obtenerEmpleados();
+$empleados = $empleadosClass->obtenerEmpleados($Razonsoc);
 
 // Cerrar la conexión
 (new Conexion())->cerrarConexion($conexion);
