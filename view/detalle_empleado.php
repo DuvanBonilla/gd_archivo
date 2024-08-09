@@ -1,7 +1,9 @@
 <?php
+session_start();
+$Razonsoc = $_SESSION["Razonsoc"];
 $Cedula = $_GET['cedula'] ?? '';
 require_once '../model/consu_detempleados.php';
-$datosEmpleado = obtenerDatosEmpleado($Cedula);
+$datosEmpleado = obtenerDatosEmpleado($Cedula,$Razonsoc);
 ?>
 <!DOCTYPE html>
 <html lang="en">

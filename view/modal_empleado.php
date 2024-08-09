@@ -48,7 +48,7 @@ if(!isset($_SESSION["usuario"])){
                                 <div class="mb-3">
                                     <label for="Empresa" class="form-label">Empresa</label>
                                     <select name="Empresa" class="form-control1" id="Empresa" required>
-                                        <option value="1">cargob</option>
+                                        <option value="1">Cargoban</option>
                                         <option value="2">oceanix</option>
 
                                     </select>

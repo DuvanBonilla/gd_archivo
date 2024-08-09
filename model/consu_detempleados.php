@@ -2,7 +2,7 @@
 
 require_once 'conexion.php';
 
-function obtenerDatosEmpleado($Cedula)
+function obtenerDatosEmpleado($Cedula,$Razonsoc)
 {
     try {
         $conexion = new Conexion();
@@ -14,8 +14,10 @@ function obtenerDatosEmpleado($Cedula)
             FROM tbl_det_empleados d
             JOIN tbl_personas p ON d.Cedula = p.Cedula
             JOIN tbl_razonsoc r ON d.Empresa = r.Idrazon
-            WHERE d.Cedula = ?');
-        $sql->bind_param('s', $Cedula);  // Vinculamos el parámetro Cedula
+            WHERE d.Cedula = ?
+            AND p.Empresa = ?
+            ' );
+        $sql->bind_param('ss', $Cedula,$Razonsoc);  // Vinculamos el parámetro Cedula
 
         // Ejecutamos la consulta
         $sql->execute();
