@@ -3,8 +3,6 @@ td {
   padding: 0.4rem !important;
 }
 body > div {
-  box-shadow: 10px 10px 8px #888888;
-  border: 2px solid black;
   border-radius: 10px;
 }
 th {
