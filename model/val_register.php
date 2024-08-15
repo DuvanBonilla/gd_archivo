@@ -162,4 +162,29 @@ class val_register_personas
         });
         </script>";
     }
+
+    public function ArrayEmpresaEstado($empresaEstados){
+        $empresasConEstados = [];
+        foreach ($empresaEstados as $empresaId => $estado) {
+            // Agregar cada empresa con su estado, si no existe un estado se asigna '2' por defecto
+            $estado = !empty($estado) ? $estado : '2';
+            $empresasConEstados[] = [
+                'id' => $empresaId,
+                'estado' => $estado,
+            ];
+        }
+        return $empresasConEstados;
+    }
+
+    public function Areas($areasSeleccionadas){
+        $areasConEstados = [];
+
+            foreach ($areasSeleccionadas as $idArea => $valorSeleccionado) {
+                $areasConEstados[] = [
+                    'id' => $idArea,
+                    'estado' => $valorSeleccionado,
+                ];
+            }
+            return $areasConEstados;
+    }
 }
