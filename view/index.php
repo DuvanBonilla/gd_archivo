@@ -59,18 +59,19 @@ if (!isset($_SESSION['usuario'])) {
                 <span>Egresos</span>
             </div>
 
-            <div class="enlace" id="lista-toggle">
-                <i class="bx bxl-spring-boot"></i>
-                <span>Fincas</span>
+            <a href="#" class="enlace" id="lista-toggle">
+            <i class="bx bxl-spring-boot"></i>
+            <span>Agropecuarias</span>
+        </a>
+             <div class="submenu" id="lista-submenu">
+                <div class="enlace"><a href="elegir_tabla_finca.php?finca=8"><span>La Gira</span></a></div>
+                <div class="enlace"><a href="elegir_tabla_finca.php?finca=9"><span>Tierra Grata</span></a></div>
+                <div class="enlace"><a href="elegir_tabla_finca.php?finca=10"><span>Bananova</span></a></div>
             </div>
-            <div class="submenu" id="lista-submenu">
-                <div class="enlace"><span>Finca 1</span></div>
-                <div class="enlace"><span>Finca 2</span></div>
-                <div class="enlace"><span>Finca 3</span></div>
-            </div>
+
             <div class="enlace">
                 <a href="register.php">
-                <i class="bx bx-user-plus"></i> <!-- Icono de registrar usuario -->
+                <i class="bx bx-user-plus"></i> 
                 <span>Registrar usuario</span>
                 </a>
             </div>
