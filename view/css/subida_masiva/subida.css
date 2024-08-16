@@ -1,50 +1,66 @@
-        /* a{
+/* a{
             margin-bottom: 20%;
         } */
-        .icon-back {
-            font-size: 40px;
-            margin: 30px 0px 0px 50px;
-          }
-          
-          .icon-back:hover {
-            cursor: pointer;
-          }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+.icon-back {
+  font-size: 40px;
+  margin: 30px 0px 0px 50px;
+}
 
-        .panel {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: center;
-            width: 300px;
-        }
+.icon-back:hover {
+  cursor: pointer;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
 
-        .panel h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
-        }
+.panel {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+}
 
-        .panel button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
+.panel h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
 
-        .panel button:hover {
-            background-color: #0056b3;
-        }
+.panel button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.panel button:hover {
+  background-color: #0056b3;
+}
+.enlace a:hover {
+  background-color: #a9cd4d;
+  transform: translateY(-2px);
+}
+
+.icon-back {
+  font-size: 40px;
+  position: absolute; /* Para posicionarlo en relación al contenedor */
+  top: 10px; /* Ajusta según lo necesites */
+  left: 10px; /* Ajusta según lo necesites */
+  z-index: 999;
+}
+
+.icon-back:hover {
+  cursor: pointer;
+}

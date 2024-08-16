@@ -19,7 +19,6 @@ if (!isset($_SESSION['usuario'])) {
     <!-- --- font awesome --- -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
 
-    <!-- <link rel="stylesheet" href="css/empleados/modal/register_empleados.css"> -->
     <title>Empleados</title>
 </head>
 <body>
