@@ -5,6 +5,7 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 $razonesSociales = include '../model/consu_razonsoc.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,23 +32,37 @@ $razonesSociales = include '../model/consu_razonsoc.php';
                 <!-- datos generales del usuario a register -->
                 <div class="form-group">
                   <label for="cedula"></label>
-                  <input type="text" name="cedula" id="cedula" placeholder="Número de cédula" />
+                  <input type="text" name="cedula" id="cedula" placeholder="Número de cédula" required/>
                 </div>
                 <div class="form-group">
                   <label for="nombre"><i class="zmdi zmdi-email"></i></label>
-                  <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" />
+                  <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" required />
                 </div>
                 <div class="form-group">
                   <label for="razon_social"><i class="zmdi zmdi-lock"></i></label>
-                  <input type="text" name="razon_social" id="razonSocial" placeholder="Ingrese razón social" />
+                  <input type="text" name="razon_social" id="razonSocial" placeholder="Ingrese razón social" required />
+                </div>
+                <div class="form-group">
+                  <label for="rol">Rol:</label>
+                    <select class="form-control" id="rol" name="rol" required>
+                        <option value="">Selecciona un rol</option>
+                        <?php require_once ("../model/consu_rol.php");?>
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label for="zona">Zona:</label>
+                    <select class="form-control" id="zona" name="zona" required>
+                        <option value="">Selecciona una zona</option>
+                        <?php require_once ("../model/consu_zona.php");?>
+                    </select>
                 </div>
                 <div class="form-group">
                   <label for="usuario"><i class="zmdi zmdi-lock-outline"></i></label>
-                  <input type="text" name="usuario" id="usuario" placeholder="Ingrese usuario" />
+                  <input type="text" name="usuario" id="usuario" placeholder="Ingrese usuario" required/>
                 </div>
                 <div class="form-group">
                   <label for="contrasena"><i class="zmdi zmdi-lock-outline"></i></label>
-                  <input type="password" name="contrasena" id="contrasena" placeholder="Ingrese contraseña" />
+                  <input type="password" name="contrasena" id="contrasena" placeholder="Ingrese contraseña" required />
                 </div>
                 
                 <!-- dar permiso a las empresas a las que puede acceder -->
@@ -126,6 +141,12 @@ foreach ($areas as $area) {
         </div>
       </section>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Bundle with Popper (JavaScript) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
       <script src="../controller/js/per_empresa.js"></script>
   </body>
 </html>
