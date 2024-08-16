@@ -1,12 +1,20 @@
 <?php
+session_start();
+$empresas = include("../model/consu_elegir_empresa.php");
+
+$rol = $_SESSION["rol"];
+$zona = $_SESSION["zona"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.ico.ico" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elegir Finca</title>
-    <link rel="stylesheet" href="css/elegir_finca/elegir_finca.css">
+    <link rel="stylesheet" href="css/elegir_empresa/elegir_empresa.css">
+        <!-- --- font awesome --- -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
 
  <!-- font awesome -->
  <script
@@ -15,16 +23,21 @@
     ></script>
 </head>
 <body>
-<a href="index.php"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
+<a href="../model/cerrar_sesion.php"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
 <div class="cuadrado">
-<div class="enlace"><a class="finca" href="tabla_ver_empleados_finca.php?finca=<?php echo $finca; ?>">Cargoban OLP</a></div>
-<div class="enlace"><a class="finca" href="tabla_ver_egresos_finca.php?finca=<?php echo $finca; ?>">Oceanix</a></div>
-<div class="enlace"><a class="finca" href="tabla_ver_empleados_finca.php?finca=<?php echo $finca; ?>">Solutempo</a></div>
-<div class="enlace"><a class="finca" href="tabla_ver_empleados_finca.php?finca=<?php echo $finca; ?>">Cargoban SAS</a></div>
-<div class="enlace"><a class="finca" href="tabla_ver_empleados_finca.php?finca=<?php echo $finca; ?>">Agencia de Aduanas</a></div>
-
-        <?php 
-        
+<?php 
+    // se recorre el array $empresas
+    foreach ($empresas as $empresa) {
         ?>
+        <div class="enlace">
+          <!-- se asigan los valores del array -->
+            <a class="finca" href="index.php?idEmpresa=<?php echo $empresa['Idrazon']; ?>">
+                <?php echo $empresa['Descripcion']; ?>
+            </a>
+        </div>
+        <?php
+    }
+?>
+</div>
 </body>
 </html>

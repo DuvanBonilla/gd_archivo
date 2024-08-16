@@ -10,7 +10,7 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="css/login/login.css" />
-    <title>Sign in & Sign up Form</title>
+    <title>Inicio de sesion</title>
   </head>
   <body>
     <div class="container">
