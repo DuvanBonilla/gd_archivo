@@ -20,10 +20,16 @@ class Usuario
         if ($validar_login->num_rows > 0) {
             $usuarioBD = $validar_login->fetch_assoc();
             $hashContraseñaBD = $usuarioBD['Password'];
+            $rol = $usuarioBD['Rol'];
+            $zona = $usuarioBD['Zona'];
+
             $_SESSION["Razonsoc"] = $usuarioBD["Razonsoc"];
             if (password_verify($this->contrasena, $hashContraseñaBD)) {
                 $_SESSION['usuario'] = $this->usuario;
-                echo '<script>window.location.href="../view/index.php";</script>';
+                $_SESSION['rol'] = $rol;
+                $_SESSION['zona'] = $zona;
+
+                echo '<script>window.location.href="../view/elegir_empresa.php";</script>';
                 exit;
             }else{
                 echo "
