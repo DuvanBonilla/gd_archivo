@@ -25,15 +25,13 @@ class val_register_personas
                     });
                 });
                 </script>";
-            exit;
+            exit();
         }
     }
 
     public function AggUser($cedula, $nombre, $razon_social, $rol, $zona, $usuario, $contrasena, $empresasConEstados, $areasConEstados, $conexion)
     {
         if (!empty($cedula) && !empty($nombre) && !empty($razon_social) && !empty($rol) && !empty($zona) && !empty($usuario) && !empty($contrasena)) {
-            $zona = 1;
-            $rol = 1;
             $hashed_password = password_hash($contrasena, PASSWORD_DEFAULT);
             $stmt = $conexion->prepare('INSERT INTO tbl_login (Cedula, Nombre, Razonsoc,Rol, Zona, Usuario, Password) VALUES (?, ?, ?, ?,?,?, ?)');
             $stmt->bind_param('ssiiiss', $cedula, $nombre, $razon_social, $zona, $rol, $usuario, $hashed_password);
@@ -70,7 +68,7 @@ class val_register_personas
                     confirmButtonText: 'OK',
                     timer: 5000
                 }).then(() => {
-                    // location.assign('../view/register.php');
+                    location.assign('../view/register.php');
                 });
             });
             </script>";
@@ -114,7 +112,7 @@ class val_register_personas
                 confirmButtonText: 'OK',
                 timer: 5000
             }).then(() => {
-                // location.assign('../view/register.php');
+                location.assign('../view/register.php');
             });
         });
         </script>";
@@ -157,7 +155,7 @@ class val_register_personas
                 confirmButtonText: 'OK',
                 timer: 5000
             }).then(() => {
-                // location.assign('../view/register.php');
+                location.assign('../view/register.php');
             });
         });
         </script>";
