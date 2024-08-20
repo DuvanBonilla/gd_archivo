@@ -22,12 +22,13 @@ class Usuario
             $hashContraseñaBD = $usuarioBD['Password'];
             $rol = $usuarioBD['Rol'];
             $zona = $usuarioBD['Zona'];
-
+            $cedula = $usuarioBD['Cedula'];
             $_SESSION["Razonsoc"] = $usuarioBD["Razonsoc"];
             if (password_verify($this->contrasena, $hashContraseñaBD)) {
                 $_SESSION['usuario'] = $this->usuario;
                 $_SESSION['rol'] = $rol;
                 $_SESSION['zona'] = $zona;
+                $_SESSION['cedula'] = $cedula;
 
                 echo '<script>window.location.href="../view/elegir_empresa.php";</script>';
                 exit;

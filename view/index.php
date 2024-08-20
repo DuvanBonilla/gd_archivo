@@ -4,6 +4,28 @@ if (!isset($_SESSION['usuario'])) {
     header('location: ../view/login.php');
     exit;
 }
+$permisos = include ("../model/consu_permisos_usuario.php");
+print_r($permiso);
+echo "</br>";
+// ------------------------------------------------------
+$rol = $_SESSION["rol"];
+echo "rol: " . $rol;
+echo "</br>";
+// ------------------------------------------------------
+$zona = $_SESSION["zona"];
+echo "zona: " .$zona;
+// ------------------------------------------------------
+$idEmpresa = $_GET["idEmpresa"];
+echo "</br>";
+echo "id empresa: " . $idEmpresa;
+// ------------------------------------------------------
+$areas = include '../model/consultar_area.php';
+$idAreaToPage = [
+    '1' => 'register.php',
+    '2' => 'pagina_tics.php',
+    '3' => 'pagina_sst.php',
+    '4' => 'facturas.php',
+];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,50 +66,77 @@ if (!isset($_SESSION['usuario'])) {
         </div>
     
             <div class="enlace">
-                <i class="bx bx-clipboard"></i>
-                <span>Gestion Humana</span>
-            </div>
-
-            <div class="enlace">
-                <a href="tabla_proveedores.php">
-                <i class="bx bx-file-blank"></i>
-                <span>Facturas</span>
-            </div>
-
-            <div class="enlace">
-                <i class="bx bx-dollar-circle"></i>
-                <span>Egresos</span>
+            <i class="bx bxl-spring-boot"></i>
+                <span>Agropecuarias</span>
             </div>
 
             <a href="#" class="enlace" id="lista-toggle">
-            <i class="bx bxl-spring-boot"></i>
-            <span>Agropecuarias</span>
-        </a>
-             <div class="submenu" id="lista-submenu">
-                <div class="enlace"><a href="elegir_tabla_finca.php?finca=8"><span>La Gira</span></a></div>
-                <div class="enlace"><a href="elegir_tabla_finca.php?finca=9"><span>Tierra Grata</span></a></div>
-                <div class="enlace"><a href="elegir_tabla_finca.php?finca=10"><span>Bananova</span></a></div>
-            </div>
+            <i class='bx bxs-collection'></i>
+    <span>Areas</span>
+</a>
+<div class="submenu" id="lista-submenu">
+<?php if (!empty($areas)) { ?>
+    <?php foreach ($areas as $area) { ?>
+        <?php
+        // Obtener el ID del área actual
+        $idArea = $area['Idarea'];
 
+        // Verificar si el usuario tiene permiso para esta área
+        $tienePermiso = false;
+        foreach ($permisos as $permiso) {
+            if ($permiso['Area'] == $idArea && $permiso['Permiso'] == 1) {
+                $tienePermiso = true;
+                break;
+            }
+        }
+
+        // Mostrar el área solo si tiene permiso
+        if ($tienePermiso) {
+            $page = isset($idAreaToPage[$idArea]) 
+            ? $idAreaToPage[$idArea] : '#';
+        ?>
+            <div class="enlace">
+                <a href="<?php echo $page; ?>?area=<?php echo $idArea; ?>">
+                    <span><?php echo htmlspecialchars($area['NombreA']); ?></span>
+                </a>
+            </div>
+        <?php } ?>
+    <?php } ?>
+<?php } else { ?>
+    <div class="enlace">
+        <span>No hay áreas disponibles.</span>
+    </div>
+<?php } ?>
+
+</div>
             <div class="enlace">
                 <a href="register.php">
                 <i class="bx bx-user-plus"></i> 
                 <span>Registrar usuario</span>
                 </a>
             </div>
+            
+            <div class="enlace">
+                <a href="#">
+                <i class='bx bx-group'></i>
+                <span>Ver Usuarios</span>
+                </a>
+            </div>
+          
             <div class="enlace">
             <a href="subida_masiva.php">
             <i class='bx bxs-rocket'></i>
                 <span>Subida masiva</span>
             </div>
             <div class="enlace">
-                <a href="../controller/cerrar_sesion.php">
+                <a href="../model/cerrar_sesion.php">
                 <i class="bx bx-log-out"></i>
                 <span>Cerrar sesion</span>
                 </a>
             </div>
         </div>
     </div>
-    <script src="../controller/js/lista-fincas.js" defer></script>
+    <script src="../controller/js/lista-fincas.js" ></script>
 </body>
 </html>
+
