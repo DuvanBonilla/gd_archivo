@@ -51,8 +51,8 @@ body {
 .icon-back {
   font-size: 40px;
   position: absolute; /* Para posicionarlo en relación al contenedor */
-  top: 10px; /* Ajusta según lo necesites */
-  left: 10px; /* Ajusta según lo necesites */
+  top: 20px; /* Ajusta según lo necesites */
+  left: 30px; /* Ajusta según lo necesites */
   z-index: 999;
 }
 
