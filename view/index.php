@@ -84,7 +84,7 @@ $idAreaToPage = [
         // Verificar si el usuario tiene permiso para esta área
         $tienePermiso = false;
         foreach ($permisos as $permiso) {
-            if (/*$permiso['Area'] == $idArea && */ $permiso['Permiso'] == 1 || $permiso['Permiso'] == 2) {
+            if ($permiso['Area'] == $idArea &&  $permiso['Permiso'] == 1 || $permiso['Permiso'] == 2) {
                 $tienePermiso = true;
                 break;
             }
@@ -129,6 +129,18 @@ $idAreaToPage = [
             <a href="subida_masiva.php">
             <i class='bx bxs-rocket'></i>
                 <span>Subida masiva</span>
+            </div>
+
+            <div class="enlace">
+            <a href="editar_permisos.php">
+            <i class='bx bxs-edit-alt'></i>
+            <span>Modificar permisos</span>
+            </div>
+
+            <div class="enlace">
+            <a href="elegir_empresa.php">
+            <i class='bx bxs-buildings'></i>
+            <span>Escoger empresa</span>
             </div>
             <div class="enlace">
                 <a href="../model/cerrar_sesion.php">
