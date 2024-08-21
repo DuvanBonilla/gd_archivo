@@ -1,10 +1,10 @@
 <?php
+
 include 'conexion.php';
-$zona = $_SESSION["zona"];
+$zona = $_SESSION['zona'];
 
 class Empresas
 {
-
     private $conexion;
 
     public function __construct($conexion)
@@ -14,8 +14,8 @@ class Empresas
 
     public function obtenerEmpresas($zona)
     {
-        $stmt = $this->conexion->prepare("SELECT Idrazon,Descripcion FROM tbl_razonsoc WHERE zona = ?");
-        $stmt->bind_param("i", $zona);
+        $stmt = $this->conexion->prepare('SELECT Idrazon,Descripcion FROM tbl_razonsoc WHERE Zona = ?');
+        $stmt->bind_param('i', $zona);
         $stmt->execute();
         $resultado = $stmt->get_result();
         if (!$resultado) {
