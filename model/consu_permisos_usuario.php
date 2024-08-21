@@ -1,7 +1,7 @@
 <?php
 include 'conexion.php';
 
-$cedular = $_SESSION["cedula"];
+$cedula = $_SESSION["cedula"];
 class Permisos
 {
     private $conexion;
@@ -34,7 +34,7 @@ class Permisos
 $conexion = (new Conexion())->conMysql();
 // Crear una instancia de la clase Permisos y obtener los datos
 $empleadosClass = new Permisos($conexion);
-$permiso = $empleadosClass->obtenerPermisos($cedular);
+$permiso = $empleadosClass->obtenerPermisos($cedula);
 
 // Cerrar la conexión
 (new Conexion())->cerrarConexion($conexion);
