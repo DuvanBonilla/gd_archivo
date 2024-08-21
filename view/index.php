@@ -84,7 +84,7 @@ $idAreaToPage = [
         // Verificar si el usuario tiene permiso para esta área
         $tienePermiso = false;
         foreach ($permisos as $permiso) {
-            if ($permiso['Area'] == $idArea && $permiso['Permiso'] == 1) {
+            if ($permiso['Area'] == $idArea && $permiso['Permiso'] == "2") {
                 $tienePermiso = true;
                 break;
             }
