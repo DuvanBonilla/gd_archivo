@@ -1,21 +1,18 @@
-<div class="modal fade" id="crearaño" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="crearcarpeta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h3 class="modal-title" id="exampleModalLabel">Crear Nuevo Año</h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Crear Carpeta Nueva</h3>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">
                         <i class="bi bi-x" aria-hidden="true"></i></button>
                 </div>
                 <div class="modal-body">
 
-                    <form action="../model/crear_año.php" method="POST">
+                    <form action="../model/crear_carpeta_proveedor.php" method="POST">
                     <div class="col-12">
-                     <label for="Fechaingreso" class="form-label">Año para registrar</label>
-                     <input type="number" name="Fechaingreso" id="Fechaingreso" placeholder="Nuevo año" class="form-control" min="1900" max="2099" step="1" required>
-                     <div>
-                     <input type="hidden" name="carpetaBase" value="<?php echo htmlspecialchars($carpeta); ?>">
-                     </div>
+                     <label for="Nuevonombre" class="form-label">Nombre para registrar</label>
+                     <input type="text" name="Nuevonombre" id="Nuevonombre" placeholder="Nuevo Nombre" class="form-control" required>
                     </div>
                         <br>
 
