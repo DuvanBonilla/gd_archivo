@@ -15,13 +15,13 @@ echo "</br>";
 $zona = $_SESSION["zona"];
 echo "zona: " .$zona;
 // ------------------------------------------------------
-$idEmpresa = $_GET["idEmpresa"];
-echo "</br>";
-echo "id empresa: " . $idEmpresa;
+// $idEmpresa = $_GET["idEmpresa"];
+// echo "</br>";
+// echo "id empresa: " . $idEmpresa;
 // ------------------------------------------------------
 $areas = include '../model/consultar_area.php';
 $idAreaToPage = [
-    '1' => 'register.php',
+    '1' => 'pagina_costos.php',
     '2' => 'pagina_tics.php',
     '3' => 'pagina_sst.php',
     '4' => 'facturas.php',
@@ -84,7 +84,7 @@ $idAreaToPage = [
         // Verificar si el usuario tiene permiso para esta área
         $tienePermiso = false;
         foreach ($permisos as $permiso) {
-            if ($permiso['Area'] == $idArea && $permiso['Permiso'] == "2") {
+            if (/*$permiso['Area'] == $idArea && */ $permiso['Permiso'] == 1 || $permiso['Permiso'] == 2) {
                 $tienePermiso = true;
                 break;
             }
@@ -93,10 +93,12 @@ $idAreaToPage = [
         // Mostrar el área solo si tiene permiso
         if ($tienePermiso) {
             $page = isset($idAreaToPage[$idArea]) 
-            ? $idAreaToPage[$idArea] : '#';
+            ? $idAreaToPage[$idArea]
+            : '#';
         ?>
             <div class="enlace">
                 <a href="<?php echo $page; ?>?area=<?php echo $idArea; ?>">
+                    <i class='bx bx-right-arrow-alt'></i>  
                     <span><?php echo htmlspecialchars($area['NombreA']); ?></span>
                 </a>
             </div>
