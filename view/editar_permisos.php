@@ -27,7 +27,7 @@ if (!isset($_SESSION['usuario'])) {
 </div>
     <div class="container" style="margin-top: 4%;padding: 5px">
         <table id="tablax" class="table table-striped table-bordered" style="width:100%">
-            <h1>BASE DE DATOS DE EMPLEADOS</h1>
+            <h1>Editar permisos</h1>
             <thead>
                 <tr>
                     <th>Cedula</th>
@@ -37,6 +37,7 @@ if (!isset($_SESSION['usuario'])) {
                     <th>Zona</th>
                     <th>Usuario</th>
                     <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,10 +46,7 @@ if (!isset($_SESSION['usuario'])) {
 for ($i = 0; $i < count($users); ++$i) {
     $user = $users[$i];
     $Cedula = $user['Cedula'];
-    // $Nombre = $empleado['Nombre'];
-    // $Ubicacion = $empleado['Razonsoc'];
-    // $Estado = $empleado['Rol'];
-    // $Empresa = $empleado['Empresa'];
+
     echo '<tr>';
     echo '<td>'.$user['Cedula'].'</td>';
     echo '<td>'.$user['Nombre'].'</td>';
@@ -57,30 +55,42 @@ for ($i = 0; $i < count($users); ++$i) {
     echo '<td>'.$user['Zona'].'</td>';
     echo '<td>'.$user['Usuario'].'</td>';
 
-
+        // botom de editar permisos
         echo '<td>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Permisos">
-                        Permisos <i class="bi bi-person-plus"></i>
-        </button>
-              </td>';
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Permisos" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
+                    Permisos 
+                </button>
+             </td>';
+        // boton de eliminar usuario
+        echo '<td>
+        <a href="../model/eliminar_usuarios.php?cedula=' . $user['Cedula'] . '" 
+           class="btn btn-danger" 
+           data-toggle="tooltip" 
+           data-placement="top" 
+           title="Eliminar usuario">
+           <i class="bi bi-trash-fill"></i>
+        </a>
+        </td>';
+        
     
     echo '</tr>';
     include 'modal_editar_permisos.php';
 }
 ?>
-            </tbody>
-        </table>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Registrar">
-            Nuevo Registro <i class="bi bi-person-plus"></i>
-        </button>
-        <?php include 'modal_empleado.php'; ?>
+        </tbody>
+    </table>
+      
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="../controller/js/info_empleados.js"></script>
     <script src="../controller/js/estado_empleado.js"></script>
+    <script src="../controller/js/eliminar_usuario.js"></script>
+
 
 </body>
 </html>
