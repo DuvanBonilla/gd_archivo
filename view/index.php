@@ -65,13 +65,8 @@ $idAreaToPage = [
             </a>
         </div>
     
-            <div class="enlace">
-            <i class="bx bxl-spring-boot"></i>
-                <span>Agropecuarias</span>
-            </div>
-
-            <a href="#" class="enlace" id="lista-toggle">
-            <i class='bx bxs-collection'></i>
+        <a href="#" class="enlace" id="lista-toggle">
+        <i class='bx bxs-collection'></i>
     <span>Areas</span>
 </a>
 <div class="submenu" id="lista-submenu">
@@ -117,13 +112,7 @@ $idAreaToPage = [
                 <span>Registrar usuario</span>
                 </a>
             </div>
-            
-            <div class="enlace">
-                <a href="#">
-                <i class='bx bx-group'></i>
-                <span>Ver Usuarios</span>
-                </a>
-            </div>
+
           
             <div class="enlace">
             <a href="subida_masiva.php">
