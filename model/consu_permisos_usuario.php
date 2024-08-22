@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php';
+require_once 'conexion.php';
 
 $cedula = $_SESSION["cedula"];
 class Permisos
@@ -13,7 +13,7 @@ class Permisos
 
     public function obtenerPermisos($cedula)
     {
-        $consulta = "SELECT Area, Permiso FROM tbl_accesos WHERE Cedula = '$cedula'";
+        $consulta = "SELECT * FROM tbl_accesos WHERE Cedula = '$cedula'";
         
         $resultado = mysqli_query($this->conexion, $consulta);
 
