@@ -63,7 +63,7 @@ for ($i = 0; $i < count($users); ++$i) {
              </td>';
         // boton de eliminar usuario
         echo '<td>
-        <a href="../controller/ctr_eliminar_usuarios.php?cedula=' . $user['Cedula'] . '" 
+        <a href="../controller/eliminar_usuarios.php?cedula=' . $user['Cedula'] . '" 
            class="btn btn-danger" 
            data-toggle="tooltip" 
            data-placement="top" 
@@ -74,12 +74,13 @@ for ($i = 0; $i < count($users); ++$i) {
         
     
     echo '</tr>';
-    include 'modal_editar_permisos.php';
 }
 ?>
         </tbody>
     </table>
-      
+      <?php
+        include 'modal_editar_permisos.php';
+      ?>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
