@@ -63,7 +63,7 @@ for ($i = 0; $i < count($users); ++$i) {
              </td>';
         // boton de eliminar usuario
         echo '<td>
-        <a href="../model/eliminar_usuarios.php?cedula=' . $user['Cedula'] . '" 
+        <a href="../controller/ctr_eliminar_usuarios.php?cedula=' . $user['Cedula'] . '" 
            class="btn btn-danger" 
            data-toggle="tooltip" 
            data-placement="top" 

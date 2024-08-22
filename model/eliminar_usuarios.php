@@ -1,15 +1,6 @@
 <?php
 
-require_once("../model/conexion.php");
-
-$cedula = $_GET["cedula"];
-// ----------------------------------------------
-$conexion = new Conexion();
-$conn = $conexion->conMysql();
-// ----------------------------------------------
-
 class EliminarUsuario{
-
 
     public function eliminar($cedula,$conexion){
        if(isset($cedula)){
@@ -70,6 +61,3 @@ class EliminarUsuario{
        }
     }
 }
-
-$eliminarUsuario = new EliminarUsuario();
-$eliminarUsuario->eliminar($cedula,$conn);
