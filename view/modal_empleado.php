@@ -50,7 +50,6 @@ if(!isset($_SESSION["usuario"])){
                                     <select name="Empresa" class="form-control1" id="Empresa" required>
                                         <option value="1">Cargoban</option>
                                         <option value="2">oceanix</option>
-
                                     </select>
                                 </div>
                             </div>

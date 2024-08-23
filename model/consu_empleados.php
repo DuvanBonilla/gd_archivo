@@ -1,6 +1,14 @@
 <?php
 include 'conexion.php';
 
+// Verificar si las variables de sesión están definidas
+if (!isset($_SESSION["zona"]) || !isset($_SESSION["Razonsoc"])) {
+    exit('Error: Sesión no iniciada correctamente.');
+}
+
+$zona = $_SESSION["zona"];
+$Razonsoc = $_SESSION["Razonsoc"];
+
 class Empleados
 {
     private $conexion;
@@ -10,14 +18,39 @@ class Empleados
         $this->conexion = $conexion;
     }
 
-    public function obtenerEmpleados($Razonsoc)
+    public function obtenerEmpleados($Razonsoc, $zona)
     {
-        $consulta = "SELECT Cedula, Nombre, Empresa, Ubicacion, Fechaingreso, Estado, Carpetas FROM tbl_personas WHERE Empresa = '$Razonsoc'";
-        
-        $resultado = mysqli_query($this->conexion, $consulta);
+        if ($zona == 2) {
+            // Consulta para la zona 2
+            $consulta = "SELECT Cedula, Nombre, Empresa, Ubicacion, Fechaingreso, Estado, Carpetas 
+                         FROM tbl_personas 
+                         WHERE Empresa = ? AND Zona = ?";
+            
+            $stmt = mysqli_prepare($this->conexion, $consulta);
+            if ($stmt === false) {
+                exit('Error en la preparación de la consulta: '.mysqli_error($this->conexion));
+            }
+
+            mysqli_stmt_bind_param($stmt, 'si', $Razonsoc, $zona); // 'si' indica string e integer
+        } else {
+            // Consulta para otras zonas
+            $consulta = "SELECT Cedula, Nombre, Empresa, Ubicacion, Fechaingreso, Estado, Carpetas 
+                         FROM tbl_personas 
+                         WHERE Empresa = ?";
+
+            $stmt = mysqli_prepare($this->conexion, $consulta);
+            if ($stmt === false) {
+                exit('Error en la preparación de la consulta: '.mysqli_error($this->conexion));
+            }
+
+            mysqli_stmt_bind_param($stmt, 's', $Razonsoc); // 's' indica string
+        }
+
+        mysqli_stmt_execute($stmt);
+        $resultado = mysqli_stmt_get_result($stmt);
 
         if (!$resultado) {
-            exit('Error en la consulta: '.mysqli_error($this->conexion));
+            exit('Error en la ejecución de la consulta: '.mysqli_error($this->conexion));
         }
 
         $empleados = [];
@@ -25,6 +58,7 @@ class Empleados
             $empleados[] = $fila;
         }
 
+        mysqli_stmt_close($stmt); // Cierra el statement para liberar recursos
         return $empleados;
     }
 }
@@ -33,9 +67,8 @@ class Empleados
 $conexion = (new Conexion())->conMysql();
 
 // Crear una instancia de la clase Empleados y obtener los datos
-$Razonsoc = $_SESSION["Razonsoc"];
 $empleadosClass = new Empleados($conexion);
-$empleados = $empleadosClass->obtenerEmpleados($Razonsoc);
+$empleados = $empleadosClass->obtenerEmpleados($Razonsoc, $zona);
 
 // Cerrar la conexión
 (new Conexion())->cerrarConexion($conexion);
