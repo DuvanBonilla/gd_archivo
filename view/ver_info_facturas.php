@@ -18,7 +18,7 @@
     </a>
     <div class="container" style="margin-top: 4%;padding: 5px">
 
-        <h1>Información Del Año<br>
+        <h1>Archivos en Carpeta<br>
         <strong><?php echo htmlspecialchars($_GET['subcarpeta']); ?></strong></h1>
 
         <table id="tablax" class="table table-striped table-bordered" style="width:100%">
@@ -43,18 +43,6 @@
         ?>
             </tbody>
         </table>
-        <div style="text-align: center; margin-top: 20px;">
-            <form action="../model/subir_archivos_facturas.php" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="carpeta" value="<?php echo htmlspecialchars($_GET['carpeta']); ?>">
-                <input type="hidden" name="subcarpeta" value="<?php echo htmlspecialchars($_GET['subcarpeta']); ?>">
-                
-                <!-- Input para seleccionar archivos -->
-                <input type="file" name="archivo" id="fileInput" style="display: none;" onchange="this.form.submit();">
-                
-                <!-- Label que actúa como botón -->
-                <label for="fileInput" class="btn btn-secondary">Subir archivos</label>
-            </form>
-        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
