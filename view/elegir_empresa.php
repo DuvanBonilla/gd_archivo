@@ -1,13 +1,8 @@
 <?php
 session_start();
 $empresas = include("../model/consu_elegir_empresa.php");
-
 $rol = $_SESSION["rol"];
 $zona = $_SESSION["zona"];
-
-echo "el rol es" . $rol;
-echo "</br>";
-echo "la zona es " .$zona;
 ?>
 <!DOCTYPE html>
 <html lang="en">

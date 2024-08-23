@@ -20,7 +20,7 @@ $finca = $_GET["finca"];
 <div class="cuadrado">
 <div class="enlace"><a class="finca" href="tabla_ver_empleados_finca.php?finca=<?php echo $finca; ?>">Ver Empleado</a></div>
 <div class="enlace"><a class="finca" href="tabla_ver_egresos_finca.php?finca=<?php echo $finca; ?>">Ver Egresos</a></div>
-<div class="enlace"><a class="finca" href="tabla_ver_empleados_finca.php?finca=<?php echo $finca; ?>">Ver Facturas</a></div>
+<div class="enlace"><a class="finca" href="tabla_ver_empleados_finca.php?finca=<?php echo $finca; ?>">Ver carpetas</a></div>
         <?php 
 echo $finca;
         

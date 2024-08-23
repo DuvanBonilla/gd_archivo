@@ -5,7 +5,9 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 $razonesSociales = include '../model/consu_razonsoc.php';
+$razonesSociales[0]['Idrazon'];
 
+$idEmpresa = $razonesSociales[0]['Idrazon'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,8 +22,8 @@ $razonesSociales = include '../model/consu_razonsoc.php';
     <link rel="stylesheet" href="css/register/register.css" />
   </head>
   <body>
-    <a href="index.php"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
-    <div class="main">
+  <a href="index.php?idEmpresa=<?php echo $idempresa=$razonesSociales[0]['Idrazon']; ?>"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
+  <div class="main">
       <!-- Sign up form -->
       <section class="signup">
         <div class="container">
