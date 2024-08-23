@@ -19,7 +19,7 @@ if (!isset($_SESSION['usuario'])) {
     <!-- --- font awesome --- -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
 
-    <title>Empleados</title>
+    <title>Editar acceso</title>
 </head>
 <body>
 <a href="index.php"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
@@ -27,7 +27,7 @@ if (!isset($_SESSION['usuario'])) {
 </div>
     <div class="container" style="margin-top: 4%;padding: 5px">
         <table id="tablax" class="table table-striped table-bordered" style="width:100%">
-            <h1>Editar permisos</h1>
+            <h1>Editar Accesos</h1>
             <thead>
                 <tr>
                     <th>Cedula</th>
