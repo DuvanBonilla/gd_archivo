@@ -46,15 +46,6 @@ if(!isset($_SESSION["usuario"])){
 
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="Empresa" class="form-label">Empresa</label>
-                                    <select name="Empresa" class="form-control1" id="Empresa" required>
-                                        <option value="1">Cargoban</option>
-                                        <option value="2">oceanix</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
                                     <label for="Ubicación" class="form-label">Ubicación</label>
                                     <input type="text" id="Ubicación" name="Ubicacion" placeholder="Ubicación Física"
                                         class="form-control1" required>

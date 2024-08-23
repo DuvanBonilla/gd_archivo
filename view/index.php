@@ -125,6 +125,12 @@ $idAreaToPage = [
             </div>
 
             <div class="enlace">
+            <a href="editar_permisos.php">
+            <i class='bx bx-cog'></i>
+            <span>Modificar fincas</span>
+            </div>
+
+            <div class="enlace">
             <a href="elegir_empresa.php">
             <i class='bx bxs-buildings'></i>
             <span>Escoger empresa</span>

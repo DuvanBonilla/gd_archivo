@@ -32,7 +32,6 @@ if (!isset($_SESSION['usuario'])) {
                 <tr>
                     <th>Cedula</th>
                     <th>Nombre</th>
-                    <th>RazonSoc</th>
                     <th>Rol</th>
                     <th>Zona</th>
                     <th>Usuario</th>
@@ -50,7 +49,6 @@ for ($i = 0; $i < count($users); ++$i) {
     echo '<tr>';
     echo '<td>'.$user['Cedula'].'</td>';
     echo '<td>'.$user['Nombre'].'</td>';
-    echo '<td>'.$user['Razonsoc'].'</td>';
     echo '<td>'.$user['Rol'].'</td>';
     echo '<td>'.$user['Zona'].'</td>';
     echo '<td>'.$user['Usuario'].'</td>';

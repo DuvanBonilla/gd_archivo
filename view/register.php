@@ -4,7 +4,7 @@ if (!isset($_SESSION['usuario'])) {
     header('location: ../view/login.php');
     exit;
 }
-$razonesSociales = include '../model/consu_razonsoc.php';
+$razonesSociales = include '../model/consu_elegir_empresa.php';
 $razonesSociales[0]['Idrazon'];
 
 $idEmpresa = $razonesSociales[0]['Idrazon'];
@@ -40,32 +40,16 @@ $idEmpresa = $razonesSociales[0]['Idrazon'];
                   <label for="nombre"><i class="zmdi zmdi-email"></i></label>
                   <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" required />
                 </div>
-                <div class="form-group">
-               
-               <select name="razon_social" id="razon_social" class="form-control" required>
-                   <option value="" disabled selected>Seleccione empresa</option>
-                   <?php foreach ($razonesSociales as $razon): ?>
-                       <option value="<?php echo $razon['Idrazon']; ?>" data-id="<?php echo $razon['Idrazon']; ?>">
-                           <?php echo $razon['Descripcion']; ?>
-                       </option>
-                   <?php endforeach; ?>
-               </select>
-            </div>
+                
+  
 
                 <div class="form-group">
-                  <label for="rol">Rol:</label>
                     <select class="form-control" id="rol" name="rol" required>
                         <option value="">Selecciona un rol</option>
                         <?php require_once ("../model/consu_rol.php");?>
                     </select>
                 </div>
-                <div class="form-group">
-                  <label for="zona">Zona:</label>
-                    <select class="form-control" id="zona" name="zona" required>
-                        <option value="">Selecciona una zona</option>
-                        <?php require_once ("../model/consu_zona.php");?>
-                    </select>
-                </div>
+    
                 <div class="form-group">
                   <label for="usuario"><i class="zmdi zmdi-lock-outline"></i></label>
                   <input type="text" name="usuario" id="usuario" placeholder="Ingrese usuario" required/>
