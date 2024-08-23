@@ -16,8 +16,13 @@ $areas = include '../model/consultar_area.php';
 $idAreaToPage = [
     '1' => 'carpetas.php',
     '2' => 'carpetas.php',
-    '3' => 'pagina_sst.php',
+    '3' => 'carpetas.php',
     '4' => 'carpetas.php',
+    '5' => 'carpetas.php',
+    '7' => 'carpetas.php',
+    '8' => 'carpetas.php',
+    '9' => 'carpetas.php',
+    '10' => 'carpetas.php',
 ];
 ?>
 <!DOCTYPE html>
