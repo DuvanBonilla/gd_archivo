@@ -1,5 +1,4 @@
 <?php
-
 function getCarpetas($dir)
 {
     $carpetas = [];
@@ -15,8 +14,12 @@ if (isset($_GET['nombre'])) {
     $_SESSION['nombre'] = $_GET['nombre'];
 }
 
+if (isset($_GET['idEmpresa'])) {
+    $_SESSION['idEmpresa'] = $_GET['idEmpresa'];
+}
+
 // Verifica que 'Razonsoc' esté definido en la sesión
-if (isset($_SESSION['Razonsoc'])) {
+if (isset($_SESSION['idEmpresa'])) {
     $nombreArea = $_SESSION['nombre'];
     $idEmpresa = $_SESSION["idEmpresa"];
 
@@ -32,6 +35,8 @@ if (isset($_SESSION['Razonsoc'])) {
         9 => 'D:\\Gestion Docu\\Tierra Grata',
         10 => 'D:\\Gestion Docu\\Bananova',
         11 => 'D:\\Gestion Docu\\Gira',
+        12 => 'D:\\Gestion Docu\\Medellin',
+
     ];
 
     if (isset($rutasEmpresas[$idEmpresa])) {

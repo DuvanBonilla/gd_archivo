@@ -14,9 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['cedula']) && isset($_POST['nombre'])) {
         $cedula = $_POST['cedula'];
         $nombre = $_POST['nombre'];
-        $razon_social = $_POST['razon_social'];
         $rol = $_POST['rol'];
-        $zona = $_POST['zona'];
+        $zona = $_SESSION["zona"];
         $usuario = $_POST['usuario'];
         $contrasena = $_POST['contrasena'];
         $areasSeleccionadas = $_POST['areas'] ?? [];
@@ -31,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         //crear array de areas con su id y el estado de permiso
         $areasConEstados=$valRegister->Areas($areasSeleccionadas);
         try{
-            $valRegister->AggUser($cedula, $nombre, $razon_social, $rol, $zona, $usuario, $contrasena, $empresasConEstados, $areasConEstados, $conMysql);
+            $valRegister->AggUser($cedula, $nombre, $rol, $zona, $usuario, $contrasena, $empresasConEstados, $areasConEstados, $conMysql);
 
         }catch(Exception $e){
             echo "Error al insertar" . $e->getMessage();

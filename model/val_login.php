@@ -23,7 +23,6 @@ class Usuario
             $rol = $usuarioBD['Rol'];
             $zona = $usuarioBD['Zona'];
             $cedula = $usuarioBD['Cedula'];
-            $_SESSION["Razonsoc"] = $usuarioBD["Razonsoc"];
             if (password_verify($this->contrasena, $hashContraseñaBD)) {
                 $_SESSION['usuario'] = $this->usuario;
                 $_SESSION['rol'] = $rol;

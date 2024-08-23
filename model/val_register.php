@@ -29,12 +29,12 @@ class val_register_personas
         }
     }
 
-    public function AggUser($cedula, $nombre, $razon_social, $rol, $zona, $usuario, $contrasena, $empresasConEstados, $areasConEstados, $conexion)
+    public function AggUser($cedula, $nombre, $rol, $zona, $usuario, $contrasena, $empresasConEstados, $areasConEstados, $conexion)
     {
-        if (!empty($cedula) && !empty($nombre) && !empty($razon_social) && !empty($rol) && !empty($zona) && !empty($usuario) && !empty($contrasena)) {
+        if (!empty($cedula) && !empty($nombre)  && !empty($rol) && !empty($zona) && !empty($usuario) && !empty($contrasena)) {
             $hashed_password = password_hash($contrasena, PASSWORD_DEFAULT);
-            $stmt = $conexion->prepare('INSERT INTO tbl_login (Cedula, Nombre, Razonsoc,Rol, Zona, Usuario, Password) VALUES (?, ?, ?, ?,?,?, ?)');
-            $stmt->bind_param('ssiiiss', $cedula, $nombre, $razon_social, $zona, $rol, $usuario, $hashed_password);
+            $stmt = $conexion->prepare('INSERT INTO tbl_login (Cedula, Nombre,Rol, Zona, Usuario, Password) VALUES (?, ?, ?, ?, ?, ?)');
+            $stmt->bind_param('ssiiss', $cedula, $nombre,  $rol, $zona, $usuario, $hashed_password);
 
             if ($stmt->execute()) {
                 $this->AggEmpresas($cedula, $empresasConEstados, $conexion);

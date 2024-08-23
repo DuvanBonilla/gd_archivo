@@ -10,9 +10,9 @@ class Users
         $this->conexion = $conexion;
     }
 
-    public function obtenerUsers($Razonsoc)
+    public function obtenerUsers($zona)
     {
-        $consulta = "SELECT * FROM tbl_login WHERE Razonsoc = '$Razonsoc' ";
+        $consulta = "SELECT * FROM tbl_login WHERE Zona = '$zona' ";
         
         $resultado = mysqli_query($this->conexion, $consulta);
 
@@ -34,8 +34,8 @@ $conexion = (new Conexion())->conMysql();
 
 // Crear una instancia de la clase Empleados y obtener los datos
 $usersClass = new Users($conexion);
-$Razonsoc = $_SESSION["Razonsoc"];
-$users = $usersClass->obtenerUsers($Razonsoc);
+$zona = $_SESSION["zona"];
+$users = $usersClass->obtenerUsers($zona);
 
 // Cerrar la conexión
 (new Conexion())->cerrarConexion($conexion);

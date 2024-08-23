@@ -2,12 +2,12 @@
 include 'conexion.php';
 
 // Verificar si las variables de sesión están definidas
-if (!isset($_SESSION["zona"]) || !isset($_SESSION["Razonsoc"])) {
+if (!isset($_SESSION["zona"]) || !isset($_SESSION["idEmpresa"])) {
     exit('Error: Sesión no iniciada correctamente.');
 }
 
 $zona = $_SESSION["zona"];
-$Razonsoc = $_SESSION["Razonsoc"];
+$Razonsoc = $_SESSION["idEmpresa"];
 
 class Empleados
 {
