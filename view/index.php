@@ -5,26 +5,19 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 $permisos = include ("../model/consu_permisos_usuario.php");
-print_r($permiso);
-echo "</br>";
-// ------------------------------------------------------
+
+$id_empresa = isset ($_GET["idEmpresa"]) ? intval($_GET["idEmpresa"]) :0;
+$_SESSION["idEmpresa"] = $id_empresa;
+
 $rol = $_SESSION["rol"];
-echo "rol: " . $rol;
-echo "</br>";
-// ------------------------------------------------------
 $zona = $_SESSION["zona"];
-echo "zona: " .$zona;
-// ------------------------------------------------------
-// $idEmpresa = $_GET["idEmpresa"];
-// echo "</br>";
-// echo "id empresa: " . $idEmpresa;
-// ------------------------------------------------------
+
 $areas = include '../model/consultar_area.php';
 $idAreaToPage = [
-    '1' => 'pagina_costos.php',
-    '2' => 'pagina_tics.php',
+    '1' => 'carpetas.php',
+    '2' => 'carpetas.php',
     '3' => 'pagina_sst.php',
-    '4' => 'facturas.php',
+    '4' => 'carpetas.php',
 ];
 ?>
 <!DOCTYPE html>
