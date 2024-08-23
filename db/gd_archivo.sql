@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2024 at 12:29 AM
+-- Generation Time: Aug 23, 2024 at 10:32 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -39,22 +39,42 @@ CREATE TABLE `tbl_accesos` (
 --
 
 INSERT INTO `tbl_accesos` (`Idacceso`, `Cedula`, `Area`, `Permiso`) VALUES
-(4, '1231', 1, 1),
-(5, '1231', 3, 1),
-(6, '1231', 5, 2),
-(7, '1231', 6, 2),
-(8, '1231', 7, 1),
-(9, '1231', 8, 1),
-(10, '1231', 9, 1),
-(11, '544', 1, 1),
-(12, '544', 2, 2),
-(13, '544', 3, 2),
-(14, '544', 4, 3),
-(15, '544', 5, 2),
-(16, '544', 6, 2),
-(17, '544', 7, 1),
-(18, '544', 8, 2),
-(19, '544', 9, 1);
+(112, '123', 1, 2),
+(113, '123', 2, 2),
+(114, '123', 3, 2),
+(115, '123', 4, 2),
+(116, '123', 5, 2),
+(117, '123', 6, 2),
+(118, '123', 7, 2),
+(119, '123', 8, 2),
+(120, '123', 9, 2),
+(121, '1234', 1, 2),
+(122, '1234', 2, 2),
+(123, '1234', 3, 2),
+(124, '1234', 4, 2),
+(125, '1234', 5, 2),
+(126, '1234', 6, 2),
+(127, '1234', 7, 2),
+(128, '1234', 8, 2),
+(129, '1234', 9, 2),
+(130, '1', 1, 2),
+(131, '1', 2, 2),
+(132, '1', 3, 2),
+(133, '1', 4, 2),
+(134, '1', 5, 2),
+(135, '1', 6, 2),
+(136, '1', 7, 2),
+(137, '1', 8, 2),
+(138, '1', 9, 2),
+(139, '12', 1, 2),
+(140, '12', 2, 2),
+(141, '12', 3, 2),
+(142, '12', 4, 2),
+(143, '12', 5, 2),
+(144, '12', 6, 2),
+(145, '12', 7, 2),
+(146, '12', 8, 2),
+(147, '12', 9, 2);
 
 -- --------------------------------------------------------
 
@@ -132,7 +152,6 @@ INSERT INTO `tbl_estadoper` (`Idestado`, `Descripcion`) VALUES
 CREATE TABLE `tbl_login` (
   `Cedula` varchar(15) NOT NULL,
   `Nombre` varchar(30) NOT NULL,
-  `Razonsoc` int(11) NOT NULL,
   `Rol` int(11) NOT NULL,
   `Zona` int(11) NOT NULL,
   `Usuario` varchar(20) NOT NULL,
@@ -143,11 +162,11 @@ CREATE TABLE `tbl_login` (
 -- Dumping data for table `tbl_login`
 --
 
-INSERT INTO `tbl_login` (`Cedula`, `Nombre`, `Razonsoc`, `Rol`, `Zona`, `Usuario`, `Password`) VALUES
-('1001671132', 'Jeyson cartagena ', 1, 1, 1, 'jcg', '$2y$10$6gj6uNRS3jg0bryaWjHGRujm7n4BiO2OlZXU86e1m7GdBvaiC4iSq'),
-('11123', 'qwe', 1, 1, 1, 'qwe', '$2y$10$f9P6IbxTTlC3XO/8taO2w.Y36gDOHmk8tMzeWs81BYFJuuykbWdlq'),
-('1231', 'weq', 1, 1, 1, 'we', '$2y$10$U23kkvv1Ell74qDVHjvE.uvBJmVZcwWdU4EjKk8RxfA8FE2.z6EXC'),
-('544', 'sda', 1, 1, 1, 'asd', '$2y$10$thKQwL6YF.lysPxmKa6HgejXDa7zo4pb4v4MTL8nTOj4NZThQFAwW');
+INSERT INTO `tbl_login` (`Cedula`, `Nombre`, `Rol`, `Zona`, `Usuario`, `Password`) VALUES
+('1', 'santaMarta', 1, 2, 'santaMarta', '$2y$10$IddcuK3xT3wrNOsIwvMmuuSsVcYRB6lW9x0DDbtZJzuiG9nVAdssy'),
+('12', 'Medellin', 1, 3, 'Medellin', '$2y$10$dIRe.5AfjcCfBde6Tx0.UORjOcBvl0CFTrBsa1A.RT/ZFJbMfx3ly'),
+('123', 'admin', 1, 1, 'admin', '$2y$10$7Ce1yxyOsJR6xpmldpO0YOKxFCRgwUpfPOsjGaorYPqhRBtUeLyu.'),
+('1234', 'fincas', 1, 4, 'fincas', '$2y$10$xqWlWeUTN06j80jKL2Wje./umYj48lbPV8tj.uXb7zZMHje8YDlOu');
 
 -- --------------------------------------------------------
 
@@ -191,7 +210,13 @@ CREATE TABLE `tbl_personas` (
 --
 
 INSERT INTO `tbl_personas` (`Cedula`, `Nombre`, `Empresa`, `Zona`, `Ubicacion`, `Fechaingreso`, `Estado`, `Carpetas`) VALUES
-('1001671132', 'Jeyson Graciano', 1, 1, 'holaa', '2024-08-09', 2, '../archivos/1001671132');
+('1001671132', 'Jeyson Graciano', 1, 1, 'holaa', '2024-08-09', 2, '../archivos/1001671132'),
+('1193205912', 'kenier', 7, 1, 'apartado', '0000-00-00', 1, '../archivos/1193205912'),
+('213', 'kenier', 3, 1, 'qwe', '0000-00-00', 1, '../archivos/213'),
+('4563453', 'asd', 1, 1, 'asd', '0000-00-00', 1, '../archivos/4563453'),
+('542345', 'asdas', 9, 4, 'wewe', '0000-00-00', 1, '../archivos/542345'),
+('6666666', 'rtet', 9, 4, 'ertr', '0000-00-00', 1, '../archivos/6666666'),
+('9999', 'yes', 1, 4, 'apartado', '2024-08-08', 1, '../archivos/9999');
 
 -- --------------------------------------------------------
 
@@ -211,39 +236,48 @@ CREATE TABLE `tbl_per_empresa` (
 --
 
 INSERT INTO `tbl_per_empresa` (`Iddetalle`, `Cedula`, `Empresa`, `Estado`) VALUES
-(1, '11123', 1, 1),
-(2, '11123', 2, 2),
-(3, '11123', 3, 2),
-(4, '11123', 4, 2),
-(5, '11123', 5, 1),
-(6, '11123', 6, 1),
-(7, '11123', 7, 2),
-(8, '11123', 8, 2),
-(9, '11123', 9, 2),
-(10, '11123', 10, 2),
-(11, '11123', 11, 2),
-(12, '1231', 1, 1),
-(13, '1231', 2, 1),
-(14, '1231', 3, 2),
-(15, '1231', 4, 2),
-(16, '1231', 5, 2),
-(17, '1231', 6, 1),
-(18, '1231', 7, 2),
-(19, '1231', 8, 2),
-(20, '1231', 9, 2),
-(21, '1231', 10, 2),
-(22, '1231', 11, 2),
-(23, '544', 1, 1),
-(24, '544', 2, 2),
-(25, '544', 3, 2),
-(26, '544', 4, 2),
-(27, '544', 5, 1),
-(28, '544', 6, 2),
-(29, '544', 7, 2),
-(30, '544', 8, 2),
-(31, '544', 9, 1),
-(32, '544', 10, 1),
-(33, '544', 11, 2);
+(194, '123', 1, 1),
+(195, '123', 2, 1),
+(196, '123', 3, 1),
+(197, '123', 4, 1),
+(198, '123', 5, 1),
+(199, '123', 6, 1),
+(200, '123', 7, 1),
+(201, '123', 8, 1),
+(202, '123', 9, 2),
+(203, '123', 10, 2),
+(204, '123', 11, 2),
+(205, '1234', 1, 2),
+(206, '1234', 2, 2),
+(207, '1234', 3, 2),
+(208, '1234', 4, 2),
+(209, '1234', 5, 2),
+(210, '1234', 6, 2),
+(211, '1234', 7, 2),
+(212, '1234', 8, 2),
+(213, '1234', 9, 1),
+(214, '1234', 10, 1),
+(215, '1234', 11, 1),
+(216, '1', 1, 1),
+(217, '1', 2, 2),
+(218, '1', 3, 2),
+(219, '1', 4, 2),
+(220, '1', 5, 2),
+(221, '1', 6, 2),
+(222, '1', 7, 2),
+(223, '1', 8, 2),
+(224, '12', 1, 2),
+(225, '12', 2, 2),
+(226, '12', 3, 2),
+(227, '12', 4, 2),
+(228, '12', 5, 2),
+(229, '12', 6, 2),
+(230, '12', 7, 2),
+(231, '12', 8, 2),
+(232, '12', 9, 2),
+(233, '12', 10, 2),
+(234, '12', 11, 2),
+(235, '12', 12, 1);
 
 -- --------------------------------------------------------
 
@@ -266,25 +300,27 @@ CREATE TABLE `tbl_proveedores` (
 
 CREATE TABLE `tbl_razonsoc` (
   `Idrazon` int(11) NOT NULL,
-  `Descripcion` varchar(50) NOT NULL
+  `Descripcion` varchar(50) NOT NULL,
+  `zona` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_razonsoc`
 --
 
-INSERT INTO `tbl_razonsoc` (`Idrazon`, `Descripcion`) VALUES
-(1, 'Cargoban OLP'),
-(2, 'Oceanix'),
-(3, 'Solutempo'),
-(4, 'Cargoban SAS'),
-(5, 'Agencia de Aduanas'),
-(6, 'Fundacion Cargoban'),
-(7, 'Tase'),
-(8, 'Opyservis'),
-(9, 'Tierra Grata'),
-(10, 'Bananova'),
-(11, 'Gira');
+INSERT INTO `tbl_razonsoc` (`Idrazon`, `Descripcion`, `zona`) VALUES
+(1, 'Cargoban OLP', 1),
+(2, 'Oceanix', 1),
+(3, 'Solutempo', 1),
+(4, 'Cargoban SAS', 1),
+(5, 'Agencia de Aduanas', 1),
+(6, 'Fundacion Cargoban', 1),
+(7, 'Tase', 1),
+(8, 'Opyservis', 1),
+(9, 'Tierra Grata', 4),
+(10, 'Bananova', 4),
+(11, 'Gira', 4),
+(12, 'Medellin', 3);
 
 -- --------------------------------------------------------
 
@@ -323,7 +359,8 @@ CREATE TABLE `tbl_zona` (
 INSERT INTO `tbl_zona` (`Idzona`, `Descripcion`) VALUES
 (1, 'Uraba'),
 (2, 'Santa Marta'),
-(3, 'Medellin');
+(3, 'Medellin'),
+(4, 'Fincas');
 
 --
 -- Indexes for dumped tables
@@ -364,7 +401,6 @@ ALTER TABLE `tbl_estadoper`
 --
 ALTER TABLE `tbl_login`
   ADD PRIMARY KEY (`Cedula`),
-  ADD KEY `Razonsoc` (`Razonsoc`),
   ADD KEY `Rol` (`Rol`),
   ADD KEY `Zona` (`Zona`);
 
@@ -401,7 +437,8 @@ ALTER TABLE `tbl_proveedores`
 -- Indexes for table `tbl_razonsoc`
 --
 ALTER TABLE `tbl_razonsoc`
-  ADD PRIMARY KEY (`Idrazon`);
+  ADD PRIMARY KEY (`Idrazon`),
+  ADD KEY `zona` (`zona`);
 
 --
 -- Indexes for table `tbl_rol`
@@ -423,7 +460,7 @@ ALTER TABLE `tbl_zona`
 -- AUTO_INCREMENT for table `tbl_accesos`
 --
 ALTER TABLE `tbl_accesos`
-  MODIFY `Idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT for table `tbl_areas`
@@ -453,13 +490,13 @@ ALTER TABLE `tbl_permisos`
 -- AUTO_INCREMENT for table `tbl_per_empresa`
 --
 ALTER TABLE `tbl_per_empresa`
-  MODIFY `Iddetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `Iddetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
 
 --
 -- AUTO_INCREMENT for table `tbl_razonsoc`
 --
 ALTER TABLE `tbl_razonsoc`
-  MODIFY `Idrazon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Idrazon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tbl_rol`
@@ -471,7 +508,7 @@ ALTER TABLE `tbl_rol`
 -- AUTO_INCREMENT for table `tbl_zona`
 --
 ALTER TABLE `tbl_zona`
-  MODIFY `Idzona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Idzona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -497,7 +534,6 @@ ALTER TABLE `tbl_det_empleados`
 -- Constraints for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
-  ADD CONSTRAINT `tbl_login_ibfk_2` FOREIGN KEY (`Razonsoc`) REFERENCES `tbl_razonsoc` (`Idrazon`) ON UPDATE CASCADE,
   ADD CONSTRAINT `tbl_login_ibfk_3` FOREIGN KEY (`Rol`) REFERENCES `tbl_rol` (`Idrol`) ON UPDATE CASCADE,
   ADD CONSTRAINT `tbl_login_ibfk_4` FOREIGN KEY (`Zona`) REFERENCES `tbl_zona` (`Idzona`);
 
@@ -515,6 +551,12 @@ ALTER TABLE `tbl_personas`
 ALTER TABLE `tbl_per_empresa`
   ADD CONSTRAINT `tbl_per_empresa_ibfk_1` FOREIGN KEY (`Cedula`) REFERENCES `tbl_login` (`Cedula`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tbl_per_empresa_ibfk_2` FOREIGN KEY (`Empresa`) REFERENCES `tbl_razonsoc` (`Idrazon`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_razonsoc`
+--
+ALTER TABLE `tbl_razonsoc`
+  ADD CONSTRAINT `tbl_razonsoc_ibfk_1` FOREIGN KEY (`zona`) REFERENCES `tbl_zona` (`Idzona`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
