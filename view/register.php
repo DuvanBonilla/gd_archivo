@@ -41,9 +41,17 @@ $idEmpresa = $razonesSociales[0]['Idrazon'];
                   <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" required />
                 </div>
                 <div class="form-group">
-                  <label for="razon_social"><i class="zmdi zmdi-lock"></i></label>
-                  <input type="text" name="razon_social" id="razonSocial" placeholder="Ingrese razón social" required />
-                </div>
+               
+               <select name="razon_social" id="razon_social" class="form-control" required>
+                   <option value="" disabled selected>Seleccione empresa</option>
+                   <?php foreach ($razonesSociales as $razon): ?>
+                       <option value="<?php echo $razon['Idrazon']; ?>" data-id="<?php echo $razon['Idrazon']; ?>">
+                           <?php echo $razon['Descripcion']; ?>
+                       </option>
+                   <?php endforeach; ?>
+               </select>
+            </div>
+
                 <div class="form-group">
                   <label for="rol">Rol:</label>
                     <select class="form-control" id="rol" name="rol" required>
