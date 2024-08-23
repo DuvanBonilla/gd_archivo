@@ -5,15 +5,14 @@ include 'conexion.php';
 class RazonSocial
 {
     private $conexion;
-
     public function __construct($conexion)
     {
         $this->conexion = $conexion;
     }
 
-    public function obtenerRazonesSociales()
+    public function obtenerRazonesSociales($zona)
     {
-        $consulta = 'SELECT Idrazon, Descripcion FROM tbl_razonsoc';
+        $consulta = "SELECT * FROM tbl_razonsoc where Zona = '$zona' ";
         $resultado = mysqli_query($this->conexion, $consulta);
 
         if (!$resultado) {
@@ -33,9 +32,9 @@ class RazonSocial
 $conexion = (new Conexion())->conMysql();
 
 // Crear una instancia de la clase RazonSocial y obtener los datos
+$zona = $_SESSION["zona"];
 $razonSocialClass = new RazonSocial($conexion);
-$razonesSociales = $razonSocialClass->obtenerRazonesSociales();
-
+$razonesSociales = $razonSocialClass->obtenerRazonesSociales($zona);
 // Cerrar la conexión
 (new Conexion())->cerrarConexion($conexion);
 
