@@ -72,20 +72,20 @@ $idAreaToPage = [
         // Verificar si el usuario tiene permiso para esta área
         $tienePermiso = false;
         foreach ($permisos as $permiso) {
-            if ($permiso['Area'] == $idArea &&  $permiso['Permiso'] == 1 || $permiso['Permiso'] == 2) {
+            if ($permiso['Area'] == $idArea && ($permiso['Permiso'] == 1 || $permiso['Permiso'] == 2)) {
                 $tienePermiso = true;
                 break;
             }
         }
 
         // Mostrar el área solo si tiene permiso
-        if ($tienePermiso) {
+        if ($tienePermiso && $permiso['Permiso'] != 3) {
             $page = isset($idAreaToPage[$idArea]) 
             ? $idAreaToPage[$idArea]
             : '#';
         ?>
             <div class="enlace">
-                <a href="<?php echo $page; ?>?area=<?php echo $idArea; ?>">
+            <a href="<?php echo $page; ?>?area=<?php echo $idArea; ?>&nombre=<?php echo urlencode($area['NombreA']); ?>">
                     <i class='bx bx-right-arrow-alt'></i>  
                     <span><?php echo htmlspecialchars($area['NombreA']); ?></span>
                 </a>
