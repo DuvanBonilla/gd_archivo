@@ -27,16 +27,22 @@ $zona = $_SESSION["zona"];
 <?php 
     // se recorre el array $empresas
     foreach ($empresas as $empresa) {
+        if ($empresa["estado"] == 1){
         ?>
-        <div class="enlace">
-          <!-- se asigan los valores del array -->
-            <a class="finca" href="index.php?idEmpresa=<?php echo $empresa['Idrazon']; ?>">
-                <?php echo $empresa['Descripcion']; ?>
-            </a>
-        </div>
+
+            <div class="enlace">
+            <!-- se asigan los valores del array -->
+              <a class="finca" 
+               href="index.php?idEmpresa=<?php echo $empresa['Idrazon']; ?>"
+              >
+                  <?php echo $empresa['Descripcion']; ?>
+              </a>
+          </div>
+          <?php }?>
         <?php
     }
 ?>
 </div>
 </body>
 </html>
+
