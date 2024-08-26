@@ -16,8 +16,8 @@ if (!isset($_SESSION['usuario'])) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
 </head>
 <body>
-<a href="index.php"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
-    <div class="panel">
+<a href="index.php?idEmpresa= <?php echo $idEmpresa = $_SESSION["idEmpresa"]; ?>"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
+<div class="panel">
         <h1>Subida Masiva de Archivos</h1>
         <form action="../model/subida_masiva.php" method="post">
             <button type="submit">Subir Archivos</button>

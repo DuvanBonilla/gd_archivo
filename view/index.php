@@ -110,7 +110,6 @@ $idAreaToPage = [
                 <span>Registrar usuario</span>
                 </a>
             </div>
-
           
             <div class="enlace">
             <a href="subida_masiva.php">
@@ -121,12 +120,12 @@ $idAreaToPage = [
             <div class="enlace">
             <a href="editar_permisos.php">
             <i class='bx bxs-edit-alt'></i>
-            <span>Modificar permisos</span>
+            <span>Administrar permisos</span>
             </div>
             <div class="enlace">
             <a href="elegir_empresa.php">
             <i class='bx bxs-buildings'></i>
-            <span>Escoger empresa</span>
+            <span>Cambiar empresa</span>
             </div>
             <div class="enlace">
                 <a href="../model/cerrar_sesion.php">

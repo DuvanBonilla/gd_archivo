@@ -22,7 +22,9 @@ $idEmpresa = $razonesSociales[0]['Idrazon'];
     <link rel="stylesheet" href="css/register/register.css" />
   </head>
   <body>
-  <a href="index.php?idEmpresa=<?php echo $idempresa=$razonesSociales[0]['Idrazon']; ?>"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
+  <!-- <a href="index.php?idEmpresa=<?php echo $idempresa=$razonesSociales[0]['Idrazon']; ?>"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a> -->
+  <a href="index.php?idEmpresa= <?php echo $idEmpresa = $_SESSION["idEmpresa"]; ?>"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
+
   <div class="main">
       <!-- Sign up form -->
       <section class="signup">

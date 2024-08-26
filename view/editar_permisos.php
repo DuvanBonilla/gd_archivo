@@ -22,7 +22,7 @@ if (!isset($_SESSION['usuario'])) {
     <title>Editar acceso</title>
 </head>
 <body>
-<a href="index.php"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
+<a href="index.php?idEmpresa= <?php echo $idEmpresa = $_SESSION["idEmpresa"]; ?>"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
 <div id="modalContainer"></div>
 </div>
     <div class="container" style="margin-top: 4%;padding: 5px">
