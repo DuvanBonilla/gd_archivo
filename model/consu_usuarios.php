@@ -12,7 +12,11 @@ class Users
 
     public function obtenerUsers($zona)
     {
-        $consulta = "SELECT * FROM tbl_login WHERE Zona = '$zona' ";
+        $consulta = "SELECT u.Cedula, u.Nombre, r.Descripcion AS Rol, z.Descripcion AS Zona, u.Usuario
+            FROM tbl_login u
+            JOIN tbl_rol r ON u.Rol = r.Idrol
+            JOIN tbl_zona z ON u.Zona = z.Idzona
+            WHERE u.Zona = '$zona' ";
         
         $resultado = mysqli_query($this->conexion, $consulta);
 

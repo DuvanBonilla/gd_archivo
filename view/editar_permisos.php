@@ -35,50 +35,57 @@ if (!isset($_SESSION['usuario'])) {
                     <th>Rol</th>
                     <th>Zona</th>
                     <th>Usuario</th>
-                    <th>Editar</th>
+                    <th>Editar Áreas</th>
+                    <th>Editar Empresas</th>
                     <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
             <?php
             $users = include '../model/consu_usuarios.php';
-for ($i = 0; $i < count($users); ++$i) {
-    $user = $users[$i];
-    $Cedula = $user['Cedula'];
+            for ($i = 0; $i < count($users); ++$i) {
+                $user = $users[$i];
+                $Cedula = $user['Cedula'];
+                echo '<tr>';
+                echo '<td>'.$user['Cedula'].'</td>';
+                echo '<td>'.$user['Nombre'].'</td>';
+                echo '<td>'.$user['Rol'].'</td>';
+                echo '<td>'.$user['Zona'].'</td>';
+                echo '<td>'.$user['Usuario'].'</td>';
 
-    echo '<tr>';
-    echo '<td>'.$user['Cedula'].'</td>';
-    echo '<td>'.$user['Nombre'].'</td>';
-    echo '<td>'.$user['Rol'].'</td>';
-    echo '<td>'.$user['Zona'].'</td>';
-    echo '<td>'.$user['Usuario'].'</td>';
-
-        // botom de editar permisos
-        echo '<td>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Permisos" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
-                    Permisos 
-                </button>
-             </td>';
-        // boton de eliminar usuario
-        echo '<td>
-        <a href="../controller/eliminar_usuarios.php?cedula=' . $user['Cedula'] . '" 
-           class="btn btn-danger" 
-           data-toggle="tooltip" 
-           data-placement="top" 
-           title="Eliminar usuario">
-           <i class="bi bi-trash-fill"></i>
-        </a>
-        </td>';
-        
-    
-    echo '</tr>';
-}
+                    // botom de editar permisos
+                    echo '<td>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Permisos" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
+                                Areas 
+                            </button>
+                        </td>';
+                                // boton de editar empresa
+                        echo '<td>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#PermisosEmpresa" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
+                            Empresas
+                        </button>
+                    </td>';
+                    // boton de eliminar usuario
+                    echo '<td>
+                    
+                    <a href="../controller/eliminar_usuarios.php?cedula=' . $user['Cedula'] . '" 
+                    class="btn btn-danger" 
+                    data-toggle="tooltip" 
+                    data-placement="top" 
+                    title="Eliminar usuario">
+                    <i class="bi bi-trash-fill"></i>
+                    </a>
+                    </td>';
+                    
+                
+                echo '</tr>';
+            }
 ?>
         </tbody>
     </table>
-      <?php
+        <?php
         include 'modal_editar_permisos.php';
-      ?>
+        ?>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
