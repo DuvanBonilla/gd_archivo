@@ -1,7 +1,7 @@
 <?php
 
 include_once 'conexion.php';
-$zona = $_SESSION['zona'];
+$zona = $_SESSION['cedula'];
 
 class Empresas
 {
@@ -14,7 +14,13 @@ class Empresas
 
     public function obtenerEmpresas($zona)
     {
-        $stmt = $this->conexion->prepare('SELECT Idrazon,Descripcion FROM tbl_razonsoc WHERE Zona = ?');
+        $stmt = $this->conexion->prepare("
+        SELECT e.Empresa as empresa, E.estado as estado, r.Descripcion as Descripcion, r.Idrazon
+        FROM tbl_per_empresa e 
+        JOIN tbl_razonsoc r ON e.Empresa = r.Idrazon
+        WHERE Cedula = ?
+        ");
+
         $stmt->bind_param('i', $zona);
         $stmt->execute();
         $resultado = $stmt->get_result();
