@@ -43,12 +43,17 @@ $idEmpresa = $razonesSociales[0]['Idrazon'];
                   <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" required />
                 </div>
                 
-  
-
                 <div class="form-group">
                     <select class="form-control" id="rol" name="rol" required>
                         <option value="">Selecciona un rol</option>
                         <?php require_once ("../model/consu_rol.php");?>
+                    </select>
+                </div>
+
+                  <div class="form-group">
+                    <select class="form-control" id="zona" name="zona" required>
+                        <option value="">Selecciona una zona</option>
+                        <?php require_once ("../model/consu_zona.php");?>
                     </select>
                 </div>
     
@@ -56,6 +61,7 @@ $idEmpresa = $razonesSociales[0]['Idrazon'];
                   <label for="usuario"><i class="zmdi zmdi-lock-outline"></i></label>
                   <input type="text" name="usuario" id="usuario" placeholder="Ingrese usuario" required/>
                 </div>
+                
                 <div class="form-group">
                   <label for="contrasena"><i class="zmdi zmdi-lock-outline"></i></label>
                   <input type="password" name="contrasena" id="contrasena" placeholder="Ingrese contraseña" required />
