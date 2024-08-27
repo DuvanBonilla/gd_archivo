@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es-MX"
+<html lang="es-MX">
 
 <head>
     <meta charset="UTF-8">
@@ -19,10 +19,10 @@
             </div>
             <div class="modal-body">
                 <form action="../model/val_edit_empleados.php" method="POST">
-                    <input type="hidden" name="Cedula" value="<?php echo $Cedula; ?>">
+                    <input type="hidden" name="OldCedula" value="<?php echo $Cedula; ?>">
                     <div class="form-group">
                         <label for="Cedula<?php echo $Cedula; ?>">Cedula</label>
-                        <input type="text" class="form-control" id="Cedula<?php echo $Cedula; ?>" readonly  name="Cedula" value="<?php echo $Cedula; ?>">
+                        <input type="text" class="form-control" id="Cedula<?php echo $Cedula; ?>" name="Cedula" value="<?php echo $Cedula; ?>">
                     </div>
                     <div class="form-group">
                         <label for="Nombre<?php echo $Cedula; ?>">Nombre</label>

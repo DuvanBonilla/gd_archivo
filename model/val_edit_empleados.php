@@ -1,25 +1,30 @@
 <?php
-
-// Incluir la clase Conexion
 include 'conexion.php';
 
-// Crear una instancia de la conexión
 $conexion = (new Conexion())->conMysql();
 
-// Verificar que se reciban los datos del formulario
 if (isset($_POST['Cedula'])) {
-    // Obtener los datos del formulario
+    $oldCedula = $_POST['OldCedula'];
     $cedula = $_POST['Cedula'];
     $nombre = $_POST['Nombre'];
     $ubicacion = $_POST['Ubicacion'];
 
-    // Preparar la consulta SQL para actualizar el empleado
-    $sql = 'UPDATE tbl_personas SET Nombre = ?, Ubicacion = ? WHERE Cedula = ?';
-
+    $sql = 'UPDATE tbl_personas SET Cedula = ?, Nombre = ?, Ubicacion = ? WHERE Cedula = ?';
+    
     if ($stmt = $conexion->prepare($sql)) {
-        // Vincular los parámetros y ejecutar la consulta
-        $stmt->bind_param('sss', $nombre, $ubicacion, $cedula);
+        $stmt->bind_param('ssss', $cedula, $nombre, $ubicacion, $oldCedula);
+        
         if ($stmt->execute()) {
+            if ($cedula !== $oldCedula) {
+                $oldPath = 'D:\\Gestion Docu\\Cargoban\\' . $oldCedula;
+                $newPath = 'D:\\Gestion Docu\\Cargoban\\' . $cedula;
+                
+                if (file_exists($oldPath)) {
+                    rename($oldPath, $newPath);
+                } else {
+                    echo "<script>alert('La carpeta original no existe.');</script>";
+                }
+            }
             echo "
             <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
             <script language='JavaScript'>
@@ -34,7 +39,7 @@ if (isset($_POST['Cedula'])) {
                   }).then(() => {
                     location.assign('../view/tabla_empleados.php');
                   });
-        });
+            });
             </script>";
             exit;
         } else {
@@ -52,7 +57,7 @@ if (isset($_POST['Cedula'])) {
                   }).then(() => {
                     location.assign('../view/tabla_empleados.php');
                   });
-        });
+            });
             </script>".$stmt->error;
         }
         $stmt->close();
@@ -60,10 +65,8 @@ if (isset($_POST['Cedula'])) {
         echo 'Error en la preparación de la consulta: '.$conexion->error;
     }
 
-    // Cerrar la conexión
     (new Conexion())->cerrarConexion($conexion);
 } else {
-    // Redirigir si no se reciben datos
     header('Location: ../view/tabla_empleados.php');
     exit;
 }

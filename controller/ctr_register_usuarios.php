@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $cedula = $_POST['cedula'];
         $nombre = $_POST['nombre'];
         $rol = $_POST['rol'];
-        $zona = $_SESSION["zona"];
+        $zona = $_POST['zona'];
         $usuario = $_POST['usuario'];
         $contrasena = $_POST['contrasena'];
         $areasSeleccionadas = $_POST['areas'] ?? [];

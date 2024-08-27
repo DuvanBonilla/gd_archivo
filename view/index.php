@@ -24,6 +24,7 @@ $idAreaToPage = [
     '9' => 'carpetas.php',
     '10' => 'carpetas.php',
 ];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,23 +47,21 @@ $idAreaToPage = [
 <body>
 
     <div class="menu-dashboard">
-        <!-- TOP MENU -->
         <div class="top-menu">
             <div class="logo">
                 <img src="images/logo.ico.ico" alt="" class="logo-img">
                 <span>argoArchivos</span>
             </div>
         </div>
-        <!-- MENU -->
         <div class="menu">
-
+        <?php if ($rol == 1 || $rol ==3) { ?>
         <div class="enlace">
             <a href="tabla_empleados.php">
             <i class="bx bx-user"></i>
             <span>Empleados</span>
             </a>
         </div>
-    
+        <?php } ?>
         <a href="#" class="enlace" id="lista-toggle">
         <i class='bx bxs-collection'></i>
     <span>Areas</span>
@@ -104,38 +103,47 @@ $idAreaToPage = [
 <?php } ?>
 
 </div>
-            <div class="enlace">
-                <a href="register.php">
-                <i class="bx bx-user-plus"></i> 
-                <span>Registrar usuario</span>
-                </a>
-            </div>
-          
-            <div class="enlace">
-            <a href="subida_masiva.php">
-            <i class='bx bxs-rocket'></i>
-                <span>Subida masiva</span>
-            </div>
 
-            <div class="enlace">
-            <a href="editar_permisos.php">
+<?php if ($zona == 1 && $rol == 1 || $rol == 3)  { ?>
+    <div class="enlace">
+        <a href="subida_masiva.php">
+            <i class='bx bxs-rocket'></i>
+            <span>Subida masiva</span>
+        </a>
+    </div>
+<?php } ?>
+
+<?php if ($rol == 1 || $rol == 3) { ?>
+    <div class="enlace">
+        <a href="register.php">
+            <i class="bx bx-user-plus"></i> 
+            <span>Registrar usuario</span>
+        </a>
+    </div>
+    
+    <div class="enlace">
+        <a href="editar_permisos.php">
             <i class='bx bxs-edit-alt'></i>
             <span>Administrar permisos</span>
-            </div>
+        </a>
+    </div>
+<?php } ?>
+
             <div class="enlace">
             <a href="elegir_empresa.php">
             <i class='bx bxs-buildings'></i>
             <span>Cambiar empresa</span>
-            </div>
-            <div class="enlace">
-                <a href="../model/cerrar_sesion.php">
+            </a>
+        </div>
+        
+        <div class="enlace">
+            <a href="../model/cerrar_sesion.php">
                 <i class="bx bx-log-out"></i>
                 <span>Cerrar sesion</span>
-                </a>
-            </div>
+            </a>
         </div>
     </div>
-    <script src="../controller/js/lista-fincas.js" ></script>
+</div>
+<script src="../controller/js/lista-fincas.js" ></script>
 </body>
 </html>
-

@@ -1,6 +1,6 @@
 <?php
 function obtenerCarpetaPorId($id, $nombreCarpeta) {
-    $directorioRaiz = 'C:/xampp/htdocs/gd_archivo/archivos'; 
+    $directorioRaiz = 'D:/Gestion Docu/Cargoban/empleado'; 
     $carpetaUsuario = $directorioRaiz . '/' . $id;
     $archivos = [];
 

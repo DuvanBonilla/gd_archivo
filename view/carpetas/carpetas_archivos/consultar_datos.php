@@ -68,12 +68,26 @@ $carpeta = $_GET["carpeta"];
             ?>
             </tbody>
         </table>
+        <div style="text-align: center; margin-top: 20px;">
+    <form action="../../../model/subir_archivos_empleados.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="cedula" value="<?php echo htmlspecialchars($cedula); ?>">
+        <input type="hidden" name="carpeta" value="<?php echo htmlspecialchars($carpeta); ?>">
+        <input type="hidden" name="nombre" value="<?php echo htmlspecialchars($nombre); ?>">
+
+        
+        <!-- Input para seleccionar múltiples archivos -->
+        <input type="file" name="archivo[]" id="fileInput" style="display: none;" multiple onchange="this.form.submit();">
+        
+        <!-- Label que actúa como botón -->
+        <label for="fileInput" class="btn btn-secondary">Subir archivos</label>
+    </form>
+</div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="../../controller/js/info_empleados.js"></script>
+    <!-- <script src="../../controller/js/info_empleados.js"></script> -->
 </body>
 </html>
