@@ -52,15 +52,16 @@ $carpeta = $_GET["carpeta"];
                         echo '<td>' . htmlspecialchars($archivo['nombre']) . '</td>';
                         echo "<td><a href='../../../model/ver_archivos.php?archivo=".urlencode($archivo['ruta'])."' target='_blank' class='btn btn-light'style='margin-left: 40%;color:#1997bd' ><i class='fas fa-eye'></i></a></td>";
                         echo "<td><a href='../../../model/descargar_archivos.php?archivo=".$archivo['ruta']."' target='_blank' class='btn btn-light'style='margin-left: 40%; color:#a8ce3b'><i class='fas fa-file-download'></i></a></td>";
-                                        echo "<td>
-                         <a href='../../../controller/ctr_eliminar_archivos.php?archivo=" . $archivo['ruta'] . "' 
-                           class='popup-button update-delete-button' 
-                           style='margin-left: 40%;' 
-                           onclick=\"return confirm('¿Estás seguro de que deseas eliminar este archivo?');\">
-                            <i class='fas fa-trash-alt'></i>
-                            </a>
-                         </td>";
+                        echo "<td>
+                                <a href='../../../model/eliminar_archivos.php?archivo=" . urlencode($archivo['ruta']) . "&cedula=" . urlencode($cedula) . "&carpeta=" . urlencode($carpeta) . "&nombre=" . urlencode($nombre) . "' 
+                                class='popup-button update-delete-button' 
+                                style='margin-left: 40%;' 
+                                onclick=\"return confirm('¿Estás seguro de que deseas eliminar este archivo?');\">
+                                    <i class='fas fa-trash-alt'></i>
+                                </a>
+                            </td>";
                         echo '</tr>';
+
                     }
                 } else {
                     echo '<tr><td colspan="2">No se encontraron archivos.</td></tr>';
