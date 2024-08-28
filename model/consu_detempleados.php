@@ -10,7 +10,7 @@ function obtenerDatosEmpleado($Cedula,$Razonsoc)
 
         // Preparamos la consulta para seleccionar los datos necesarios con JOIN
         $sql = $conMysql->prepare('
-            SELECT d.Cedula, p.Nombre, d.Fecharetiro, d.Ubicacion, r.Descripcion
+            SELECT d.Cedula, p.Nombre, p.Zona,d.Fechaingreso, d.Fecharetiro, d.Ubicacion, r.Descripcion
             FROM tbl_det_empleados d
             JOIN tbl_personas p ON d.Cedula = p.Cedula
             JOIN tbl_razonsoc r ON d.Empresa = r.Idrazon

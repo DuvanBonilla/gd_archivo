@@ -35,8 +35,8 @@ class Empleados
         } else {
             // Consulta para otras zonas
             $consulta = "SELECT Cedula, Nombre, Empresa, Ubicacion, Fechaingreso, Estado, Carpetas 
-                         FROM tbl_personas 
-                         WHERE Empresa = ?";
+            FROM tbl_personas 
+            WHERE Empresa = ?";
 
             $stmt = mysqli_prepare($this->conexion, $consulta);
             if ($stmt === false) {

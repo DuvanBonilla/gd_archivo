@@ -1,6 +1,6 @@
 <?php
 session_start();
-$Razonsoc = $_SESSION["Razonsoc"];
+$Razonsoc = $_SESSION["idEmpresa"];
 $Cedula = $_GET['cedula'] ?? '';
 require_once '../model/consu_detempleados.php';
 $datosEmpleado = obtenerDatosEmpleado($Cedula,$Razonsoc);
