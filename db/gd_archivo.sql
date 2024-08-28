@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 23, 2024 at 10:32 PM
+-- Generation Time: Aug 28, 2024 at 09:49 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -39,15 +39,15 @@ CREATE TABLE `tbl_accesos` (
 --
 
 INSERT INTO `tbl_accesos` (`Idacceso`, `Cedula`, `Area`, `Permiso`) VALUES
-(112, '123', 1, 2),
-(113, '123', 2, 2),
-(114, '123', 3, 2),
-(115, '123', 4, 2),
-(116, '123', 5, 2),
-(117, '123', 6, 2),
+(112, '123', 1, 1),
+(113, '123', 2, 1),
+(114, '123', 3, 1),
+(115, '123', 4, 1),
+(116, '123', 5, 1),
+(117, '123', 6, 1),
 (118, '123', 7, 2),
-(119, '123', 8, 2),
-(120, '123', 9, 2),
+(119, '123', 8, 3),
+(120, '123', 9, 3),
 (121, '1234', 1, 2),
 (122, '1234', 2, 2),
 (123, '1234', 3, 2),
@@ -74,7 +74,27 @@ INSERT INTO `tbl_accesos` (`Idacceso`, `Cedula`, `Area`, `Permiso`) VALUES
 (144, '12', 6, 2),
 (145, '12', 7, 2),
 (146, '12', 8, 2),
-(147, '12', 9, 2);
+(147, '12', 9, 2),
+(148, '12345', 1, 2),
+(149, '12345', 2, 2),
+(150, '12345', 3, 2),
+(151, '12345', 4, 2),
+(152, '12345', 5, 2),
+(153, '12345', 6, 2),
+(154, '12345', 7, 2),
+(155, '12345', 8, 2),
+(156, '12345', 9, 2),
+(157, '999999999999999', 1, 2),
+(158, '999999999999999', 2, 2),
+(159, '999999999999999', 3, 2),
+(160, '999999999999999', 4, 2),
+(161, '999999999999999', 5, 2),
+(162, '999999999999999', 6, 2),
+(163, '999999999999999', 7, 2),
+(164, '999999999999999', 8, 2),
+(165, '888888888888888', 1, 2),
+(166, '888888888888888', 2, 2),
+(173, '333333333333333', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -113,6 +133,7 @@ CREATE TABLE `tbl_det_empleados` (
   `Cedula` varchar(20) NOT NULL,
   `Empresa` int(11) NOT NULL,
   `Zona` int(11) NOT NULL,
+  `Fechaingreso` date NOT NULL,
   `Fecharetiro` date NOT NULL,
   `Ubicacion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -121,8 +142,8 @@ CREATE TABLE `tbl_det_empleados` (
 -- Dumping data for table `tbl_det_empleados`
 --
 
-INSERT INTO `tbl_det_empleados` (`Id`, `Cedula`, `Empresa`, `Zona`, `Fecharetiro`, `Ubicacion`) VALUES
-(1, '1001671132', 1, 1, '2024-08-06', 'antigua: z123 y nueva: caja 776');
+INSERT INTO `tbl_det_empleados` (`Id`, `Cedula`, `Empresa`, `Zona`, `Fechaingreso`, `Fecharetiro`, `Ubicacion`) VALUES
+(28, '12312', 1, 5, '2024-08-23', '2024-08-29', 'asd');
 
 -- --------------------------------------------------------
 
@@ -166,7 +187,11 @@ INSERT INTO `tbl_login` (`Cedula`, `Nombre`, `Rol`, `Zona`, `Usuario`, `Password
 ('1', 'santaMarta', 1, 2, 'santaMarta', '$2y$10$IddcuK3xT3wrNOsIwvMmuuSsVcYRB6lW9x0DDbtZJzuiG9nVAdssy'),
 ('12', 'Medellin', 1, 3, 'Medellin', '$2y$10$dIRe.5AfjcCfBde6Tx0.UORjOcBvl0CFTrBsa1A.RT/ZFJbMfx3ly'),
 ('123', 'admin', 1, 1, 'admin', '$2y$10$7Ce1yxyOsJR6xpmldpO0YOKxFCRgwUpfPOsjGaorYPqhRBtUeLyu.'),
-('1234', 'fincas', 1, 4, 'fincas', '$2y$10$xqWlWeUTN06j80jKL2Wje./umYj48lbPV8tj.uXb7zZMHje8YDlOu');
+('1234', 'fincas', 1, 4, 'fincas', '$2y$10$xqWlWeUTN06j80jKL2Wje./umYj48lbPV8tj.uXb7zZMHje8YDlOu'),
+('12345', 'superAdmin', 3, 1, 'superAdmin', '$2y$10$GqaU7w4WKKSRav/xgc3AVebJyvC0TH99LY8MKq9y.Gfa1TKftnadu'),
+('333333333333333', '333333333333333333', 3, 5, '333333333333333333', '$2y$10$e5vEH0pVmfMuksYXIEzqVOV0f7JVrWvT1DsQZIZKGaDzIcMJvQCSC'),
+('888888888888888', '888888888888888888', 3, 3, '888888888888888888', '$2y$10$9EGCuTRKK1WHAxvhdHQVO.GxKEL0swhLQ1xZTT1lDjm8c7Yasj3Pe'),
+('999999999999999', '99999999999999999999', 3, 5, '99999999999999999999', '$2y$10$uRiPe4CvtEedyfG/OZE2aefbJgaLFB45X6tD.34RvEbag4IP6u9de');
 
 -- --------------------------------------------------------
 
@@ -210,13 +235,13 @@ CREATE TABLE `tbl_personas` (
 --
 
 INSERT INTO `tbl_personas` (`Cedula`, `Nombre`, `Empresa`, `Zona`, `Ubicacion`, `Fechaingreso`, `Estado`, `Carpetas`) VALUES
-('1001671132', 'Jeyson Graciano', 1, 1, 'holaa', '2024-08-09', 2, '../archivos/1001671132'),
-('1193205912', 'kenier', 7, 1, 'apartado', '0000-00-00', 1, '../archivos/1193205912'),
-('213', 'kenier', 3, 1, 'qwe', '0000-00-00', 1, '../archivos/213'),
-('4563453', 'asd', 1, 1, 'asd', '0000-00-00', 1, '../archivos/4563453'),
-('542345', 'asdas', 9, 4, 'wewe', '0000-00-00', 1, '../archivos/542345'),
-('6666666', 'rtet', 9, 4, 'ertr', '0000-00-00', 1, '../archivos/6666666'),
-('9999', 'yes', 1, 4, 'apartado', '2024-08-08', 1, '../archivos/9999');
+('12312', '3asd', 1, 5, 'turbo', '2024-08-28', 1, '../archivos/12312'),
+('finca bananoba', 'finca bananoba', 10, 4, 'finca bananoba', '2024-08-16', 1, '../archivos/finca bananoba'),
+('finca la gira', 'finca la gira', 11, 4, 'finca la gira', '2024-08-20', 1, '../archivos/finca la gira'),
+('finca tierra grata', 'finca tierra grata', 9, 4, 'finca tierra grata', '2024-08-27', 1, '../archivos/fincas'),
+('medellin', 'medellin', 12, 3, 'medellin', '2024-08-27', 1, '../archivos/medellin'),
+('santMarta', 'santMarta', 1, 2, 'apartadoasdas', '2024-08-30', 2, '../archivos/santMarta'),
+('sda', 'sdas', 3, 1, 'apartado', '2024-08-28', 1, '../archivos/sda');
 
 -- --------------------------------------------------------
 
@@ -236,8 +261,8 @@ CREATE TABLE `tbl_per_empresa` (
 --
 
 INSERT INTO `tbl_per_empresa` (`Iddetalle`, `Cedula`, `Empresa`, `Estado`) VALUES
-(194, '123', 1, 1),
-(195, '123', 2, 1),
+(194, '123', 1, 2),
+(195, '123', 2, 2),
 (196, '123', 3, 1),
 (197, '123', 4, 1),
 (198, '123', 5, 1),
@@ -277,7 +302,55 @@ INSERT INTO `tbl_per_empresa` (`Iddetalle`, `Cedula`, `Empresa`, `Estado`) VALUE
 (232, '12', 9, 2),
 (233, '12', 10, 2),
 (234, '12', 11, 2),
-(235, '12', 12, 1);
+(235, '12', 12, 1),
+(236, '12345', 1, 1),
+(237, '12345', 2, 1),
+(238, '12345', 3, 1),
+(239, '12345', 4, 1),
+(240, '12345', 5, 1),
+(241, '12345', 6, 1),
+(242, '12345', 7, 1),
+(243, '12345', 8, 1),
+(244, '12345', 9, 1),
+(245, '12345', 10, 1),
+(246, '12345', 11, 1),
+(247, '12345', 12, 1),
+(248, '999999999999999', 1, 1),
+(249, '999999999999999', 2, 1),
+(250, '999999999999999', 3, 1),
+(251, '999999999999999', 4, 1),
+(252, '999999999999999', 5, 1),
+(253, '999999999999999', 6, 1),
+(254, '999999999999999', 7, 1),
+(255, '999999999999999', 8, 1),
+(256, '999999999999999', 9, 1),
+(257, '999999999999999', 10, 1),
+(258, '999999999999999', 11, 1),
+(259, '999999999999999', 12, 2),
+(260, '888888888888888', 1, 1),
+(261, '888888888888888', 2, 1),
+(262, '888888888888888', 3, 2),
+(263, '888888888888888', 4, 2),
+(264, '888888888888888', 5, 2),
+(265, '888888888888888', 6, 2),
+(266, '888888888888888', 7, 2),
+(267, '888888888888888', 8, 2),
+(268, '888888888888888', 9, 2),
+(269, '888888888888888', 10, 1),
+(270, '888888888888888', 11, 2),
+(271, '888888888888888', 12, 2),
+(283, '333333333333333', 1, 1),
+(284, '333333333333333', 2, 2),
+(285, '333333333333333', 3, 2),
+(286, '333333333333333', 4, 2),
+(287, '333333333333333', 5, 2),
+(288, '333333333333333', 6, 2),
+(289, '333333333333333', 7, 2),
+(290, '333333333333333', 8, 2),
+(291, '333333333333333', 9, 2),
+(292, '333333333333333', 10, 2),
+(293, '333333333333333', 11, 2),
+(294, '333333333333333', 12, 2);
 
 -- --------------------------------------------------------
 
@@ -339,7 +412,8 @@ CREATE TABLE `tbl_rol` (
 
 INSERT INTO `tbl_rol` (`Idrol`, `Descripcion`) VALUES
 (1, 'Admin'),
-(2, 'Usuario');
+(2, 'Usuario'),
+(3, 'superAdmin');
 
 -- --------------------------------------------------------
 
@@ -360,7 +434,8 @@ INSERT INTO `tbl_zona` (`Idzona`, `Descripcion`) VALUES
 (1, 'Uraba'),
 (2, 'Santa Marta'),
 (3, 'Medellin'),
-(4, 'Fincas');
+(4, 'Fincas'),
+(5, 'admin');
 
 --
 -- Indexes for dumped tables
@@ -425,7 +500,8 @@ ALTER TABLE `tbl_personas`
 ALTER TABLE `tbl_per_empresa`
   ADD PRIMARY KEY (`Iddetalle`),
   ADD KEY `Cedula` (`Cedula`),
-  ADD KEY `Empresa` (`Empresa`);
+  ADD KEY `Empresa` (`Empresa`),
+  ADD KEY `Estado` (`Estado`);
 
 --
 -- Indexes for table `tbl_proveedores`
@@ -460,7 +536,7 @@ ALTER TABLE `tbl_zona`
 -- AUTO_INCREMENT for table `tbl_accesos`
 --
 ALTER TABLE `tbl_accesos`
-  MODIFY `Idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `Idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 
 --
 -- AUTO_INCREMENT for table `tbl_areas`
@@ -472,7 +548,7 @@ ALTER TABLE `tbl_areas`
 -- AUTO_INCREMENT for table `tbl_det_empleados`
 --
 ALTER TABLE `tbl_det_empleados`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `tbl_estadoper`
@@ -490,7 +566,7 @@ ALTER TABLE `tbl_permisos`
 -- AUTO_INCREMENT for table `tbl_per_empresa`
 --
 ALTER TABLE `tbl_per_empresa`
-  MODIFY `Iddetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
+  MODIFY `Iddetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=295;
 
 --
 -- AUTO_INCREMENT for table `tbl_razonsoc`
@@ -502,13 +578,13 @@ ALTER TABLE `tbl_razonsoc`
 -- AUTO_INCREMENT for table `tbl_rol`
 --
 ALTER TABLE `tbl_rol`
-  MODIFY `Idrol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Idrol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_zona`
 --
 ALTER TABLE `tbl_zona`
-  MODIFY `Idzona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Idzona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
@@ -550,7 +626,8 @@ ALTER TABLE `tbl_personas`
 --
 ALTER TABLE `tbl_per_empresa`
   ADD CONSTRAINT `tbl_per_empresa_ibfk_1` FOREIGN KEY (`Cedula`) REFERENCES `tbl_login` (`Cedula`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tbl_per_empresa_ibfk_2` FOREIGN KEY (`Empresa`) REFERENCES `tbl_razonsoc` (`Idrazon`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `tbl_per_empresa_ibfk_2` FOREIGN KEY (`Empresa`) REFERENCES `tbl_razonsoc` (`Idrazon`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_per_empresa_ibfk_3` FOREIGN KEY (`Estado`) REFERENCES `tbl_estadoper` (`Idestado`);
 
 --
 -- Constraints for table `tbl_razonsoc`
