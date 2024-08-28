@@ -27,6 +27,7 @@ $(document).ready(function () {
                 // Una vez que el contenido esté cargado, muestra el modal
                 $('#modalCedula').val(iconId);
                 $('#modalFechaIngreso').val('');  // Aquí puedes cargar el valor actual si lo tienes
+                $('#modalFechaRetiro').val('');  // Aquí puedes cargar el valor actual si lo tienes
                 $('#modalUbicacion').val('');  // Aquí puedes cargar el valor actual si lo tienes
                 $('#editarModal').modal('show');
 
@@ -40,7 +41,11 @@ $(document).ready(function () {
 
         var cedula = $('#modalCedula').val();
         var fechaIngreso = $('#modalFechaIngreso').val();
+        var fechaRetiro = $('#modalFechaRetiro').val();
         var ubicacion = $('#modalUbicacion').val();
+
+        console.log('Fecha de Retiro capturada:', fechaRetiro);  // Verificar si se captura el valor
+
 
         $.ajax({
             type: "POST",
@@ -49,6 +54,7 @@ $(document).ready(function () {
                 estado: 1,  // Cambiando a 1
                 cedula: cedula,
                 Fechaingreso: fechaIngreso,
+                Fecharetiro: fechaRetiro,
                 Ubicacion: ubicacion,
                 actualizar: true  // Indicador para actualizar los campos adicionales
             },
