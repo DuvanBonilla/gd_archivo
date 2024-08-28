@@ -14,10 +14,14 @@
                     
                     <div class="form-group">
                         <label for="Fechaingreso">Fecha de Ingreso</label>
-                        <input type="date" class="form-control" name="Fechaingreso" id="modalFechaIngreso" class="form-control1" required>
+                        <input type="date" class="form-control" name="FechaIngreso" id="modalFechaIngreso" class="form-control1" required>
                     </div>
                     <div class="form-group">
-                        <label for="Ubicacion">Ubicación</label>
+                        <label for="Fecharetiro">Fecha de Retiro</label>
+                        <input type="date" class="form-control" name="FechaRetiro" id="modalFechaRetiro" class="form-control1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Ubicacion">Nueva Ubicación</label>
                         <input type="text" class="form-control" name="Ubicacion" id="modalUbicacion" placeholder="Nueva Ubicación" class="form-control1" required>
                     </div>
                 </div>

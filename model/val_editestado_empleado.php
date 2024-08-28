@@ -21,36 +21,41 @@ if ($estadoNuevo == 2 && !isset($_POST['actualizar'])) {
     $stmtUpdate->close();
 } elseif ($estadoNuevo == 1 && isset($_POST['actualizar'])) {
     $fechaIngreso = $_POST['Fechaingreso'];
+    $fechaRetiro = $_POST['Fecharetiro'];
     $ubicacion = $_POST['Ubicacion'];
 
     // Obtener la información actual antes de actualizar
-    $sqlCurrentData = 'SELECT Empresa, Fechaingreso, Ubicacion FROM tbl_personas WHERE Cedula = ?';
+    $sqlCurrentData = 'SELECT Empresa, Zona, Fechaingreso, Ubicacion FROM tbl_personas WHERE Cedula = ?';
     $stmtCurrentData = $conexion->prepare($sqlCurrentData);
     $stmtCurrentData->bind_param('s', $cedula);
     $stmtCurrentData->execute();
-    $stmtCurrentData->bind_result($currentEmpresa, $currentFechaIngreso, $currentUbicacion);
+    $stmtCurrentData->bind_result($currentEmpresa, $currentZona, $currentFechaIngreso, $currentUbicacion);
     $stmtCurrentData->fetch();
     $stmtCurrentData->close();
 
     // Guardar la información anterior en tbl_det_empleados
-    $sqlBackup = 'INSERT INTO tbl_det_empleados (Cedula, Empresa, Fecharetiro, Ubicacion) VALUES (?, ?, ?,?)';
+    $sqlBackup = 'INSERT INTO tbl_det_empleados (Cedula, Empresa, Zona, Fechaingreso, Fecharetiro, Ubicacion) VALUES (?, ?, ?, ?, ?, ?)';
     $stmtBackup = $conexion->prepare($sqlBackup);
-    $stmtBackup->bind_param('siss', $cedula, $currentEmpresa, $currentFechaIngreso, $currentUbicacion);
-    $stmtBackup->execute();
-    $stmtBackup->close();
+    $stmtBackup->bind_param('ssssss', $cedula, $currentEmpresa, $currentZona, $currentFechaIngreso, $fechaRetiro, $currentUbicacion);
 
-    // Actualizar el estado y los campos en tbl_personas
-    $sqlUpdate = 'UPDATE tbl_personas SET Estado = ?, Fechaingreso = ?, Ubicacion = ? WHERE Cedula = ?';
-    $stmtUpdate = $conexion->prepare($sqlUpdate);
-    $stmtUpdate->bind_param('ssss', $estadoNuevo, $fechaIngreso, $ubicacion, $cedula);
+    if ($stmtBackup->execute()) {
+        // Actualizar el estado y los campos en tbl_personas
+        $sqlUpdate = 'UPDATE tbl_personas SET Estado = ?, Fechaingreso = ?, Ubicacion = ? WHERE Cedula = ?';
+        $stmtUpdate = $conexion->prepare($sqlUpdate);
+        $stmtUpdate->bind_param('ssss', $estadoNuevo, $fechaIngreso, $ubicacion, $cedula);
 
-    if ($stmtUpdate->execute()) {
-        echo 'success';
+        if ($stmtUpdate->execute()) {
+            echo 'success';
+        } else {
+            echo 'error';
+        }
+
+        $stmtUpdate->close();
     } else {
         echo 'error';
     }
 
-    $stmtUpdate->close();
+    $stmtBackup->close();
 }
 
 $conexion->close();
