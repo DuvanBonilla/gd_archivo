@@ -8,7 +8,7 @@ $finca = $_GET["finca"];
 
 $fincas = array(
     "8" => "La Gira",
-    "9" => "Tierra Grata",
+    "9" => "Tierra_Grata",
     "10" => "Bananova",
 );
 

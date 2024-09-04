@@ -1,34 +1,36 @@
 <?php
+session_start(); 
 $cedula = $_GET["cedula"];
 $nombre = $_GET["nombre"];
+$idEmpresa = $_SESSION["idEmpresa"];
 
 // Lista de carpetas con sus respectivos enlaces
 $carpetas = [
-    "Actualización de datos" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Certificados" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Certificados de estudio" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Certificados laborales" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Certificados médicos" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Contrato" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Descuentos" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Doc identidad" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Doc legales" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Dotación" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Gestión humana" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Hoja de vida" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Incapacidades" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Liquidaciones" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Otros" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Pago de nómina" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Prestaciones sociales" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Préstamos" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Procesos disciplinarios" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Seguridad social" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Seguro de vida" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Solicitudes" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Terminación contrato" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Test Wartegg" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "Visita domiciliaria" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "ACTUALIZACIÓN DE DATOS" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "AFILIACIONES SEGURIDAD SOCIAL" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "ANEXOS Y CERTIFICADOS LABORALES" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "AUSENTISMOS E INCAMPACIDADES" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "CERTIFICADOS DE ESTUDIOS" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "CERTIFICADOS MEDICOS" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "CERTIFICADOS VARIOS" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "CONTRATO DE TRABAJO" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "DESCUENTOS VARIOS" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "DOCUMENTOS DE IDENTIDAD" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "DOCUMENTOS LEGALES" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "DOTACION" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "HOJA DE VIDA" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "LIQUIDACIONES" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "OTROS" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "PAGOS DE NOMINA" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "PAGOS PRESTACIONES SOCIALES" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "PROCEDIMIENTOS DISCIPLINARIOS" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "PROCESO GESTION HUMANA" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "SEGURO DE VIDA" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "SOLICITUDES PRESTAMOS Y OTRAS" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "SOLICITUDES VARIAS" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "TERMINACION DE CONTRATO" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "TEST WARTEGG" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "VICITA DOMICILIARIA" => "carpetas/carpetas_archivos/consultar_datos.php",
 ];
 ?>
 <!DOCTYPE html>
@@ -45,9 +47,9 @@ $carpetas = [
         <i class="fa-solid fa-circle-arrow-left fa-beat icon-back"></i>
     </a> 
 
-    <a href="index.php" class="icon-back-menu">
-        <i class="fa-solid fa-right-from-bracket"></i> 
-    </a> 
+    <a href="index.php?idEmpresa=<?php echo $idEmpresa;?> " class="icon-back-menu">
+    <i class="fa-solid fa-right-from-bracket"></i>
+    </a>
     
     <h1>Carpetas del empleado <br>
     <strong><?php echo htmlspecialchars($nombre); ?> : <?php echo htmlspecialchars($cedula); ?></strong></h1>

@@ -24,18 +24,19 @@ if (isset($_SESSION['idEmpresa'])) {
     $idEmpresa = $_SESSION["idEmpresa"];
 
     $rutasEmpresas = [
-        1 => 'D:\\Gestion Docu\\Cargoban',
-        2 => 'D:\\Gestion Docu\\Oceanix',
-        3 => 'D:\\Gestion Docu\\Solutempo',
-        4 => 'D:\\Gestion Docu\\Cargoban SAS',
-        5 => 'D:\\Gestion Docu\\Agencia de Aduanas',
-        6 => 'D:\\Gestion Docu\\Fundacion Cargoban',
-        7 => 'D:\\Gestion Docu\\Tase',
-        8 => 'D:\\Gestion Docu\\Opyservis',
-        9 => 'D:\\Gestion Docu\\Tierra Grata',
-        10 => 'D:\\Gestion Docu\\Bananova',
-        11 => 'D:\\Gestion Docu\\Gira',
-        12 => 'D:\\Gestion Docu\\Medellin',
+        1 => 'R:\\Gestion_Docu\\Cargoban',
+        2 => 'R:\\Gestion_Docu\\Oceanix',
+        3 => 'R:\\Gestion_Docu\\Solutempo',
+        4 => 'R:\\Gestion_Docu\\Cargoban_SAS',
+        5 => 'R:\\Gestion_Docu\\Agencia_de_Aduanas',
+        6 => 'R:\\Gestion_Docu\\Fundacion_Cargoban',
+        7 => 'R:\\Gestion_Docu\\Tase',
+        8 => 'R:\\Gestion_Docu\\Opyservis',
+        9 => 'R:\\Gestion_Docu\\Tierra_Grata',
+        10 => 'R:\\Gestion_Docu\\Bananova',
+        11 => 'R:\\Gestion_Docu\\Gira',
+        12 => 'R:\\Gestion_Docu\\Palmonte',
+        13 => 'R:\\Gestion_Docu\\Principio_Comercial'
 
     ];
 

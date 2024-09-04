@@ -18,14 +18,16 @@ $Empresas = [
     1 => 'Cargoban',
     2 => 'Oceanix',
     3 => 'Solutempo',
-    4 => 'Cargoban SAS',
-    5 => 'Agencia de Aduanas',
-    6 => 'Fundacion Cargoban',
+    4 => 'Cargoban_SAS',
+    5 => 'Agencia_de_Aduanas',
+    6 => 'Fundacion_Cargoban',
     7 => 'Tase',
     8 => 'Opyservis',
-    9 => 'Tierra Grata',
+    9 => 'Tierra_Grata',
     10 => 'Bananova',
     11 => 'Gira',
+    12 => 'Palmonte',
+    13 => 'Principio_Comercial'
 ];
 
 // Verifica que el ID de la empresa sea válido
@@ -42,7 +44,7 @@ $carpeta = basename($_GET['carpeta']);
 $subcarpeta = basename($_GET['subcarpeta']);
 
 // Define la ruta base de acuerdo con la empresa seleccionada
-$rutaBase = "D:\\Gestion Docu\\$nombreEmpresa\\$nombreArea\\";
+$rutaBase = "R:\\Gestion_Docu\\$nombreEmpresa\\$nombreArea\\";
 
 // Construye la ruta completa del archivo
 $rutaArchivo = realpath("$rutaBase/$carpeta/$subcarpeta/$archivo");
