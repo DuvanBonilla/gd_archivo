@@ -12,17 +12,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   
         $rutasEmpresas = [
-            1 => 'D:\\Gestion Docu\\Cargoban',
-            2 => 'D:\\Gestion Docu\\Oceanix',
-            3 => 'D:\\Gestion Docu\\Solutempo',
-            4 => 'D:\\Gestion Docu\\Cargoban SAS',
-            5 => 'D:\\Gestion Docu\\Agencia de Aduanas',
-            6 => 'D:\\Gestion Docu\\Fundacion Cargoban',
-            7 => 'D:\\Gestion Docu\\Tase',
-            8 => 'D:\\Gestion Docu\\Opyservis',
-            9 => 'D:\\Gestion Docu\\Tierra Grata',
-            10 => 'D:\\Gestion Docu\\Bananova',
-            11 => 'D:\\Gestion Docu\\Gira',
+            1 => 'R:\\Gestion_Docu\\Cargoban',
+            2 => 'R:\\Gestion_Docu\\Oceanix',
+            3 => 'R:\\Gestion_Docu\\Solutempo',
+            4 => 'R:\\Gestion_Docu\\Cargoban_SAS',
+            5 => 'R:\\Gestion_Docu\\Agencia_de_Aduanas',
+            6 => 'R:\\Gestion_Docu\\Fundacion_Cargoban',
+            7 => 'R:\\Gestion_Docu\\Tase',
+            8 => 'R:\\Gestion_Docu\\Opyservis',
+            9 => 'R:\\Gestion_Docu\\Tierra_Grata',
+            10 => 'R:\\Gestion_Docu\\Bananova',
+            11 => 'R:\\Gestion_Docu\\Gira',
+            12 => 'R:\\Gestion_Docu\\Palmonte',
+            13 => 'R:\\Gestion_Docu\\Principio_Comercial'
         ];
 
         // Obtener la ruta base según el ID de empresa
@@ -40,31 +42,130 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     // Verifica si el archivo ya existe
                     if (file_exists($targetFile)) {
-                        echo 'El archivo ' . htmlspecialchars(basename($fileName)) . ' ya existe.<br>';
+                        echo "
+                            <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                            <script language='JavaScript'>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Archivo Ya Existe',
+                                    confirmButtonColor: 'red',
+                                    confirmButtonText: 'OK',
+                                    timer: 6000
+                                }).then(() => {
+                                    const carpeta = encodeURIComponent('$carpeta');
+                                    const subcarpeta = encodeURIComponent('$subcarpeta');
+                                    location.assign('../view/ver_info_carpetas.php?carpeta=' + carpeta + '&subcarpeta=' + subcarpeta);
+                                });
+                            });
+                            </script>";
                         $uploadOk = 0;
+                        exit;
                     }
 
                     // Verifica el tamaño del archivo (límite de 5MB)
                     if ($_FILES['archivo']['size'][$index] > 5000000) {
-                        echo 'El archivo ' . htmlspecialchars(basename($fileName)) . ' es demasiado grande.<br>';
+                        echo "
+                        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                        <script language='JavaScript'>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Archivo Es Demasiado Grande',
+                                confirmButtonColor: 'red',
+                                confirmButtonText: 'OK',
+                                timer: 8000
+                            }).then(() => {
+                                const carpeta = encodeURIComponent('$carpeta');
+                                const subcarpeta = encodeURIComponent('$subcarpeta');
+                                location.assign('../view/ver_info_carpetas.php?carpeta=' + carpeta + '&subcarpeta=' + subcarpeta);
+                            });
+                        });
+                        </script>";
                         $uploadOk = 0;
+                        exit;
                     }
 
                     // Permite ciertos formatos de archivo
                     $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
                     if ($fileType != 'jpg' && $fileType != 'png' && $fileType != 'jpeg' && $fileType != 'pdf') {
-                        echo 'Solo se permiten archivos JPG, JPEG, PNG y PDF para el archivo ' . htmlspecialchars(basename($fileName)) . '.<br>';
+                        echo "
+                        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                        <script language='JavaScript'>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Solo se permiten archivos JPG, JPEG, PNG y PDF',
+                                confirmButtonColor: 'red',
+                                confirmButtonText: 'OK',
+                                timer: 10000
+                            }).then(() => {
+                                const carpeta = encodeURIComponent('$carpeta');
+                                const subcarpeta = encodeURIComponent('$subcarpeta');
+                                location.assign('../view/ver_info_carpetas.php?carpeta=' + carpeta + '&subcarpeta=' + subcarpeta);
+                            });
+                        });
+                        </script>";
                         $uploadOk = 0;
+                        exit;
                     }
 
                     // Verifica si $uploadOk está en 0 por algún error
                     if ($uploadOk == 0) {
-                        echo 'El archivo ' . htmlspecialchars(basename($fileName)) . ' no fue subido.<br>';
+                        echo " <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                        <script language='JavaScript'>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'El archivo no fue subido',
+                                confirmButtonColor: 'red',
+                                confirmButtonText: 'OK',
+                                timer: 8000
+                            }).then(() => {
+                                const carpeta = encodeURIComponent('$carpeta');
+                                const subcarpeta = encodeURIComponent('$subcarpeta');
+                                location.assign('../view/ver_info_carpetas.php?carpeta=' + carpeta + '&subcarpeta=' + subcarpeta);
+                            });
+                        });
+                        </script>";
+                        exit;
                     } else {
                         if (move_uploaded_file($fileTmpName, $targetFile)) {
-                            echo 'El archivo ' . htmlspecialchars(basename($fileName)) . " ha sido subido a la carpeta $subcarpeta.<br>";
+                            echo "
+                            <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                            <script language='JavaScript'>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Archivo Subido Exitosamente',
+                                    confirmButtonColor: 'red',
+                                    confirmButtonText: 'OK',
+                                    timer: 8000
+                                }).then(() => {
+                                    const carpeta = encodeURIComponent('$carpeta');
+                                    const subcarpeta = encodeURIComponent('$subcarpeta');
+                                    location.assign('../view/ver_info_carpetas.php?carpeta=' + carpeta + '&subcarpeta=' + subcarpeta);
+                                });
+                            });
+                            </script>";
                         } else {
-                            echo 'Hubo un error al subir el archivo ' . htmlspecialchars(basename($fileName)) . '.<br>';
+                            echo " <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                        <script language='JavaScript'>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error al subir el archivo',
+                                confirmButtonColor: 'red',
+                                confirmButtonText: 'OK',
+                                timer: 8000
+                            }).then(() => {
+                                const carpeta = encodeURIComponent('$carpeta');
+                                const subcarpeta = encodeURIComponent('$subcarpeta');
+                                location.assign('../view/ver_info_carpetas.php?carpeta=' + carpeta + '&subcarpeta=' + subcarpeta);
+                            });
+                        });
+                        </script>";
+                        exit;
                         }
                     }
                 }
@@ -78,9 +179,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         title: 'La ruta especificada no es valida',
                         confirmButtonColor: '#D63030',
                         confirmButtonText: 'OK',
-                        timer: 5000
+                        timer: 8000
                     }).then(() => {
-                    location.assign('../view/carpetas.php?area=' + area);
+                        const carpeta = encodeURIComponent('$carpeta');
+                        const subcarpeta = encodeURIComponent('$subcarpeta');
+                        location.assign('../view/ver_info_carpetas.php?carpeta=' + carpeta + '&subcarpeta=' + subcarpeta);
                     });
                 });
                 </script>";
@@ -95,9 +198,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     title: 'Id de la empresa no valido',
                     confirmButtonColor: '#D63030',
                     confirmButtonText: 'OK',
-                    timer: 5000
+                    timer: 6000
                 }).then(() => {
-                    location.assign('../view/carpetas.php?area=' + area);
+                    const carpeta = encodeURIComponent('$carpeta');
+                    const subcarpeta = encodeURIComponent('$subcarpeta');
+                    location.assign('../view/ver_info_carpetas.php?carpeta=' + carpeta + '&subcarpeta=' + subcarpeta);
                 });
             });
             </script>";
@@ -114,8 +219,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     confirmButtonText: 'OK',
                     timer: 7000
                 }).then(() => {
-                    const area = encodeURIComponent('$area');
-                    location.assign('../view/carpetas.php?area=' + area);
+                    const carpeta = encodeURIComponent('$carpeta');
+                    const subcarpeta = encodeURIComponent('$subcarpeta');
+                    location.assign('../view/ver_info_carpetas.php?carpeta=' + carpeta + '&subcarpeta=' + subcarpeta);
                 });
             });
         </script>"; 

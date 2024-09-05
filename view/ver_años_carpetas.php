@@ -6,7 +6,7 @@ if (!isset($_SESSION['usuario'])) {
 }
 
 $permisos = include "../model/consu_permisos_usuario.php";
-
+$idEmpresa = $_SESSION["idEmpresa"];
 $idArea = isset($_SESSION['area']) ? intval($_SESSION['area']) : 0;
 $nombreArea = isset($_GET['nombre']) ? htmlspecialchars($_GET['nombre']) : '';
 
@@ -35,7 +35,7 @@ include '../model/consu_años_carpetas.php';
 <a href="carpetas.php?area=<?php echo $idArea; ?>&nombre=<?php echo urlencode($nombreArea); ?>" class="icon-back-link">
     <i class="fa-solid fa-circle-arrow-left fa-beat icon-back"></i>
 </a>
-<a href="index.php" class="icon-back-menu">
+<a href="index.php?idEmpresa=<?php echo $idEmpresa;?> " class="icon-back-menu">
     <i class="fa-solid fa-right-from-bracket"></i>
 </a>
 

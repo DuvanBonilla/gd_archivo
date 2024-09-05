@@ -1,10 +1,36 @@
 <?php
 
-// Define las rutas de origen y destino
-$rutaOrigen = 'D:\\Prueba de archivos'; // Cambia esto a tu ruta 1
-$rutaDestino = 'D:\\zestino'; // Cambia esto a tu ruta 2
+// Obtener la id de la empresa desde la sesión
+session_start();
+$idEmpresa = $_SESSION['idEmpresa'];
 
-// Verifica que las rutas existan
+// Definir las rutas de destino según la id de la empresa
+$rutasDestino = [
+    1 => 'R:\\Gestion_Docu\\Cargoban\\Empleados',
+    2 => 'R:\\Gestion_Docu\\Oceanix\\Empleados',
+    3 => 'R:\\Gestion_Docu\\Solutempo\\Empleados',
+    4 => 'R:\\Gestion_Docu\\Cargoban_SAS\\Empleados',
+    5 => 'R:\\Gestion_Docu\\Agencia_de_Aduanas\\Empleados',
+    6 => 'R:\\Gestion_Docu\\Fundacion_Cargoban\\Empleados',
+    7 => 'R:\\Gestion_Docu\\Tase\\Empleados',
+    8 => 'R:\\Gestion_Docu\\Opyservis\\Empleados',
+    9 => 'R:\\Gestion_Docu\\Tierra_Grata\\Empleados',
+    10 => 'R:\\Gestion_Docu\\Bananova\\Empleados',
+    11 => 'R:\\Gestion_Docu\\Gira\\Empleados',
+    12 => 'R:\\Gestion_Docu\\Palmonte\\Empleados',
+    13 => 'R:\\Gestion_Docu\\Principio_Comercial\\Empleados',
+];
+
+if (!isset($rutasDestino[$idEmpresa])) {
+    exit('La idEmpresa no es válida o no tiene una ruta de destino asignada.');
+}
+
+// Asignar la ruta de destino correspondiente a la empresa seleccionada
+$rutaDestino = $rutasDestino[$idEmpresa];
+
+// Ruta de origen permanece sin cambios
+$rutaOrigen = 'D:\\Subida_Masiva'; // Cambia esto a tu ruta 1
+
 // Verifica que las rutas existan
 if (!is_dir($rutaOrigen) || !is_dir($rutaDestino)) {
     exit('Una de las rutas no es válida.');
@@ -77,6 +103,20 @@ foreach ($carpetas as $carpeta) {
     }
 }
 
-// Redirige a la página de índice
-header('Location: ../view/index.php');
+echo "
+    <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+    <script language='JavaScript'>
+    document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Todos los archivos fueron procesados exitosamente',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK',
+            timer: 5000
+          }).then(() => {
+            location.assign('../view/index.php');
+          });
+    });
+    </script>";
 exit;

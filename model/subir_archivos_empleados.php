@@ -12,17 +12,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   
         $rutasEmpresas = [
-            1 => 'D:\\Gestion Docu\\Cargoban\\empleado',
-            2 => 'D:\\Gestion Docu\\Oceanix\\empleado',
-            3 => 'D:\\Gestion Docu\\Solutempo\\empleado',
-            4 => 'D:\\Gestion Docu\\Cargoban SAS\\empleado',
-            5 => 'D:\\Gestion Docu\\Agencia de Aduanas\\empleado',
-            6 => 'D:\\Gestion Docu\\Fundacion Cargoban\\empleado',
-            7 => 'D:\\Gestion Docu\\Tase\\empleado',
-            8 => 'D:\\Gestion Docu\\Opyservis\\empleado',
-            9 => 'D:\\Gestion Docu\\Tierra Grata\\empleado',
-            10 => 'D:\\Gestion Docu\\Bananova\\empleado',
-            11 => 'D:\\Gestion Docu\\Gira\\empleado',
+            1 => 'R:\\Gestion_Docu\\Cargoban\\Empleados',
+            2 => 'R:\\Gestion_Docu\\Oceanix\\Empleados',
+            3 => 'R:\\Gestion_Docu\\Solutempo\\Empleados',
+            4 => 'R:\\Gestion_Docu\\Cargoban_SAS\\Empleados',
+            5 => 'R:\\Gestion_Docu\\Agencia_de_Aduanas\\Empleados',
+            6 => 'R:\\Gestion_Docu\\Fundacion_Cargoban\\Empleados',
+            7 => 'R:\\Gestion_Docu\\Tase\\Empleados',
+            8 => 'R:\\Gestion_Docu\\Opyservis\\Empleados',
+            9 => 'R:\\Gestion_Docu\\Tierra_Grata\\Empleados',
+            10 => 'R:\\Gestion_Docu\\Bananova\\Empleados',
+            11 => 'R:\\Gestion_Docu\\Gira\\Empleados',
         ];
 
         // Obtener la ruta base según el ID de empresa
