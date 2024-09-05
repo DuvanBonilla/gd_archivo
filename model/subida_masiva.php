@@ -1,6 +1,5 @@
 <?php
 
-// Obtener la id de la empresa desde la sesión
 session_start();
 $idEmpresa = $_SESSION['idEmpresa'];
 
@@ -21,15 +20,30 @@ $rutasDestino = [
     13 => 'R:\\Gestion_Docu\\Principio_Comercial\\Empleados',
 ];
 
-if (!isset($rutasDestino[$idEmpresa])) {
-    exit('La idEmpresa no es válida o no tiene una ruta de destino asignada.');
+// Definir las rutas de origen según la id de la empresa
+$rutasOrigen = [
+    1 => 'D:\\Subida_Masiva\\Cargoban',
+    2 => 'D:\\Subida_Masiva\\Oceanix',
+    3 => 'D:\\Subida_Masiva\\Solutempo',
+    4 => 'D:\\Subida_Masiva\\Cargoban_SAS',
+    5 => 'D:\\Subida_Masiva\\Agencia_de_Aduanas',
+    6 => 'D:\\Subida_Masiva\\Fundacion_Cargoban',
+    7 => 'D:\\Subida_Masiva\\Tase',
+    8 => 'D:\\Subida_Masiva\\Opyservis',
+    9 => 'D:\\Subida_Masiva\\Tierra_Grata',
+    10 => 'D:\\Subida_Masiva\\Bananova',
+    11 => 'D:\\Subida_Masiva\\Gira',
+    12 => 'D:\\Subida_Masiva\\Palmonte',
+    13 => 'D:\\Subida_Masiva\\Principio_Comercial',
+];
+
+if (!isset($rutasDestino[$idEmpresa]) || !isset($rutasOrigen[$idEmpresa])) {
+    exit('La idEmpresa no es válida o no tiene una ruta de destino u origen asignada.');
 }
 
-// Asignar la ruta de destino correspondiente a la empresa seleccionada
+// Asignar las rutas de destino y origen correspondientes a la empresa seleccionada
 $rutaDestino = $rutasDestino[$idEmpresa];
-
-// Ruta de origen permanece sin cambios
-$rutaOrigen = 'D:\\Subida_Masiva'; // Cambia esto a tu ruta 1
+$rutaOrigen = $rutasOrigen[$idEmpresa];
 
 // Verifica que las rutas existan
 if (!is_dir($rutaOrigen) || !is_dir($rutaDestino)) {
@@ -40,14 +54,12 @@ if (!is_dir($rutaOrigen) || !is_dir($rutaDestino)) {
 $carpetas = scandir($rutaOrigen);
 
 foreach ($carpetas as $carpeta) {
-    // Ignora las carpetas especiales "." y ".."
     if ($carpeta != '.' && $carpeta != '..') {
         $rutaCarpetaOrigen = $rutaOrigen . '\\' . $carpeta;
         $rutaCarpetaDestino = $rutaDestino . '\\' . $carpeta;
 
         // Verifica si la carpeta de destino existe
         if (!is_dir($rutaCarpetaDestino)) {
-            // Crea la carpeta de destino si no existe
             if (!mkdir($rutaCarpetaDestino, 0755, true)) {
                 exit('No se pudo crear la carpeta de destino: ' . $rutaCarpetaDestino);
             }

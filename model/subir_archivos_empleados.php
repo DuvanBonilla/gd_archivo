@@ -60,23 +60,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     // Verifica el tamaño del archivo (límite de 5MB)
                     if ($_FILES['archivo']['size'][$index] > 5000000) {
-                        echo 'El archivo ' . htmlspecialchars(basename($fileName)) . ' es demasiado grande.<br>';
+                        echo "
+                        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                        <script language='JavaScript'>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Archivo Es Demasiado Grande',
+                                confirmButtonColor: 'red',
+                                confirmButtonText: 'OK',
+                                timer: 8000
+                            }).then(() => {
+                               location.assign('../view/carpetas/carpetas_archivos/consultar_datos.php?carpeta=' + encodeURIComponent('$carpeta') + '&cedula=' + encodeURIComponent('$cedula') + '&nombre=' + encodeURIComponent('$nombre'));
+                            });
+                        });
+                        </script>";
                         $uploadOk = 0;
+                        exit;
                     }
 
                     // Permite ciertos formatos de archivo
                     $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
                     if ($fileType != 'jpg' && $fileType != 'png' && $fileType != 'jpeg' && $fileType != 'pdf') {
-                        echo 'Solo se permiten archivos JPG, JPEG, PNG y PDF para el archivo ' . htmlspecialchars(basename($fileName)) . '.<br>';
+                        echo "
+                        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                        <script language='JavaScript'>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Solo se permiten archivos JPG, JPEG, PNG y PDF',
+                                confirmButtonColor: 'red',
+                                confirmButtonText: 'OK',
+                                timer: 10000
+                            }).then(() => {
+                               location.assign('../view/carpetas/carpetas_archivos/consultar_datos.php?carpeta=' + encodeURIComponent('$carpeta') + '&cedula=' + encodeURIComponent('$cedula') + '&nombre=' + encodeURIComponent('$nombre'));
+
+                            });
+                        });
+                        </script>";
                         $uploadOk = 0;
+                        exit;
                     }
 
                     // Verifica si $uploadOk está en 0 por algún error
                     if ($uploadOk == 0) {
-                        echo 'El archivo ' . htmlspecialchars(basename($fileName)) . ' no fue subido.<br>';
+                        echo "
+                        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                        <script language='JavaScript'>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Archivo no subido',
+                                confirmButtonColor: '#D63030',
+                                confirmButtonText: 'OK',
+                                timer: 5000
+                            }).then(() => {
+                                            location.assign('../view/carpetas/carpetas_archivos/consultar_datos.php?carpeta=' + encodeURIComponent('$carpeta') + '&cedula=' + encodeURIComponent('$cedula') + '&nombre=' + encodeURIComponent('$nombre'));
+                            });
+                        });
+                        </script>";
+                        exit;  
                     } else {
                         if (move_uploaded_file($fileTmpName, $targetFile)) {
-                            // echo 'El archivo ' . htmlspecialchars(basename($fileName)) . "";
                             echo "
                             <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
                             <script language='JavaScript'>
@@ -95,7 +140,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             exit;   
 
                         } else {
-                            echo 'Hubo un error al subir el archivo ' . htmlspecialchars(basename($fileName)) . '.<br>';
+                            echo "
+                            <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                            <script language='JavaScript'>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'La ruta especificada no es valida',
+                                    confirmButtonColor: '#D63030',
+                                    confirmButtonText: 'OK',
+                                    timer: 5000
+                                }).then(() => {
+                                                location.assign('../view/carpetas/carpetas_archivos/consultar_datos.php?carpeta=' + encodeURIComponent('$carpeta') + '&cedula=' + encodeURIComponent('$cedula') + '&nombre=' + encodeURIComponent('$nombre'));
+                                });
+                            });
+                            </script>";
+                            exit;  
                         }
                     }
                 }
@@ -145,8 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     confirmButtonText: 'OK',
                     timer: 7000
                 }).then(() => {
-                    const area = encodeURIComponent('$area');
-                                    location.assign('../view/carpetas/carpetas_archivos/consultar_datos.php?carpeta=' + encodeURIComponent('$carpeta') + '&cedula=' + encodeURIComponent('$cedula') + '&nombre=' + encodeURIComponent('$nombre'));
+                  location.assign('../view/carpetas/carpetas_archivos/consultar_datos.php?carpeta=' + encodeURIComponent('$carpeta') + '&cedula=' + encodeURIComponent('$cedula') + '&nombre=' + encodeURIComponent('$nombre'));
                 });
             });
         </script>"; 

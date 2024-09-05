@@ -51,6 +51,7 @@ include '../model/ver_info_carpetas.php';
                     <th>Archivo</th>
                     <th>Ver</th>
                     <th>Descargar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,8 +61,18 @@ include '../model/ver_info_carpetas.php';
                     echo '<tr>
                             <td>'.htmlspecialchars($archivo).'</td>
                             <td><a href="../model/ver_archivos_carpetas.php?carpeta='.urlencode($_GET['carpeta']).'&subcarpeta='.urlencode($_GET['subcarpeta']).'&archivo='.$archivoUrl.'" class="btn btn-success" target="_blank">Ver</a></td>
-                           <td><a href="../model/descargar_arch_años.php?carpeta='.urlencode($_GET['carpeta']).'&subcarpeta='.urlencode($_GET['subcarpeta']).'&archivo='.$archivoUrl.'" class="btn btn-primary">Descargar</a></td>
-                          </tr>';
+                           <td><a href="../model/descargar_arch_años.php?carpeta='.urlencode($_GET['carpeta']).
+                           '&subcarpeta='.urlencode($_GET['subcarpeta']).
+                           '&archivo='.$archivoUrl.'" class="btn btn-primary">Descargar</a></td>
+                           <td>
+                                <a href="../model/eliminar_archivos_empleados.php?nombreArea='.$nombreArea.'&carpeta='.urlencode($_GET['carpeta']).'&subcarpeta='.urlencode($_GET['subcarpeta']).'&archivo='.$archivoUrl.'" 
+                                class="btn btn-danger" onclick="return confirm(\'¿Estás seguro de que deseas eliminar este archivo?\');">
+                                 <i class="fas fa-trash-alt"></i> 
+                            </a>
+                            </td>
+                            
+                          
+                           </tr>';
                 }
                 ?>
             </tbody>
