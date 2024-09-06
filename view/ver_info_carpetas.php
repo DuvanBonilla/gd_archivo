@@ -65,7 +65,7 @@ include '../model/ver_info_carpetas.php';
                            '&subcarpeta='.urlencode($_GET['subcarpeta']).
                            '&archivo='.$archivoUrl.'" class="btn btn-primary">Descargar</a></td>
                            <td>
-                                <a href="../model/eliminar_archivos_empleados.php?nombreArea='.$nombreArea.'&carpeta='.urlencode($_GET['carpeta']).'&subcarpeta='.urlencode($_GET['subcarpeta']).'&archivo='.$archivoUrl.'" 
+                                <a href="../model/eliminar_archivos_carpetas.php?nombreArea='.$nombreArea.'&carpeta='.urlencode($_GET['carpeta']).'&subcarpeta='.urlencode($_GET['subcarpeta']).'&archivo='.$archivoUrl.'" 
                                 class="btn btn-danger" onclick="return confirm(\'¿Estás seguro de que deseas eliminar este archivo?\');">
                                  <i class="fas fa-trash-alt"></i> 
                             </a>
@@ -80,17 +80,17 @@ include '../model/ver_info_carpetas.php';
         
         <?php if ($permisoUsuario == 2): ?>
             <div style="text-align: center; margin-top: 20px;">
-    <form action="../model/subir_archivos_carpetas.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="carpeta" value="<?php echo htmlspecialchars($_GET['carpeta']); ?>">
-        <input type="hidden" name="subcarpeta" value="<?php echo htmlspecialchars($_GET['subcarpeta']); ?>">
+                    <form action="../model/subir_archivos_carpetas.php" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="carpeta" value="<?php echo htmlspecialchars($_GET['carpeta']); ?>">
+                        <input type="hidden" name="subcarpeta" value="<?php echo htmlspecialchars($_GET['subcarpeta']); ?>">
         
-        <!-- Input para seleccionar múltiples archivos -->
-        <input type="file" name="archivo[]" id="fileInput" style="display: none;" multiple onchange="this.form.submit();">
+                        <!-- Input para seleccionar múltiples archivos -->
+                        <input type="file" name="archivo[]" id="fileInput" style="display: none;" multiple onchange="this.form.submit();">
         
-        <!-- Label que actúa como botón -->
-        <label for="fileInput" class="btn btn-secondary">Subir archivos</label>
-    </form>
-</div>
+                        <!-- Label que actúa como botón -->
+                        <label for="fileInput" class="btn btn-secondary">Subir archivos</label>
+                    </form>
+             </div>
         <?php endif; ?>
     </div>
 

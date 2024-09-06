@@ -6,7 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $nombreArea = isset($_SESSION['nombre']) ? $_SESSION['nombre'] : '';
         $idEmpresa = isset($_SESSION["idEmpresa"]) ? $_SESSION["idEmpresa"] : 0;   
-        echo $idEmpresa;
         $carpeta = $_POST['carpeta'];
         $subcarpeta = $_POST['subcarpeta'];
 
