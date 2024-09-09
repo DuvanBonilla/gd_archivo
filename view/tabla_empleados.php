@@ -25,6 +25,7 @@ $idEmpresa = $_SESSION["idEmpresa"];
 <body>
 <a href="index.php?idEmpresa= <?php echo $idEmpresa = $_SESSION["idEmpresa"]; ?>"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
 <div id="modalContainer"></div>
+<div id="modalFechaRetiroContainer"></div>
 </div>
     <div class="container" style="margin-top: 4%;padding: 5px">
         <table id="tablax" class="table table-striped table-bordered" style="width:100%">
@@ -35,6 +36,7 @@ $idEmpresa = $_SESSION["idEmpresa"];
                     <th>Nombre</th>
                     <th>Ubicacion</th>
                     <th>Fecha ingreso</th>
+                    <th>Fecha retiro</th>
                     <th>Estado</th>
                     <th>Editar</th>
                     <th>Detalle</th>
@@ -56,6 +58,7 @@ for ($i = 0; $i < count($empleados); ++$i) {
     echo '<td>'.$empleado['Nombre'].'</td>';
     echo '<td>'.$empleado['Ubicacion'].'</td>';
     echo '<td>'.$empleado['Fechaingreso'].'</td>';
+    echo '<td>'.$empleado['Fecharetiro'].'</td>';
     if ($Estado == 1) {
         echo '<td>
                 <button type="button" class="btn btn-success icon-container" id="icon-'.$Cedula.'" data-estado="1">

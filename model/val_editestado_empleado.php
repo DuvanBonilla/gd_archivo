@@ -21,28 +21,27 @@ if ($estadoNuevo == 2 && !isset($_POST['actualizar'])) {
     $stmtUpdate->close();
 } elseif ($estadoNuevo == 1 && isset($_POST['actualizar'])) {
     $fechaIngreso = $_POST['Fechaingreso'];
-    $fechaRetiro = $_POST['Fecharetiro'];
     $ubicacion = $_POST['Ubicacion'];
 
     // Obtener la información actual antes de actualizar
-    $sqlCurrentData = 'SELECT Empresa, Zona, Fechaingreso, Ubicacion FROM tbl_personas WHERE Cedula = ?';
+    $sqlCurrentData = 'SELECT Empresa, Zona, Fechaingreso, Fecharetiro, Ubicacion FROM tbl_personas WHERE Cedula = ?';
     $stmtCurrentData = $conexion->prepare($sqlCurrentData);
     $stmtCurrentData->bind_param('s', $cedula);
     $stmtCurrentData->execute();
-    $stmtCurrentData->bind_result($currentEmpresa, $currentZona, $currentFechaIngreso, $currentUbicacion);
+    $stmtCurrentData->bind_result($currentEmpresa, $currentZona, $currentFechaIngreso,$surrentFecharetiro, $currentUbicacion);
     $stmtCurrentData->fetch();
     $stmtCurrentData->close();
 
     // Guardar la información anterior en tbl_det_empleados
     $sqlBackup = 'INSERT INTO tbl_det_empleados (Cedula, Empresa, Zona, Fechaingreso, Fecharetiro, Ubicacion) VALUES (?, ?, ?, ?, ?, ?)';
     $stmtBackup = $conexion->prepare($sqlBackup);
-    $stmtBackup->bind_param('ssssss', $cedula, $currentEmpresa, $currentZona, $currentFechaIngreso, $fechaRetiro, $currentUbicacion);
+    $stmtBackup->bind_param('siisss', $cedula, $currentEmpresa, $currentZona, $currentFechaIngreso, $surrentFecharetiro, $currentUbicacion);
 
     if ($stmtBackup->execute()) {
         // Actualizar el estado y los campos en tbl_personas
-        $sqlUpdate = 'UPDATE tbl_personas SET Estado = ?, Fechaingreso = ?, Ubicacion = ? WHERE Cedula = ?';
+        $sqlUpdate = 'UPDATE tbl_personas SET Estado = ?, Fechaingreso = ?, Fecharetiro ="", Ubicacion = ? WHERE Cedula = ?';
         $stmtUpdate = $conexion->prepare($sqlUpdate);
-        $stmtUpdate->bind_param('ssss', $estadoNuevo, $fechaIngreso, $ubicacion, $cedula);
+        $stmtUpdate->bind_param('isss', $estadoNuevo, $fechaIngreso, $ubicacion, $cedula);
 
         if ($stmtUpdate->execute()) {
             echo 'success';

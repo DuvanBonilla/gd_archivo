@@ -22,7 +22,7 @@ class Empleados
     {
         if ($zona == 2) {
             // Consulta para la zona 2
-            $consulta = "SELECT Cedula, Nombre, Empresa, Ubicacion, Fechaingreso, Estado, Carpetas 
+            $consulta = "SELECT Cedula, Nombre, Empresa, Ubicacion, Fechaingreso, Fecharetiro, Estado, Carpetas 
                          FROM tbl_personas 
                          WHERE Empresa = ? AND Zona = ?";
             
@@ -34,7 +34,7 @@ class Empleados
             mysqli_stmt_bind_param($stmt, 'si', $Razonsoc, $zona); // 'si' indica string e integer
         } else {
             // Consulta para otras zonas
-            $consulta = "SELECT Cedula, Nombre, Empresa, Ubicacion, Fechaingreso, Estado, Carpetas 
+            $consulta = "SELECT Cedula, Nombre, Empresa, Ubicacion, Fechaingreso, Fecharetiro, Estado, Carpetas 
             FROM tbl_personas 
             WHERE Empresa = ?";
 

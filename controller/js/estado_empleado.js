@@ -5,37 +5,56 @@ $(document).ready(function () {
         var nuevoEstado = estadoActual === 1 ? 2 : 1;
 
         if (estadoActual === 1) {
-            // Cambio automático de 1 a 2
-            $.ajax({
-                type: "POST",
-                url: "../model/val_editestado_empleado.php",
-                data: { estado: nuevoEstado, cedula: iconId },
-                success: function (response) {
-                    console.log("Respuesta del servidor:", response);
-                    if (response.trim() === "success") {
-                        $(`#icon-${iconId}`).data("estado", nuevoEstado);
-                        $(`#icon-${iconId} i`).attr("class", nuevoEstado === 1 ? 'bi bi-person-check-fill' : 'bi bi-x-square');
-                        location.reload();
-
-                    }
+               
+            // Verifica si la ruta es correcta
+            $('#modalFechaRetiroContainer').load('../view/modal_fecharetiro.php', function (response, status, xhr) {
+                if (status == "error") {
+                } else {
+                    console.log('Modal cargado con éxito');
+                    $('#modalFechaRetiroCedula').val(iconId); // Pasar la cédula al modal
+                    $('#modalFechaRetiro').val(''); // Limpiar cualquier valor previo
+                    $('#modalFechaRetiroModal').modal('show'); // Mostrar el modal
                 }
             });
         } else if (estadoActual === 2) {
-            console.log('Intentando abrir el modal');
-            // Carga el contenido del modal desde un archivo HTML
             $('#modalContainer').load('../view/modal_editempleado.php', function () {
-                // Una vez que el contenido esté cargado, muestra el modal
                 $('#modalCedula').val(iconId);
-                $('#modalFechaIngreso').val('');  // Aquí puedes cargar el valor actual si lo tienes
-                $('#modalFechaRetiro').val('');  // Aquí puedes cargar el valor actual si lo tienes
-                $('#modalUbicacion').val('');  // Aquí puedes cargar el valor actual si lo tienes
+                $('#modalFechaIngreso').val('');
+                $('#modalFechaRetiro').val('');
+                $('#modalUbicacion').val('');
                 $('#editarModal').modal('show');
-
             });
         }
     });
 
-    // Manejador de formulario del modal
+    // Manejador del formulario del modal de fecha de retiro
+    $(document).on('submit', '#form-fecha-retiro', function (e) {
+        e.preventDefault();
+
+        var cedula = $('#modalFechaRetiroCedula').val();
+        var fechaRetiro = $('#modalFechaRetiro').val();
+
+        // Enviar el estado actualizado y la fecha de retiro
+        $.ajax({
+            type: "POST",
+            url: "../model/val_fecha_retiro.php",
+            data: {
+                estado: 2, // Cambiando a 2
+                cedula: cedula,
+                Fecharetiro: fechaRetiro
+            },
+            success: function (response) {
+                if (response.trim() === "success") {
+                    $(`#icon-${cedula}`).data("estado", 2);
+                    $(`#icon-${cedula} i`).attr("class", 'bi bi-x-square');
+                    $('#modalFechaRetiroModal').modal('hide');
+                    location.reload();
+                }
+            }
+        });
+    });
+
+    // Manejador del formulario del modal de edición
     $(document).on('submit', '#form-editar', function (e) {
         e.preventDefault();
 
@@ -44,22 +63,17 @@ $(document).ready(function () {
         var fechaRetiro = $('#modalFechaRetiro').val();
         var ubicacion = $('#modalUbicacion').val();
 
-        console.log('Fecha de Retiro capturada:', fechaRetiro);  // Verificar si se captura el valor
-
-
         $.ajax({
             type: "POST",
             url: "../model/val_editestado_empleado.php",
             data: {
-                estado: 1,  // Cambiando a 1
+                estado: 1, // Cambiando a 1
                 cedula: cedula,
                 Fechaingreso: fechaIngreso,
-                Fecharetiro: fechaRetiro,
                 Ubicacion: ubicacion,
-                actualizar: true  // Indicador para actualizar los campos adicionales
+                actualizar: true
             },
             success: function (response) {
-                console.log("Respuesta del servidor:", response);
                 if (response.trim() === "success") {
                     $(`#icon-${cedula}`).data("estado", 1);
                     $(`#icon-${cedula} i`).attr("class", 'bi bi-person-check-fill');

@@ -30,6 +30,7 @@ $datosEmpleado = obtenerDatosEmpleado($Cedula,$Razonsoc);
                     <th>Cedula</th>
                     <th>Nombre</th>
                     <th>Empresa</th>
+                    <th>Fecha Ingreso</th>
                     <th>Fecha retiro</th>
                     <th>Ubicación</th>
                 </tr>
@@ -40,6 +41,7 @@ $datosEmpleado = obtenerDatosEmpleado($Cedula,$Razonsoc);
                         <td><?php echo htmlspecialchars($empleado['Cedula']); ?></td>
                         <td><?php echo htmlspecialchars($empleado['Nombre']); ?></td>
                         <td><?php echo htmlspecialchars($empleado['Descripcion']); ?></td>
+                        <td><?php echo htmlspecialchars($empleado['Fechaingreso']); ?></td>
                         <td><?php echo htmlspecialchars($empleado['Fecharetiro']); ?></td>
                         <td><?php echo htmlspecialchars($empleado['Ubicacion']); ?></td>
                     </tr>
