@@ -1,0 +1,359 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 10-09-2024 a las 23:05:11
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `gd_archivo`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_accesos`
+--
+
+CREATE TABLE `tbl_accesos` (
+  `Idacceso` int(11) NOT NULL,
+  `Cedula` varchar(15) NOT NULL,
+  `Area` int(11) NOT NULL,
+  `Permiso` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_areas`
+--
+
+CREATE TABLE `tbl_areas` (
+  `Idarea` int(11) NOT NULL,
+  `NombreA` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_det_empleados`
+--
+
+CREATE TABLE `tbl_det_empleados` (
+  `Id` int(11) NOT NULL,
+  `Cedula` varchar(20) NOT NULL,
+  `Empresa` int(11) NOT NULL,
+  `Zona` int(11) NOT NULL,
+  `Fechaingreso` date NOT NULL,
+  `Fecharetiro` date NOT NULL,
+  `Ubicacion` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_estadoper`
+--
+
+CREATE TABLE `tbl_estadoper` (
+  `Idestado` int(11) NOT NULL,
+  `Descripcion` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_login`
+--
+
+CREATE TABLE `tbl_login` (
+  `Cedula` varchar(15) NOT NULL,
+  `Nombre` varchar(30) NOT NULL,
+  `Rol` int(11) NOT NULL,
+  `Zona` int(11) NOT NULL,
+  `Usuario` varchar(20) NOT NULL,
+  `Password` varchar(70) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_permisos`
+--
+
+CREATE TABLE `tbl_permisos` (
+  `Idpermiso` int(11) NOT NULL,
+  `Descripcion` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_personas`
+--
+
+CREATE TABLE `tbl_personas` (
+  `Cedula` varchar(20) NOT NULL,
+  `Nombre` varchar(50) NOT NULL,
+  `Empresa` int(11) NOT NULL,
+  `Zona` int(11) NOT NULL,
+  `Ubicacion` varchar(50) NOT NULL,
+  `Fechaingreso` date NOT NULL,
+  `Fecharetiro` date DEFAULT NULL,
+  `Estado` int(11) NOT NULL,
+  `Carpetas` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_per_empresa`
+--
+
+CREATE TABLE `tbl_per_empresa` (
+  `Iddetalle` int(11) NOT NULL,
+  `Cedula` varchar(15) NOT NULL,
+  `Empresa` int(11) NOT NULL,
+  `Estado` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_razonsoc`
+--
+
+CREATE TABLE `tbl_razonsoc` (
+  `Idrazon` int(11) NOT NULL,
+  `Descripcion` varchar(50) NOT NULL,
+  `zona` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_rol`
+--
+
+CREATE TABLE `tbl_rol` (
+  `Idrol` int(11) NOT NULL,
+  `Descripcion` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_zona`
+--
+
+CREATE TABLE `tbl_zona` (
+  `Idzona` int(11) NOT NULL,
+  `Descripcion` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `tbl_accesos`
+--
+ALTER TABLE `tbl_accesos`
+  ADD PRIMARY KEY (`Idacceso`),
+  ADD KEY `Cedula` (`Cedula`),
+  ADD KEY `Permiso` (`Permiso`),
+  ADD KEY `tbl_accesos_ibfk_3` (`Area`);
+
+--
+-- Indices de la tabla `tbl_areas`
+--
+ALTER TABLE `tbl_areas`
+  ADD PRIMARY KEY (`Idarea`);
+
+--
+-- Indices de la tabla `tbl_det_empleados`
+--
+ALTER TABLE `tbl_det_empleados`
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `tbl_det_empleados_ibfk_1` (`Cedula`),
+  ADD KEY `tbl_det_empleados_ibfk_2` (`Empresa`),
+  ADD KEY `Zona` (`Zona`);
+
+--
+-- Indices de la tabla `tbl_estadoper`
+--
+ALTER TABLE `tbl_estadoper`
+  ADD PRIMARY KEY (`Idestado`);
+
+--
+-- Indices de la tabla `tbl_login`
+--
+ALTER TABLE `tbl_login`
+  ADD PRIMARY KEY (`Cedula`),
+  ADD KEY `Rol` (`Rol`),
+  ADD KEY `Zona` (`Zona`);
+
+--
+-- Indices de la tabla `tbl_permisos`
+--
+ALTER TABLE `tbl_permisos`
+  ADD PRIMARY KEY (`Idpermiso`);
+
+--
+-- Indices de la tabla `tbl_personas`
+--
+ALTER TABLE `tbl_personas`
+  ADD PRIMARY KEY (`Cedula`,`Empresa`),
+  ADD KEY `Estado` (`Estado`),
+  ADD KEY `Empresa` (`Empresa`),
+  ADD KEY `Zona` (`Zona`);
+
+--
+-- Indices de la tabla `tbl_per_empresa`
+--
+ALTER TABLE `tbl_per_empresa`
+  ADD PRIMARY KEY (`Iddetalle`),
+  ADD KEY `Cedula` (`Cedula`),
+  ADD KEY `Empresa` (`Empresa`);
+
+--
+-- Indices de la tabla `tbl_razonsoc`
+--
+ALTER TABLE `tbl_razonsoc`
+  ADD PRIMARY KEY (`Idrazon`),
+  ADD KEY `zona` (`zona`);
+
+--
+-- Indices de la tabla `tbl_rol`
+--
+ALTER TABLE `tbl_rol`
+  ADD PRIMARY KEY (`Idrol`);
+
+--
+-- Indices de la tabla `tbl_zona`
+--
+ALTER TABLE `tbl_zona`
+  ADD PRIMARY KEY (`Idzona`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_accesos`
+--
+ALTER TABLE `tbl_accesos`
+  MODIFY `Idacceso` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_areas`
+--
+ALTER TABLE `tbl_areas`
+  MODIFY `Idarea` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_det_empleados`
+--
+ALTER TABLE `tbl_det_empleados`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_estadoper`
+--
+ALTER TABLE `tbl_estadoper`
+  MODIFY `Idestado` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_permisos`
+--
+ALTER TABLE `tbl_permisos`
+  MODIFY `Idpermiso` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_per_empresa`
+--
+ALTER TABLE `tbl_per_empresa`
+  MODIFY `Iddetalle` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_razonsoc`
+--
+ALTER TABLE `tbl_razonsoc`
+  MODIFY `Idrazon` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_rol`
+--
+ALTER TABLE `tbl_rol`
+  MODIFY `Idrol` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_zona`
+--
+ALTER TABLE `tbl_zona`
+  MODIFY `Idzona` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `tbl_accesos`
+--
+ALTER TABLE `tbl_accesos`
+  ADD CONSTRAINT `tbl_accesos_ibfk_1` FOREIGN KEY (`Cedula`) REFERENCES `tbl_login` (`Cedula`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_accesos_ibfk_2` FOREIGN KEY (`Permiso`) REFERENCES `tbl_permisos` (`Idpermiso`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_accesos_ibfk_3` FOREIGN KEY (`Area`) REFERENCES `tbl_areas` (`Idarea`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `tbl_det_empleados`
+--
+ALTER TABLE `tbl_det_empleados`
+  ADD CONSTRAINT `tbl_det_empleados_ibfk_1` FOREIGN KEY (`Cedula`) REFERENCES `tbl_personas` (`Cedula`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_det_empleados_ibfk_2` FOREIGN KEY (`Empresa`) REFERENCES `tbl_razonsoc` (`Idrazon`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_det_empleados_ibfk_3` FOREIGN KEY (`Zona`) REFERENCES `tbl_zona` (`Idzona`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `tbl_login`
+--
+ALTER TABLE `tbl_login`
+  ADD CONSTRAINT `tbl_login_ibfk_3` FOREIGN KEY (`Rol`) REFERENCES `tbl_rol` (`Idrol`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_login_ibfk_4` FOREIGN KEY (`Zona`) REFERENCES `tbl_zona` (`Idzona`);
+
+--
+-- Filtros para la tabla `tbl_personas`
+--
+ALTER TABLE `tbl_personas`
+  ADD CONSTRAINT `tbl_personas_ibfk_1` FOREIGN KEY (`Estado`) REFERENCES `tbl_estadoper` (`Idestado`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_personas_ibfk_2` FOREIGN KEY (`Empresa`) REFERENCES `tbl_razonsoc` (`Idrazon`),
+  ADD CONSTRAINT `tbl_personas_ibfk_3` FOREIGN KEY (`Zona`) REFERENCES `tbl_zona` (`Idzona`);
+
+--
+-- Filtros para la tabla `tbl_per_empresa`
+--
+ALTER TABLE `tbl_per_empresa`
+  ADD CONSTRAINT `tbl_per_empresa_ibfk_1` FOREIGN KEY (`Cedula`) REFERENCES `tbl_login` (`Cedula`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_per_empresa_ibfk_2` FOREIGN KEY (`Empresa`) REFERENCES `tbl_razonsoc` (`Idrazon`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `tbl_razonsoc`
+--
+ALTER TABLE `tbl_razonsoc`
+  ADD CONSTRAINT `tbl_razonsoc_ibfk_1` FOREIGN KEY (`zona`) REFERENCES `tbl_zona` (`Idzona`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
