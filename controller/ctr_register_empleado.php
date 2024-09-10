@@ -16,7 +16,7 @@ $conMysql = $conexion->conMysql();
 // --------------------------------------------------------
 $carpetas = new UsuarioYCarpetas($conexion);
 $carpetas->ExisteCarpeta($cedula);
-$carpetas->UserExist($cedula,$conMysql);
+$carpetas->UserExist($cedula, $empresa,$conMysql);
 $carpetas->AggUser($cedula,$nombre,$empresa,$zona,$ubicacion,$FechaIngreso,$conMysql);
 $carpetas->CrearCarpeta($cedula);
 // --------------------------------------------------------

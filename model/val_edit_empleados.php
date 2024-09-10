@@ -8,6 +8,8 @@ if (isset($_POST['Cedula'])) {
     $oldCedula = $_POST['OldCedula'];
     $cedula = $_POST['Cedula'];
     $nombre = $_POST['Nombre'];
+    $Fechaingreso = $_POST['Fechaingreso'];
+    $Fecharetiro = $_POST['Fecharetiro'];
     $ubicacion = $_POST['Ubicacion'];
     $idEmpresa = $_SESSION["idEmpresa"];
 
@@ -32,10 +34,10 @@ if (isset($_POST['Cedula'])) {
     $rutaBase = isset($rutas[$idEmpresa]) ? $rutas[$idEmpresa] : null;
 
     if ($rutaBase !== null) {
-        $sql = 'UPDATE tbl_personas SET Cedula = ?, Nombre = ?, Ubicacion = ? WHERE Cedula = ?';
+        $sql = 'UPDATE tbl_personas SET Cedula = ?, Nombre = ?, Ubicacion = ?, Fechaingreso = ?, Fecharetiro = ? WHERE Cedula = ?';
         
         if ($stmt = $conexion->prepare($sql)) {
-            $stmt->bind_param('ssss', $cedula, $nombre, $ubicacion, $oldCedula);
+            $stmt->bind_param('ssssss', $cedula, $nombre, $ubicacion,$Fechaingreso,$Fecharetiro, $oldCedula);
             
             if ($stmt->execute()) {
                 if ($cedula !== $oldCedula) {

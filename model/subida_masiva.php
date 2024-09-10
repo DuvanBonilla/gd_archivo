@@ -65,18 +65,12 @@ foreach ($carpetas as $carpeta) {
             }
         }
 
-        // Depuración: Mostrar la ruta de la carpeta de origen
-        echo 'Explorando carpeta de origen: ' . $rutaCarpetaOrigen . '<br>';
-
         // Copia los archivos dentro de las subcarpetas de la carpeta de origen a la de destino
         $subcarpetas = scandir($rutaCarpetaOrigen);
         foreach ($subcarpetas as $subcarpeta) {
             if ($subcarpeta != '.' && $subcarpeta != '..') {
                 $rutaSubcarpetaOrigen = $rutaCarpetaOrigen . '\\' . $subcarpeta;
                 $rutaSubcarpetaDestino = $rutaCarpetaDestino . '\\' . $subcarpeta;
-
-                // Depuración: Mostrar cada subcarpeta explorada
-                echo 'Explorando subcarpeta de origen: ' . $rutaSubcarpetaOrigen . '<br>';
 
                 // Verifica si la subcarpeta de destino existe
                 if (!is_dir($rutaSubcarpetaDestino)) {
@@ -114,7 +108,7 @@ foreach ($carpetas as $carpeta) {
         }
     }
 }
-
+ 
 echo "
     <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     <script language='JavaScript'>
@@ -127,7 +121,8 @@ echo "
             confirmButtonText: 'OK',
             timer: 5000
           }).then(() => {
-            location.assign('../view/index.php');
+          const idEmpresa = encodeURIComponent('$idEmpresa');
+          location.assign('../view/index.php?idEmpresa =' + idEmpresa);
           });
     });
     </script>";

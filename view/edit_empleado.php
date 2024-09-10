@@ -32,6 +32,14 @@
                         <label for="Ubicacion<?php echo $Cedula; ?>">Ubicación</label>
                         <input type="text" class="form-control" id="Ubicacion<?php echo $Cedula; ?>" name="Ubicacion" value="<?php echo $Ubicacion; ?>">
                     </div>
+                    <div class="form-group">
+                        <label for="Fechaingreso <?php echo $Cedula; ?>">Fecha de Ingreso</label>
+                        <input type="date" class="form-control" name="Fechaingreso" id="Fechaingreso<?php echo $Cedula; ?>" name="Fechaingreso" value="<?php echo $Fechaingreso; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="Fecharetiro <?php echo $Cedula; ?>">Fecha de Retiro</label>
+                        <input type="date" class="form-control" name="Fecharetiro" id="Fecharetiro<?php echo $Cedula; ?>" name="Fecharetiro" value="<?php echo $Fecharetiro; ?>">
+                    </div>
                     <button type="submit" class="btn btn-primary">Editar</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                 </form>

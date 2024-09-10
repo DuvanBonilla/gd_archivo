@@ -10,7 +10,6 @@ class UsuarioYCarpetas {
 
     // Obtener la ruta base según el ID de la empresa
     private function ObtenerRutaBase() {
-        // Rutas base por ID de empresa
         $rutasBase = [
             1 => 'R:/Gestion_Docu/Cargoban/Empleados',
             2 => 'R:/Gestion_Docu/Oceanix/Empleados',
@@ -36,10 +35,9 @@ class UsuarioYCarpetas {
 
     // Función para verificar si una carpeta ya existe
     public function ExisteCarpeta($cedula) {
-        $directorioBase = $this->ObtenerRutaBase(); // Obtener la ruta base según la empresa
+        $directorioBase = $this->ObtenerRutaBase(); 
 
         if ($directorioBase === false) {
-            // Ruta base no encontrada
             echo "
             <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
             <script language='JavaScript'>
@@ -55,25 +53,20 @@ class UsuarioYCarpetas {
                 });
             });
             </script>";
-            exit(); // Detener la ejecución si la ruta base no es válida
+            exit(); 
         }
 
         $ruta = $directorioBase . "/" . $cedula;
         $existe = file_exists($ruta);
-        
-        // Para depuración, puedes comentar las siguientes dos líneas en producción
-        echo "Ruta para verificar: $ruta<br>";
-        echo "Existe: " . ($existe ? 'Sí' : 'No') . "<br>";
         
         return $existe;
     }
 
     // Función para crear la carpeta principal y subcarpetas numeradas
     public function CrearCarpeta($cedula) {
-        $directorioBase = $this->ObtenerRutaBase(); // Obtener la ruta base según la empresa
+        $directorioBase = $this->ObtenerRutaBase(); 
 
         if ($directorioBase === false) {
-            // Ruta base no encontrada
             echo "
             <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
             <script language='JavaScript'>
@@ -89,7 +82,7 @@ class UsuarioYCarpetas {
                 });
             });
             </script>";
-            exit(); // Detener la ejecución si la ruta base no es válida
+            exit(); 
         }
 
         $base_dir = $directorioBase . "/" . $cedula;
@@ -135,11 +128,10 @@ class UsuarioYCarpetas {
     }
 
     // Verificar si el usuario existe
-    public function UserExist ($cedula, $conexion){
-        // Preparación de la consulta
-        $stmt = $conexion->prepare("SELECT Cedula FROM tbl_personas WHERE Cedula = ? ");
-        // Asignación de valores
-        $stmt->bind_param("s", $cedula);
+    public function UserExist ($cedula, $empresa, $conexion){
+
+        $stmt = $conexion->prepare("SELECT Cedula FROM tbl_personas WHERE Cedula = ? AND Empresa= ?");
+        $stmt->bind_param("si", $cedula, $empresa);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -150,7 +142,41 @@ class UsuarioYCarpetas {
                 document.addEventListener('DOMContentLoaded', function() {
                     Swal.fire({
                         icon: 'error',
-                        title: 'El usuario está registrado',
+                        title: 'El usuario ya está registrado',
+                        confirmButtonColor: '#D63030',
+                        confirmButtonText: 'OK',
+                        timer: 6000
+                    }).then(() => {
+                    location.assign('../view/tabla_empleados.php');
+                    });
+                });
+                </script>";
+            exit();
+        }
+        $stmt2 = $conexion->prepare("SELECT Cedula, Empresa FROM tbl_personas WHERE Cedula = ? AND Estado = ?");
+        $estado_activo = 1;  
+        $stmt2->bind_param("si", $cedula, $estado_activo);  
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+    
+        // Si la persona está activa en otra empresa
+        if ($result2->num_rows > 0) {
+
+            $row = $result2->fetch_assoc();
+            $empresa_activa = $row['Empresa'];
+            $stmt3 = $conexion->prepare("SELECT Descripcion FROM tbl_razonsoc WHERE Idrazon = ?");
+            $stmt3->bind_param("i", $empresa_activa);
+            $stmt3->execute();
+            $result3 = $stmt3->get_result();
+            $empresa_nombre = $result3->fetch_assoc()['Descripcion']; 
+
+            echo "
+                <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                <script language='JavaScript'>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'El usuario está activo en otra empresa  \"{$empresa_nombre}\"',
                         confirmButtonColor: '#D63030',
                         confirmButtonText: 'OK',
                         timer: 6000
@@ -165,7 +191,46 @@ class UsuarioYCarpetas {
 
     // Función para agregar un nuevo usuario y crear las carpetas
     public function AggUser($cedula, $nombre, $empresa, $zona, $ubicacion, $FechaIngreso, $conexion) {
-        // Obtener directorio base según la empresa
+        if (!preg_match("/^[0-9]{6,18}$/", $cedula) || preg_match("/^(.)\1*$/", $cedula)) {
+            echo "
+                <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                <script language='JavaScript'>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error: La cédula debe ser un dato válido',
+                        confirmButtonColor: '#D63030',
+                        confirmButtonText: 'OK',
+                        timer: 6000
+                    }).then(() => {
+                        location.assign('../view/tabla_empleados.php');
+                    });
+                });
+                </script>";
+            exit();
+        }
+        
+        
+        
+        if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/", $nombre)) {
+            echo "
+                <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                <script language='JavaScript'>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error: El nombre contiene caracteres no permitidos',
+                        confirmButtonColor: '#D63030',
+                        confirmButtonText: 'OK',
+                        timer: 6000
+                    }).then(() => {
+                        location.assign('../view/tabla_empleados.php');
+                    });
+                });
+                </script>";
+                exit();
+
+        }
         $directorioBase = $this->ObtenerRutaBase();
         // Ruta final del directorio
         $carpeta = $directorioBase . "/" . $cedula;
@@ -173,9 +238,8 @@ class UsuarioYCarpetas {
         $Estado = "1";
 
         if (!empty($cedula) && !empty($nombre) && !empty($empresa) && !empty($zona) && !empty($ubicacion) && !empty($FechaIngreso)) {
-            // Preparación de la consulta
+    
             $stmt = $conexion->prepare("INSERT INTO tbl_personas(Cedula, Nombre, Empresa, Zona, Ubicacion, Fechaingreso, Estado, Carpetas) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            // Asignación de valores
             $stmt->bind_param("ssiissis", $cedula, $nombre, $empresa, $zona, $ubicacion, $FechaIngreso, $Estado, $carpeta);
 
             if ($stmt->execute()) {
@@ -186,7 +250,7 @@ class UsuarioYCarpetas {
                     document.addEventListener('DOMContentLoaded', function() {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Novedad Almacenada y Carpetas Creadas Exitosamente',
+                            title: 'Persona Registrada y Carpetas Creadas Exitosamente',
                             showCancelButton: false,
                             confirmButtonColor: '#3085d6',
                             confirmButtonText: 'OK',

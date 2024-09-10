@@ -10,17 +10,15 @@ $(document).ready(function () {
             $('#modalFechaRetiroContainer').load('../view/modal_fecharetiro.php', function (response, status, xhr) {
                 if (status == "error") {
                 } else {
-                    console.log('Modal cargado con éxito');
-                    $('#modalFechaRetiroCedula').val(iconId); // Pasar la cédula al modal
-                    $('#modalFechaRetiro').val(''); // Limpiar cualquier valor previo
-                    $('#modalFechaRetiroModal').modal('show'); // Mostrar el modal
+                    $('#modalFechaRetiroCedula').val(iconId); 
+                    $('#modalFechaRetiro').val(''); 
+                    $('#modalFechaRetiroModal').modal('show'); 
                 }
             });
         } else if (estadoActual === 2) {
             $('#modalContainer').load('../view/modal_editempleado.php', function () {
                 $('#modalCedula').val(iconId);
                 $('#modalFechaIngreso').val('');
-                $('#modalFechaRetiro').val('');
                 $('#modalUbicacion').val('');
                 $('#editarModal').modal('show');
             });
@@ -60,7 +58,6 @@ $(document).ready(function () {
 
         var cedula = $('#modalCedula').val();
         var fechaIngreso = $('#modalFechaIngreso').val();
-        var fechaRetiro = $('#modalFechaRetiro').val();
         var ubicacion = $('#modalUbicacion').val();
 
         $.ajax({
