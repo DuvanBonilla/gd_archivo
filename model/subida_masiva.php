@@ -22,19 +22,19 @@ $rutasDestino = [
 
 // Definir las rutas de origen según la id de la empresa
 $rutasOrigen = [
-    1 => 'D:\\Subida_Masiva\\Cargoban',
-    2 => 'D:\\Subida_Masiva\\Oceanix',
-    3 => 'D:\\Subida_Masiva\\Solutempo',
-    4 => 'D:\\Subida_Masiva\\Cargoban_SAS',
-    5 => 'D:\\Subida_Masiva\\Agencia_de_Aduanas',
-    6 => 'D:\\Subida_Masiva\\Fundacion_Cargoban',
-    7 => 'D:\\Subida_Masiva\\Tase',
-    8 => 'D:\\Subida_Masiva\\Opyservis',
-    9 => 'D:\\Subida_Masiva\\Tierra_Grata',
-    10 => 'D:\\Subida_Masiva\\Bananova',
-    11 => 'D:\\Subida_Masiva\\Gira',
-    12 => 'D:\\Subida_Masiva\\Palmonte',
-    13 => 'D:\\Subida_Masiva\\Principio_Comercial',
+    1 => 'D:\\Subida_Masiva\\Cargoban\\Empleados',
+    2 => 'D:\\Subida_Masiva\\Oceanix\\Empleados',
+    3 => 'D:\\Subida_Masiva\\Solutempo\\Empleados',
+    4 => 'D:\\Subida_Masiva\\Cargoban_SAS\\Empleados',
+    5 => 'D:\\Subida_Masiva\\Agencia_de_Aduanas\\Empleados',
+    6 => 'D:\\Subida_Masiva\\Fundacion_Cargoban\\Empleados',
+    7 => 'D:\\Subida_Masiva\\Tase\\Empleados',
+    8 => 'D:\\Subida_Masiva\\Opyservis\\Empleados',
+    9 => 'D:\\Subida_Masiva\\Tierra_Grata\\Empleados',
+    10 => 'D:\\Subida_Masiva\\Bananova\\Empleados',
+    11 => 'D:\\Subida_Masiva\\Gira\\Empleados',
+    12 => 'D:\\Subida_Masiva\\Palmonte\\Empleados',
+    13 => 'D:\\Subida_Masiva\\Principio_Comercial\\Empleados',
 ];
 
 if (!isset($rutasDestino[$idEmpresa]) || !isset($rutasOrigen[$idEmpresa])) {
@@ -122,7 +122,7 @@ echo "
             timer: 5000
           }).then(() => {
           const idEmpresa = encodeURIComponent('$idEmpresa');
-          location.assign('../view/index.php?idEmpresa =' + idEmpresa);
+          location.assign('../view/index.php?idEmpresa=' + idEmpresa);
           });
     });
     </script>";
