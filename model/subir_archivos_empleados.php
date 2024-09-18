@@ -59,27 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             exit;
                     }
 
-                    // Verifica el tamaño del archivo (límite de 5MB)
-                    if ($_FILES['archivo']['size'][$index] > 5000000) {
-                        echo "
-                            <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
-                            <script language='JavaScript'>
-                            document.addEventListener('DOMContentLoaded', function() {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Archivo Demasiado Grande',
-                                    confirmButtonColor: '#2522E2',
-                                    confirmButtonText: 'OK',
-                                    timer: 5000
-                                }).then(() => {
-                                location.assign('../view/carpetas/carpetas_archivos/consultar_datos.php?carpeta=' + encodeURIComponent('$carpeta') + '&cedula=' + encodeURIComponent('$cedula') + '&nombre=' + encodeURIComponent('$nombre'));
-                                });
-                            });
-                            </script>";
-                            $uploadOk = 0;
-                        exit;
-                    }
-
                     // Permite ciertos formatos de archivo
                     $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
                     if ($fileType != 'jpg' && $fileType != 'png' && $fileType != 'jpeg' && $fileType != 'pdf') {

@@ -62,28 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         exit;
                     }
 
-                    // Verifica el tamaño del archivo (límite de 5MB)
-                    if ($_FILES['archivo']['size'][$index] > 5000000) {
-                        echo "
-                        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
-                        <script language='JavaScript'>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Archivo Es Demasiado Grande',
-                                confirmButtonColor: 'red',
-                                confirmButtonText: 'OK',
-                                timer: 8000
-                            }).then(() => {
-                                const carpeta = encodeURIComponent('$carpeta');
-                                const subcarpeta = encodeURIComponent('$subcarpeta');
-                                location.assign('../view/ver_info_carpetas.php?carpeta=' + carpeta + '&subcarpeta=' + subcarpeta);
-                            });
-                        });
-                        </script>";
-                        $uploadOk = 0;
-                        exit;
-                    }
 
                     // Permite ciertos formatos de archivo
                     $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
