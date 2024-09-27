@@ -30,7 +30,7 @@ $carpetas = [
     "SOLICITUDES VARIAS" => "carpetas/carpetas_archivos/consultar_datos.php",
     "TERMINACION DE CONTRATO" => "carpetas/carpetas_archivos/consultar_datos.php",
     "TEST WARTEGG" => "carpetas/carpetas_archivos/consultar_datos.php",
-    "VICITA DOMICILIARIA" => "carpetas/carpetas_archivos/consultar_datos.php",
+    "VISITA DOMICILIARIA" => "carpetas/carpetas_archivos/consultar_datos.php",
 ];
 ?>
 <!DOCTYPE html>

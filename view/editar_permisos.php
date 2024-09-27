@@ -55,15 +55,15 @@ if (!isset($_SESSION['usuario'])) {
 
                     // botom de editar permisos
                     echo '<td>
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Permisos" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
-                                Areas 
-                            </button>
-                        </td>';
+                    <button type="button" class="btn btn-success" onclick="abrirModal(\'' . htmlspecialchars($user['Cedula']) . '\')">
+                        Areas 
+                    </button>
+                  </td>';
                                 // boton de editar empresa
-                        echo '<td>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#PermisosEmpresa" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
-                            Empresas
-                        </button>
+                    echo '<td>
+                     <button type="button" class="btn btn-success" onclick="EditEmpresa(\'' . htmlspecialchars($user['Cedula']) . '\')">
+                     Empresa 
+                     </button>
                     </td>';
                     // boton de eliminar usuario
                     echo '<td>
@@ -95,8 +95,7 @@ if (!isset($_SESSION['usuario'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="../controller/js/info_empleados.js"></script>
     <script src="../controller/js/estado_empleado.js"></script>
-    <script src="../controller/js/eliminar_usuario.js"></script>
-
-
+    <script src="../controller/js/permisos_areas.js"></script>
+    <script src="../controller/js/permisos_empresa.js"></script>
 </body>
 </html>

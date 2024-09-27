@@ -63,17 +63,18 @@ include '../model/ver_info_carpetas.php';
                             <td><a href="../model/ver_archivos_carpetas.php?carpeta='.urlencode($_GET['carpeta']).'&subcarpeta='.urlencode($_GET['subcarpeta']).'&archivo='.$archivoUrl.'" class="btn btn-success" target="_blank">Ver</a></td>
                            <td><a href="../model/descargar_arch_años.php?carpeta='.urlencode($_GET['carpeta']).
                            '&subcarpeta='.urlencode($_GET['subcarpeta']).
-                           '&archivo='.$archivoUrl.'" class="btn btn-primary">Descargar</a></td>
-                           <td>
-                                <a href="../model/eliminar_archivos_carpetas.php?nombreArea='.$nombreArea.'&carpeta='.urlencode($_GET['carpeta']).'&subcarpeta='.urlencode($_GET['subcarpeta']).'&archivo='.$archivoUrl.'" 
-                                class="btn btn-danger" onclick="return confirm(\'¿Estás seguro de que deseas eliminar este archivo?\');">
-                                 <i class="fas fa-trash-alt"></i> 
-                            </a>
-                            </td>
-                            
-                          
-                           </tr>';
-                }
+                           '&archivo='.$archivoUrl.'" class="btn btn-primary">Descargar</a></td>';
+                           if ($permisoUsuario == 2) {
+                            echo '<td>
+                                    <a href="../model/eliminar_archivos_carpetas.php?nombreArea='.$nombreArea.'&carpeta='.urlencode($_GET['carpeta']).'&subcarpeta='.urlencode($_GET['subcarpeta']).'&archivo='.$archivoUrl.'" 
+                                    class="btn btn-danger" onclick="return confirm(\'¿Estás seguro de que deseas eliminar este archivo?\');">
+                                     <i class="fas fa-trash-alt"></i> 
+                                </a>
+                                </td>';
+                        }
+                        
+                        echo '</tr>';
+                    }
                 ?>
             </tbody>
         </table>

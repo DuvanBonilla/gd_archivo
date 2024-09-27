@@ -1,7 +1,7 @@
 <?php
 include '../model/conexion.php';
 
-$cedula = $_POST["cedula"];
+$cedula = $_POST["Cedula"];
 
 // Asegúrate de verificar si hay datos en POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -9,10 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conexion = new Conexion();
     $conn = $conexion->conMysql();
 
-    // Inicializa un contador de cambios
     $cambiosRealizados = 0;
 
-    // Obtén los accesos enviados desde el formulario
     foreach ($_POST as $key => $value) {
         // Filtra las variables que comienzan con 'permiso_'
         if (strpos($key, 'permiso_') === 0) {
@@ -22,17 +20,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // El valor será 1, 2 o 3, según el permiso seleccionado
             $permisoSeleccionado = (int)$value;
 
-            // Realiza la actualización en la base de datos para cada área específica
             $stmt = $conn->prepare("UPDATE tbl_accesos SET Permiso = ? WHERE Cedula = ? AND Area = ?");
-            $stmt->bind_param("iii", $permisoSeleccionado, $cedula, $areaId);
+            $stmt->bind_param("isi", $permisoSeleccionado, $cedula, $areaId);
+
             // Ejecuta la actualización y verifica si se realizó correctamente
             if ($stmt->execute()) {
-                $cambiosRealizados++;
+               
+                if ($stmt->affected_rows > 0) {
+                    $cambiosRealizados++;
+                } else {
+                    
+                    echo "No se encontraron coincidencias para Cedula: $cedula y Area: $areaId.<br>";
+                }
+            } else {
+                echo "Error al ejecutar la consulta: " . $stmt->error . "<br>";
             }
         }
     }
 
-    // Cierra la conexión a la base de datos
     $stmt->close();
     $conn->close();
 
@@ -42,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ../view/editar_permisos.php');
         exit;
     } else {
-        // Manejo del error si no se realizaron cambios
+     
         echo "No se realizaron cambios en los permisos.";
     }
 }

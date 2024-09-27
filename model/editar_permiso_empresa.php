@@ -1,31 +1,49 @@
 <?php
 include '../model/conexion.php';
-$cedula = $_POST["cedula"];
 
-// Asegúrate de verificar si hay datos en POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Incluye la conexión a la base de datos
-    $conexion = new Conexion();
-    $conn = $conexion->conMysql();
-    // Obtén los accesos enviados desde el formulario
-    foreach ($_POST as $key => $value) {
-        // Filtra las variables que comienzan con 'permiso_'
-        if (strpos($key, 'permiso_em') === 0) {
-            // Extrae el ID de la empresa desde el nombre del input (e.g., 'permiso_1' -> '1')
-            $empresaId = str_replace('permiso_em', '', $key);
-            
-            // El valor será 1, 2 o 3, según el permiso seleccionado
-            $permisoSeleccionado = (int)$value;
-            
-            // Realiza la actualización en la base de datos
-            // $stmt = $conn->prepare("UPDATE tbl_accesos SET Permiso = ? WHERE Cedula = ? AND Area = ?");
+    
+    if (isset($_POST['Cedula'])) {
 
-            $stmt = $conn->prepare("UPDATE tbl_per_empresa SET Estado = ? WHERE Cedula = ? AND Empresa = ?");
-            $stmt->bind_param("iii", $permisoSeleccionado, $cedula, $empresaId);
-            $stmt->execute();
+        $cedula = $_POST['Cedula'];
+        $conexion = new Conexion();
+        $conn = $conexion->conMysql();
+
+        if ($conn->connect_error) {
+            die('Error de conexión: ' . $conn->connect_error);
         }
+        foreach ($_POST as $key => $value) {
+           
+            if (strpos($key, 'Estado_') === 0) {
+                $empresaId = str_replace('Estado_', '', $key);
+
+                $permisoSeleccionado = (int)$value;
+                if (!in_array($permisoSeleccionado, [1, 2])) {
+                    continue; 
+                }
+                // Realizar la actualización en la base de datos
+                $stmt = $conn->prepare("UPDATE tbl_per_empresa SET Estado = ? WHERE Cedula = ? AND Empresa = ?");
+                if ($stmt) {
+                    $stmt->bind_param("isi", $permisoSeleccionado, $cedula, $empresaId);
+                    if (!$stmt->execute()) {
+                        echo 'Error al actualizar el permiso para la empresa ID: ' . $empresaId . ' - ' . $stmt->error;
+                    }
+                    $stmt->close();
+                } else {
+                    echo 'Error al preparar la consulta: ' . $conn->error;
+                }
+            }
+        }
+
+        // Cerrar la conexión
+        $conexion->cerrarConexion($conn);
+
+        header('Location: ../view/editar_permisos.php');
+        exit;
+    } else {
+        echo 'Cédula no proporcionada';
     }
-    // Redirige o muestra un mensaje de éxito
-    header('Location: ../view/editar_permisos.php');
-    exit;
+} else {
+    echo 'Método no permitido';
 }
+?>
