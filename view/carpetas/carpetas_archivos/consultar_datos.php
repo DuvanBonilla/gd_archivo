@@ -8,6 +8,11 @@ if (!isset($_SESSION["usuario"])) {
 $cedula = $_GET["cedula"];
 $nombre = $_GET["nombre"];
 $carpeta = $_GET["carpeta"];
+$rol = $_SESSION['rol'];
+$disabled = '';
+if ($rol == 2) {
+    $disabled = 'disabled'; 
+}
 
 ?>
 <!DOCTYPE html>
@@ -70,17 +75,15 @@ $carpeta = $_GET["carpeta"];
             </tbody>
         </table>
         <div style="text-align: center; margin-top: 20px;">
-    <form action="../../../model/subir_archivos_empleados.php" method="post" enctype="multipart/form-data">
+    <form action="../../../model/subir_archivos_empleados.php" method="post" enctype="multipart/form-data" >
         <input type="hidden" name="cedula" value="<?php echo htmlspecialchars($cedula); ?>">
         <input type="hidden" name="carpeta" value="<?php echo htmlspecialchars($carpeta); ?>">
         <input type="hidden" name="nombre" value="<?php echo htmlspecialchars($nombre); ?>">
 
         
         <!-- Input para seleccionar múltiples archivos -->
-        <input type="file" name="archivo[]" id="fileInput" style="display: none;" multiple onchange="this.form.submit();">
-        
-        <!-- Label que actúa como botón -->
-        <label for="fileInput" class="btn btn-secondary">Subir archivos</label>
+        <input type="file" name="archivo[]" id="fileInput" style="display: none;" multiple onchange="this.form.submit();" <?php echo ($rol == 2) ? 'disabled' : ''; ?>>
+        <label for="fileInput" class="btn btn-secondary <?php echo ($rol == 2) ? 'disabled' : ''; ?>" >Subir archivos</label>
     </form>
 </div>
     </div>

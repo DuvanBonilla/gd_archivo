@@ -5,9 +5,17 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 $idEmpresa = $_SESSION["idEmpresa"];
+
+$rol = $_SESSION['rol'];
+$disabled = '';
+if ($rol == 2) {
+    $disabled = 'disabled'; // Deshabilitar botón
+    var_dump($rol);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="images/logo.ico.ico" type="image/x-icon" />
@@ -22,13 +30,14 @@ $idEmpresa = $_SESSION["idEmpresa"];
 
     <title>Empleados</title>
 </head>
-<body>
-<a href="index.php?idEmpresa= <?php echo $idEmpresa = $_SESSION["idEmpresa"]; ?>"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
-<div id="modalContainer"></div>
-<div id="modalFechaRetiroContainer"></div>
-<div id="editarModal"></div>
 
-</div>
+<body>
+    <a href="index.php?idEmpresa= <?php echo $idEmpresa = $_SESSION["idEmpresa"]; ?>"> <i class="fa-solid fa-circle-arrow-left fa-beat icon-back" style="color: #accd4a;"></i> </a>
+    <div id="modalContainer"></div>
+    <div id="modalFechaRetiroContainer"></div>
+    <div id="editarModal"></div>
+
+    </div>
     <div class="container" style="margin-top: 4%;padding: 5px">
         <table id="tablax" class="table table-striped table-bordered" style="width:100%">
             <h1>BASE DE DATOS DE EMPLEADOS</h1>
@@ -46,60 +55,61 @@ $idEmpresa = $_SESSION["idEmpresa"];
                 </tr>
             </thead>
             <tbody>
-            <?php
-            $empleados = include '../model/consu_empleados.php';
-for ($i = 0; $i < count($empleados); ++$i) {
-    $empleado = $empleados[$i];
-    $Cedula = $empleado['Cedula'];
-    $Nombre = $empleado['Nombre'];
-    $Ubicacion = $empleado['Ubicacion'];
-    $Estado = $empleado['Estado'];
-    $Empresa = $empleado['Empresa'];
-    $Fechaingreso = $empleado['Fechaingreso'];
-    $Fecharetiro = $empleado['Fecharetiro'];
-    echo '<tr>';
-    echo '<td>'.$empleado['Cedula'].'</td>';
-    echo '<td>'.$empleado['Nombre'].'</td>';
-    echo '<td>'.$empleado['Ubicacion'].'</td>';
-    echo '<td>'.$empleado['Fechaingreso'].'</td>';
-    echo '<td>'.$empleado['Fecharetiro'].'</td>';
-    if ($Estado == 1) {
-        echo '<td>
-                <button type="button" class="btn btn-success icon-container" id="icon-'.$Cedula.'" data-estado="1">
+                <?php
+                $empleados = include '../model/consu_empleados.php';
+                for ($i = 0; $i < count($empleados); ++$i) {
+                    $empleado = $empleados[$i];
+                    $Cedula = $empleado['Cedula'];
+                    $Nombre = $empleado['Nombre'];
+                    $Ubicacion = $empleado['Ubicacion'];
+                    $Estado = $empleado['Estado'];
+                    $Empresa = $empleado['Empresa'];
+                    $Fechaingreso = $empleado['Fechaingreso'];
+                    $Fecharetiro = $empleado['Fecharetiro'];
+                    echo '<tr>';
+                    echo '<td>' . $empleado['Cedula'] . '</td>';
+                    echo '<td>' . $empleado['Nombre'] . '</td>';
+                    echo '<td>' . $empleado['Ubicacion'] . '</td>';
+                    echo '<td>' . $empleado['Fechaingreso'] . '</td>';
+                    echo '<td>' . $empleado['Fecharetiro'] . '</td>';
+                    if ($Estado == 1) {
+                        echo '<td>
+                <button type="button" class="btn btn-success icon-container" id="icon-' . $Cedula . '" data-estado="1" '.$disabled.'>
                     <i class="bi bi-person-check-fill"></i>
                 </button>
               </td>';
-    } elseif ($Estado == 2) {
-        echo '<td>
-                <button type="button" class="btn btn-danger icon-container" id="icon-'.$Cedula.'" data-estado="2">
+                    } elseif ($Estado == 2) {
+                        echo '<td>
+                <button type="button" class="btn btn-danger icon-container" id="icon-' . $Cedula . '" data-estado="2" '.$disabled.'>
                     <i class="bi bi-x-square"></i>
                 </button>
               </td>';
-    }
-    echo '<td>  
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editar'.$Cedula.'">
+                    }
+                    echo '<td>  
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editar' . $Cedula . '"'.$disabled.'>
                         <i class="bi bi-pencil-square"></i>
                     </button>
                 </td>';
-    echo '<td>
-                <a href="detalle_empleado.php?cedula='.$Cedula.'" class="btn btn-secondary">
+                    echo '<td>
+                 <a href="' . (($rol == 2) ? '#' : 'detalle_empleado.php?cedula=' . $Cedula) . '" 
+                    class="btn btn-secondary ' . (($rol == 2) ? 'disabled' : '') . '">
                     <i class="bi bi-journal-bookmark"></i>
-                </a>
+                 </a>
             </td>';
-    echo '<td>
-                    <button onclick="window.location.href=\'ver_carpetas.php?cedula='.urlencode($empleado['Cedula']).'&nombre='.urlencode($empleado['Nombre']).'\'" 
+                    echo '<td>
+                    <button onclick="window.location.href=\'ver_carpetas.php?cedula=' . urlencode($empleado['Cedula']) . '&nombre=' . urlencode($empleado['Nombre']) . '\'" 
                             style="margin-left: 30%; background-color: #1c2355" 
-                            class="btn btn-secondary">
+                            class="btn btn-secondary ">
                         <i class="fa-solid fa-folder-open"></i>
                     </button>
                   </td>';
-    echo '</tr>';
-    include 'edit_empleado.php';
-}
-?>
+                    echo '</tr>';
+                    include 'edit_empleado.php';
+                }
+                ?>
             </tbody>
         </table>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Registrar">
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Registrar" <?php echo $disabled; ?>>
             Nuevo Registro <i class="bi bi-person-plus"></i>
         </button>
         <?php include 'modal_empleado.php'; ?>
@@ -112,4 +122,5 @@ for ($i = 0; $i < count($empleados); ++$i) {
     <script src="../controller/js/estado_empleado.js"></script>
 
 </body>
+
 </html>

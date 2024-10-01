@@ -54,14 +54,12 @@ $idAreaToPage = [
             </div>
         </div>
         <div class="menu">
-        <?php if ($rol == 1 || $rol ==3) { ?>
         <div class="enlace">
             <a href="tabla_empleados.php">
             <i class="bx bx-user"></i>
             <span>Empleados</span>
             </a>
         </div>
-        <?php } ?>
         <a href="#" class="enlace" id="lista-toggle">
         <i class='bx bxs-collection'></i>
     <span>Areas</span>

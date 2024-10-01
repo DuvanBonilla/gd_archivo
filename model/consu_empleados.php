@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php';
+require_once 'conexion.php';
 
 // Verificar si las variables de sesión están definidas
 if (!isset($_SESSION["zona"]) || !isset($_SESSION["idEmpresa"])) {
